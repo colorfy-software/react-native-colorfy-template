@@ -29,7 +29,7 @@ const hexToRgb = (hex: string): RGBType | null => {
 
 const white = { r: 255, g: 255, b: 255 }
 
-export default (input: Input): Animated.Node<number> => {
+const animateColors = (input: Input): Animated.Node<number> => {
   const colors = input.outputRange.map(hexColor => hexToRgb(hexColor) || white)
   const r = round(
     interpolate(input.animatedValue, {
@@ -54,3 +54,5 @@ export default (input: Input): Animated.Node<number> => {
   )
   return color(r, g, b)
 }
+
+export default animateColors

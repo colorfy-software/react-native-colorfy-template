@@ -9,15 +9,15 @@ const guidelineBaseHeight = 667
 
 export default {
   /**
-   * @param value - value to be scaled
-   * @returns percentage of width of the screen value given represents
+   * @param value - value to be interpolated
+   * @returns On scale of 0-1 width of the screen value given represents
    */
   width: (value: number): number => value * ww,
   /**
    *
-   * @param value - value to be scaled
+   * @param value - value to be interpolated
    *
-   * @returns percentage of height of the screen value given represents
+   * @returns On scale of 0-1 height of the screen value given represents
    */
   height: (value: number): number => value * wh,
   /**
