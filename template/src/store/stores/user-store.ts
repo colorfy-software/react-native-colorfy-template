@@ -2,6 +2,7 @@ import create, { SetState } from 'zustand'
 import produce, { Draft } from 'immer'
 
 import { UserType, UserStoreType } from '../../types/user-types'
+
 import persist from '../middlewares/persist-middleware'
 import logger from '../middlewares/logger-middleware'
 

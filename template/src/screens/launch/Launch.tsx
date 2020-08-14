@@ -18,7 +18,7 @@ const Launch = ({ route }: Props): JSX.Element => {
   const { setNavigationState } = route.params
 
   // Hydrating the store
-  const isRehydrated = useRehydrate(['user'])
+  const isRehydrated = useRehydrate()
 
   useEffect(() => {
     // When rehydrated we navigate to app

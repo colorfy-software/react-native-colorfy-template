@@ -1,17 +1,22 @@
-import { MiddlewareType, StoresType } from 'src/types/store-types'
+import { StateCreator } from 'zustand'
 
-const middleware: MiddlewareType = (store, config) => (
-  set,
-  get,
-  api,
-): StoresType =>
+import {
+  MiddlewareType,
+  StoresType,
+  StoresNameType,
+} from '../../types/store-types'
+
+const middleware = <S extends StoresType>(
+  store: StoresNameType,
+  config: StateCreator<S>,
+): MiddlewareType<S> => (set, get, api) =>
   config(
-    args => {
+    (args) => {
       const oldData = get().data
       set(args)
 
       // @ts-ignore
-      if (window.logZustand) {
+      if (window.enableStoreLogging) {
         console.info(`🗂 ${store.toLocaleUpperCase()}_STORE_UPDATE: `, {
           prevState: oldData,
           nextState: get().data,

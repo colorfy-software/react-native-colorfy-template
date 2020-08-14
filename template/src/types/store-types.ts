@@ -9,12 +9,10 @@ export interface CreateStoreType<S> {
 }
 
 export type StoresType = UserStoreType
+export type StoresNameType = 'user'
 
-export type MiddlewareType = (
-  store: string,
-  config: StateCreator<StoresType>,
-) => (
-  set: SetState<StoresType>,
-  get: GetState<StoresType>,
-  api: StoreApi<StoresType>,
-) => StoresType
+export type MiddlewareType<S> = (
+  set: SetState<S>,
+  get: GetState<S>,
+  api: StoreApi<S>,
+) => S
