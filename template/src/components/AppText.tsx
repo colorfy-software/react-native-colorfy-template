@@ -11,47 +11,21 @@ import {
 import size from '../styles/size'
 
 const TEXT_STYLES = StyleSheet.create({
-  tabLabel: {
-    // fontFamily: 'Roboto-Medium',
-    fontSize: size.horizontalScale(18),
-  },
-  largeHeaderTitle: {
-    // fontFamily: 'Roboto-Thin',
-    fontSize: size.horizontalScale(36),
-  },
-  headerTitle: {
+  title: {
     // fontFamily: 'Roboto',
-    fontSize: size.horizontalScale(18),
+    fontSize: size.horizontalScale(24),
   },
-  headerSubtitle: {
+  subtitle: {
     // fontFamily: 'Roboto-Medium',
-    fontSize: size.horizontalScale(14),
+    fontSize: size.horizontalScale(21),
   },
   body: {
     // fontFamily: 'Roboto-Light',
     fontSize: size.horizontalScale(16),
     lineHeight: size.horizontalScale(16) * 1.38,
   },
-  bodyBold: {
-    // fontFamily: 'Roboto-Bold',
-    fontSize: size.horizontalScale(16),
-    lineHeight: size.horizontalScale(16) * 1.38,
-  },
-  bodyThin: {
-    // fontFamily: 'Roboto-Light',
-    fontSize: size.horizontalScale(16),
-    lineHeight: size.horizontalScale(16) * 1.38,
-  },
-  sectionTitle: {
-    // fontFamily: 'Roboto-Bold',
-    fontSize: size.horizontalScale(14),
-  },
   label: {
     // fontFamily: 'Roboto',
-    fontSize: size.horizontalScale(14),
-  },
-  smallLabel: {
-    // fontFamily: 'Roboto-Bold',
     fontSize: size.horizontalScale(14),
   },
 })

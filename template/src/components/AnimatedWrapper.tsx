@@ -25,18 +25,7 @@ export const SPRING_CONFIG = {
 
 interface Props {
   children: JSX.Element | JSX.Element[]
-  animation?:
-    | 'fadeInUp'
-    | 'scaleInUp'
-    | 'slideInRight'
-    | 'fadeInDown'
-    | 'fadeInLeft'
-    | 'fadeOutLeft'
-    | 'fadeOutUp'
-    | 'fadeInUpSmall'
-    | 'onboardingSlider'
-    | 'fadeIn'
-    | 'scaleInDown'
+  animation?: 'fadeInUp' | 'fadeInDown' | 'fadeIn'
   type?: 'mount' | 'interpolation' | 'animatedChange' | 'stateChange'
   staggerTime?: number | undefined
   springConfig?: typeof SPRING_CONFIG
@@ -94,30 +83,10 @@ function createYValue(
         inputRange: createInputRange(type, staggerIndex),
         outputRange: [size.verticalScale(100), 0, -size.verticalScale(100)],
       })
-    case 'fadeInUpSmall':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [size.verticalScale(50), 0, -size.verticalScale(50)],
-      })
     case 'fadeInDown':
       return interpolate(animatedValue, {
         inputRange: createInputRange(type, staggerIndex),
         outputRange: [-size.verticalScale(50), 0, size.verticalScale(50)],
-      })
-    case 'scaleInUp':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [size.verticalScale(10), 0, -size.verticalScale(10)],
-      })
-    case 'scaleInDown':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [-size.verticalScale(10), 0, size.verticalScale(10)],
-      })
-    case 'fadeOutUp':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0, -size.verticalScale(50), -size.verticalScale(50)],
       })
 
     default:
@@ -137,43 +106,10 @@ function createOpacityValue(
         inputRange: createInputRange(type, staggerIndex),
         outputRange: [0, 1, 0],
       })
-    case 'fadeInUpSmall':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0, 1, 0],
-      })
     case 'fadeInDown':
       return interpolate(animatedValue, {
         inputRange: createInputRange(type, staggerIndex),
         outputRange: [0, 1, 0],
-      })
-    case 'scaleInUp':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0, 1, 0],
-      })
-    case 'scaleInDown':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0, 1, 0],
-      })
-    case 'fadeInLeft':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0, 1, 0],
-        extrapolate: Extrapolate.CLAMP,
-      })
-    case 'fadeOutLeft':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [1, 0, 0],
-        extrapolate: Extrapolate.CLAMP,
-      })
-    case 'fadeOutUp':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [1, 0, 0],
-        extrapolate: Extrapolate.CLAMP,
       })
     case 'fadeIn':
       return interpolate(animatedValue, {
@@ -181,13 +117,6 @@ function createOpacityValue(
         outputRange: [0, 1, 0],
         extrapolate: Extrapolate.CLAMP,
       })
-    case 'onboardingSlider': {
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0, 1, 0],
-        extrapolate: Extrapolate.CLAMP,
-      })
-    }
     default:
       return new Value(1)
   }
@@ -200,17 +129,6 @@ function createScaleValue(
   staggerIndex: Props['staggerIndex'],
 ): Node<number> {
   switch (animation) {
-    case 'scaleInUp':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0.5, 1, 0.5],
-      })
-    case 'scaleInDown':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0.5, 1, 0.5],
-      })
-
     default:
       return new Value(1)
   }
@@ -223,32 +141,6 @@ function createXValue(
   staggerIndex: Props['staggerIndex'],
 ): Node<number> {
   switch (animation) {
-    case 'slideInRight':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [200, 0, 0],
-        extrapolate: Extrapolate.CLAMP,
-      })
-    case 'fadeInLeft':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [-100, 0, 100],
-        extrapolate: Extrapolate.CLAMP,
-      })
-    case 'fadeOutLeft':
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0, -250, -250],
-        extrapolate: Extrapolate.CLAMP,
-      })
-
-    case 'onboardingSlider': {
-      return interpolate(animatedValue, {
-        inputRange: createInputRange(type, staggerIndex),
-        outputRange: [size.width(1), 0, -size.width(1)],
-        extrapolate: Extrapolate.CLAMP,
-      })
-    }
     default:
       return new Value(0)
   }
