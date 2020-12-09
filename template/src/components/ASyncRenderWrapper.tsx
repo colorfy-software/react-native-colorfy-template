@@ -21,14 +21,15 @@ const WaitForThread = ({
   const [interactionsDone, setInteractionsDone] = useState(false)
 
   useEffect(() => {
-    let timer: any
+    let timer: number | undefined
+
     if (typeof showContent === 'undefined') {
-      timer = setTimeout(() => {
+      timer = window.setTimeout(() => {
         setInteractionsDone(true)
       }, 10)
     }
 
-    return (): void => timer && clearTimeout(timer)
+    return (): void => clearTimeout(timer)
   }, [showContent])
 
   return (

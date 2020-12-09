@@ -12,13 +12,16 @@ import mitt from 'mitt'
 class Events {
   emitter = mitt()
 
-  send = (channel: string, params): void => {
+  send = (
+    channel: string,
+    params: { [key: string]: string | number },
+  ): void => {
     this.emitter.emit(channel, params)
   }
 
   listen = (
     channel: string,
-    onMessage: (channel: string, event: any) => void,
+    onMessage: (channel: string, event: string) => void,
   ): void => {
     this.emitter.on(channel, (event) => onMessage(channel, event))
   }

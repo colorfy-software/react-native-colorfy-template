@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import size from '../styles/size'
-import { useSpringTransition } from 'react-native-redash/lib/module/v1'
+import { useSpringTransition } from 'react-native-redash'
 
 /**
  * @description Used to define the stagger time of each element when using animation type "mount"
@@ -122,24 +122,14 @@ function createOpacityValue(
   }
 }
 
-function createScaleValue(
-  type: Props['type'],
-  animation: Props['animation'],
-  animatedValue: Value<number> | Node<number>,
-  staggerIndex: Props['staggerIndex'],
-): Node<number> {
+function createScaleValue(animation: Props['animation']): Node<number> {
   switch (animation) {
     default:
       return new Value(1)
   }
 }
 
-function createXValue(
-  type: Props['type'],
-  animation: Props['animation'],
-  animatedValue: Value<number> | Node<number>,
-  staggerIndex: Props['staggerIndex'],
-): Node<number> {
+function createXValue(animation: Props['animation']): Node<number> {
   switch (animation) {
     default:
       return new Value(0)
@@ -188,16 +178,18 @@ const AnimateComponent = ({
   })
 
   useEffect(() => {
+    let timer: number | undefined
+
     if (type === 'mount') {
-      const timer = setTimeout(() => {
+      timer = window.setTimeout(() => {
         Animated.spring(mountAnimatedValue, {
           toValue: 1,
           ...SPRING_CONFIG,
         }).start()
       }, staggerIndex * delay + initialDelay)
-
-      return (): void => clearTimeout(timer)
     }
+    return (): void => clearTimeout(timer)
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -216,18 +208,8 @@ const AnimateComponent = ({
     staggerIndex,
   )
 
-  const translateX = createXValue(
-    type,
-    animation,
-    animatedValueToUse,
-    staggerIndex,
-  )
-  const scale = createScaleValue(
-    type,
-    animation,
-    animatedValueToUse,
-    staggerIndex,
-  )
+  const translateX = createXValue(animation)
+  const scale = createScaleValue(animation)
   const opacity = createOpacityValue(
     type,
     animation,
