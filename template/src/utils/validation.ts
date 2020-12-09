@@ -9,7 +9,7 @@ interface Validation {
 
 export default (
   data: { [key: string]: string | null },
-  validation: { [key: string]: Function | any[] },
+  validation: { [key: string]: Function | Function[] },
 ): Validation => {
   const keys = Object.keys(validation)
   let val: Validation = {
@@ -17,7 +17,7 @@ export default (
     invalidFields: [],
   }
 
-  keys.forEach(key => {
+  keys.forEach((key) => {
     const validate = validation[key]
     const dataValue = data[key]
 

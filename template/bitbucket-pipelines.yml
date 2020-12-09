@@ -1,0 +1,29 @@
+image: node:latest
+
+pipelines:
+  default:
+    - step:
+        name: 'Installing Dependencies'
+        caches:
+          - node
+        script:
+          - yarn --ignore-engines install
+    - parallel:
+        - step:
+            name: 'Running Linter'
+            caches:
+              - node
+            script:
+              - yarn run lint
+        - step:
+            name: 'Running Type checker'
+            caches:
+              - node
+            script:
+              - yarn run tsc
+        - step:
+            name: 'Running Unit tests'
+            caches:
+              - node
+            script:
+              - yarn run jest
