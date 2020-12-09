@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { ModalProvider, createModalStack } from 'react-native-modalfy'
-import core from './src/core'
 
 declare let global: { HermesInternal: null | {} }
 

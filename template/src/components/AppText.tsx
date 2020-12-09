@@ -55,8 +55,26 @@ const AppText = ({
 }: Props): JSX.Element => {
   const predefinedStyles = (type && TEXT_STYLES[type]) || {}
   const passedStyles = style || {}
-  const boldStyles = bold ? { fontWeight: '900' } : {}
-  const compiledStyles = StyleSheet.flatten([
+  const boldStyles: {
+    fontWeight:
+      | 'bold'
+      | '900'
+      | 'normal'
+      | '100'
+      | '200'
+      | '300'
+      | '400'
+      | '500'
+      | '600'
+      | '700'
+      | '800'
+      | undefined
+  } = bold
+    ? { fontWeight: '900' }
+    : {
+        fontWeight: undefined,
+      }
+  const compiledStyles: StyleProp<TextStyle> = StyleSheet.flatten([
     predefinedStyles,
     passedStyles,
     boldStyles,
