@@ -14,8 +14,12 @@ const { languageTag } =
 I18n.locale = languageTag
 
 export const currentLocale = I18n.currentLocale()
-export const getLocalizedString = (value: string) => I18n.t(value)
-export const getLocalizedStringWithParam = (name: string, value: string) =>
-  I18n.t(name, { value })
-export const getLocalizedStringWithParams = (name: string, values: object) =>
-  I18n.t(name, { ...values })
+export const getLocalizedString = (value: string): string => I18n.t(value)
+export const getLocalizedStringWithParam = (
+  name: string,
+  value: string,
+): string => I18n.t(name, { value })
+export const getLocalizedStringWithParams = (
+  name: string,
+  values: object,
+): string => I18n.t(name, { ...values })

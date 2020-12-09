@@ -5,7 +5,7 @@ import { ModalProvider, createModalStack } from 'react-native-modalfy'
 declare let global: { HermesInternal: null | {} }
 
 /**
- * @description Definition of the modal stack 1
+ * @description Definition of the modal stack
  */
 const modalStack = createModalStack({})
 
