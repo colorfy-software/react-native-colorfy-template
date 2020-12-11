@@ -1,17 +1,13 @@
 import create, { StateCreator, UseStore } from 'zustand'
 import produce from 'immer'
 
-import persist from '../middlewares/persist-middleware'
-import logger from '../middlewares/logger-middleware'
+import persist from './middlewares/persist-middleware'
+import logger from './middlewares/logger-middleware'
 
-import userStore from './user-store'
-import themeStore from './theme-store'
+import userStore from './stores/user-store'
+import themeStore from './stores/theme-store'
 
-import {
-  StoreType,
-  StoresDataType,
-  StoresNameType,
-} from '../../types/store-types'
+import { StoreType, StoresDataType, StoresNameType } from '../types/store-types'
 
 // NOTE: Toggle store logging here (done based on Remote JS Debugging)
 global.enableStoreLogging = global.__REMOTEDEV__

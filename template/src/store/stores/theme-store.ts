@@ -1,4 +1,4 @@
-import { createStore } from './stores'
+import { createStore } from '../stores'
 import { ThemeType } from '../../types/store-types'
 
 const data: ThemeType = {

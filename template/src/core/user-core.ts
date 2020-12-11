@@ -1,6 +1,6 @@
 import api from '../api/api'
 
-import { resetStores } from '../store/stores/stores'
+import { resetStores } from '../store/stores'
 import userStore from '../store/stores/user-store'
 import themeStore from '../store/stores/theme-store'
 

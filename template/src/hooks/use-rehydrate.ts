@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { StoresNameType } from '../types/store-types'
 
-import stores from '../store/stores/stores'
+import stores from '../store/stores'
 import { name as appName } from '../../app.json'
 
 const storesKeys = Object.keys(stores)

@@ -1,4 +1,4 @@
-import { createStore } from './stores'
+import { createStore } from '../stores'
 import { UserType } from '../../types/store-types'
 
 const data = {} as UserType
