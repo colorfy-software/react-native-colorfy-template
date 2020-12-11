@@ -20,6 +20,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+project.xcworkspace
 
 # Android/IntelliJ
 #
@@ -38,7 +39,6 @@ local.properties
 node_modules/
 npm-debug.log
 yarn-error.log
-yarn.lock
 
 # BUCK
 buck-out/
@@ -62,3 +62,8 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+
+# Yarn
+
+yarn.lock
