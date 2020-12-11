@@ -153,4 +153,12 @@ module.exports = {
     'no-nested-ternary': 0,
     'no-async-promise-executor': 0,
   },
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+      },
+    },
+  ],
 }

@@ -1,11 +1,11 @@
-import { END_POINT } from '../config/app-config'
+import CONFIG from '../config/app-config'
 import { LoginRequestType } from '../types/request-types'
 
 export const login = async (
   params: LoginRequestType['params'],
 ): Promise<LoginRequestType['res']> => {
   return new Promise((resolve, reject) => {
-    fetch(`${END_POINT}/login`, {
+    fetch(`${CONFIG.END_POINT}/login`, {
       method: 'POST',
       body: JSON.stringify(params),
     })

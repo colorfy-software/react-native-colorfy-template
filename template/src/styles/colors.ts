@@ -24,9 +24,9 @@ export const colors = {
   PRIMARY: '#333ddd',
 
   /**
-   * @description Transforms hex with alpha to rgba
-   * @param { string } color - hex representation of a color
-   * @param { string } alpha - alpha you want applied on a scale from 0 - 1. Defaults to 1
+   * Transforms hex with alpha to rgba
+   * @param color - hex representation of a color
+   * @param alpha - alpha you want applied on a scale from 0 - 1. Defaults to 1
    *
    * @returns `rgba(${red}, ${green}, ${blue}, ${alpha || 1})`
    */

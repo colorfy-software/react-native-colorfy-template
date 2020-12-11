@@ -30,7 +30,7 @@ const hexToRgb = (hex: string): RGBType | null => {
 const white = { r: 255, g: 255, b: 255 }
 
 /**
- * @description Used to animate changes in color. Pass in your animated value, inputRange, and hexColor[] as an outputRange
+ * Used to animate changes in color. Pass in your animated value, inputRange, and hexColor[] as an outputRange
  * @param input
  */
 const animateColors = (input: Input): Animated.Node<number> => {
