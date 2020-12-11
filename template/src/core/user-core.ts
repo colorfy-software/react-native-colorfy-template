@@ -3,7 +3,7 @@ import { LoginRequestType } from '../types/request-types'
 
 class User {
   /**
-   * @description Handles login request to backend using API middleware
+   * Handles login request to backend using API middleware
    *
    * @see `src/api/api.ts`
    */

@@ -7,7 +7,7 @@ fs.writeFileSync(
   problemFilePath,
   problemFileContent.replace(
     codeToObscure,
-    '// no cycle warning removed by stfu.js script',
+    '// no cycle warning removed by silence-recycled-files-warning.js script',
   ),
   'utf8',
 )

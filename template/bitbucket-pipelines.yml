@@ -16,13 +16,13 @@ pipelines:
             script:
               - yarn run lint
         - step:
-            name: 'Running Type checker'
+            name: 'Running Type Checker'
             caches:
               - node
             script:
               - yarn run tsc
         - step:
-            name: 'Running Unit tests'
+            name: 'Running Unit Tests'
             caches:
               - node
             script:

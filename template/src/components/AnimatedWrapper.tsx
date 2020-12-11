@@ -11,7 +11,7 @@ import size from '../styles/size'
 import { useSpringTransition } from 'react-native-redash'
 
 /**
- * @description Used to define the stagger time of each element when using animation type "mount"
+ * Used to define the stagger time of each element when using animation type "mount"
  */
 const SINGLE_ELEMENT_DELAY = 85
 export const SPRING_CONFIG = {

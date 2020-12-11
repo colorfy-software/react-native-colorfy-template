@@ -1,7 +1,7 @@
 import mitt from 'mitt'
 
 /**
- * @description This is a Vue inspired global event handler.
+ * This is a Vue inspired global event handler.
  *
  * You can send events with specific keys, and then listen to those keys elsewhere.
  *
