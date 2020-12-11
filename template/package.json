@@ -3,6 +3,8 @@
   "version": "0.0.3",
   "private": true,
   "scripts": {
+    "android": "yarn ra",
+    "ios": "react-native run-ios",
     "ts": "yarn tsc",
     "unit": "yarn jest",
     "start": "react-native start",
@@ -22,9 +24,6 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/hooks": "^2.6.0",
-    "appcenter": "4.0.0",
-    "appcenter-analytics": "4.0.0",
-    "appcenter-crashes": "4.0.0",
     "i18n-js": "^3.8.0",
     "immer": "^8.0.0",
     "mitt": "^2.1.0",
@@ -87,11 +86,9 @@
       "@testing-library/jest-native/extend-expect"
     ],
     "moduleFileExtensions": [
+      "js",
       "ts",
       "tsx",
-      "js",
-      "jsx",
-      "json",
       "node"
     ]
   }

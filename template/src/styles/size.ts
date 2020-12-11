@@ -14,7 +14,6 @@ export default {
    */
   width: (value: number): number => value * ww,
   /**
-   *
    * @param value - value to be interpolated
    * @returns On scale of 0-1 height of the screen value given represents
    */
