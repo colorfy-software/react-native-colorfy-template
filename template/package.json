@@ -1,6 +1,6 @@
 {
   "name": "appStarter",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "yarn ra",
