@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs')
 
 const codeToObscure = /cycle.push\(cycle\[0\]\);(\s.*){5}/gim

@@ -9,12 +9,18 @@ export interface StoreType<D> extends State {
   reset: () => void
 }
 
-export interface StoresDataType {
-  user: UserType
-}
-
 export interface UserType {
   firstName?: string
   lastName?: string
   id?: string
+}
+
+export interface ThemeType {
+  background: string
+  text: string
+}
+
+export interface StoresDataType {
+  user: UserType
+  theme: ThemeType
 }

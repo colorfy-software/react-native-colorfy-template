@@ -10,19 +10,10 @@ export const login = async (
       body: JSON.stringify(params),
     })
       .then(async (res) => {
-        if (res.ok && res.status === 200) {
-          console.log(res)
-          const response = await res.json()
-          resolve(response)
-        } else {
-          // If status is not 200, but no error is present we throw an error with the whole response
-          const response = await res.json()
-          const stringyRes = JSON.stringify(response)
-          throw new Error(stringyRes)
-        }
+        const response = await res.json()
+        resolve(response)
       })
       .catch((err) => {
-        console.log('login ERROR:', err)
         reject(err)
       })
   })

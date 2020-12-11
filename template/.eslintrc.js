@@ -53,7 +53,7 @@ module.exports = {
         allow: 'single-child',
       },
     ],
-    'react/jsx-fragments': [2, 'element'],
+    'react/jsx-fragments': 0,
     'react/jsx-pascal-case': [
       2,
       {
