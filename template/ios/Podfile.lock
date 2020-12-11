@@ -1,4 +1,22 @@
 PODS:
+  - appcenter-analytics (4.0.0):
+    - AppCenter/Analytics
+    - AppCenterReactNativeShared
+    - React-Core
+  - appcenter-core (4.0.0):
+    - AppCenterReactNativeShared
+    - React-Core
+  - appcenter-crashes (4.0.0):
+    - AppCenter/Crashes
+    - AppCenterReactNativeShared
+    - React-Core
+  - AppCenter/Analytics (4.0.0):
+    - AppCenter/Core
+  - AppCenter/Core (4.0.0)
+  - AppCenter/Crashes (4.0.0):
+    - AppCenter/Core
+  - AppCenterReactNativeShared (4.0.0):
+    - AppCenter/Core (= 4.0.0)
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.4)
   - CocoaLibEvent (1.0.0)
@@ -296,8 +314,8 @@ PODS:
     - React-Core (= 0.63.3)
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
-  - RNCAsyncStorage (1.12.1):
-    - React-Core
+  - RNCAsyncStorage (1.13.2):
+    - React
   - RNGestureHandler (1.9.0):
     - React-Core
   - RNLocalize (2.0.1):
@@ -311,6 +329,9 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
+  - appcenter-analytics (from `../node_modules/appcenter-analytics/ios`)
+  - appcenter-core (from `../node_modules/appcenter/ios`)
+  - appcenter-crashes (from `../node_modules/appcenter-crashes/ios`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -357,7 +378,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -366,6 +387,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppCenter
+    - AppCenterReactNativeShared
     - boost-for-react-native
     - CocoaAsyncSocket
     - CocoaLibEvent
@@ -380,6 +403,12 @@ SPEC REPOS:
     - YogaKit
 
 EXTERNAL SOURCES:
+  appcenter-analytics:
+    :path: "../node_modules/appcenter-analytics/ios"
+  appcenter-core:
+    :path: "../node_modules/appcenter/ios"
+  appcenter-crashes:
+    :path: "../node_modules/appcenter-crashes/ios"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -431,7 +460,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
-    :path: "../node_modules/@react-native-community/async-storage"
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNLocalize:
@@ -444,6 +473,11 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AppCenter: 51351e0121e40ba75e28ecb7de5c2e69d480df5e
+  appcenter-analytics: 3e8bf76870877c5abdfb752e1dc014be2b2030e4
+  appcenter-core: e7aa4513ee9173b82c4a4497d49abb0ec7ceb159
+  appcenter-crashes: 0052b9ae5cc6b5c184238eb6c230ed5942d91f10
+  AppCenterReactNativeShared: 69aedc15c136e5f76a0cc9eb2ad84d3cefc6e64f
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
@@ -480,7 +514,7 @@ SPEC CHECKSUMS:
   React-RCTText: 65a6de06a7389098ce24340d1d3556015c38f746
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
-  RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
+  RNCAsyncStorage: 05bae7ecfab1cbd5441993f1ca098f7c3b3f8d0e
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNLocalize: 41026b7c14878f1a1b381bc79f668f1fbf841adb
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
@@ -490,4 +524,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2ddd42570cf9fa5caa3828f213aff82059ef5719
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
