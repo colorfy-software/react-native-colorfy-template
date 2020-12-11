@@ -3,7 +3,8 @@ import { Dimensions, Platform } from 'react-native'
 const { width, height } = Dimensions.get('window')
 
 /**
- * `boolean` - Is device an iPhone X, XS, XR, 11 or 11 Pro
+ * Is device an iPhone X, XS, XR, 11 or 11 Pro
+ * @returns boolean
  */
 export const hasNotch =
   Platform.OS === 'ios' &&

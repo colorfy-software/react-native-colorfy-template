@@ -21,7 +21,7 @@ const middleware = <S extends StoresNameType>(
       set(args)
       const newState = get().data
 
-      if (window.enableStoreLogging) {
+      if (global.enableStoreLogging) {
         console.group(
           `%c🗂 ${store.toLocaleUpperCase()} STORE UPDATED`,
           'font-weight:bold',

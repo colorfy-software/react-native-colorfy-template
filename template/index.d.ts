@@ -1,12 +1,10 @@
-declare interface Window {
-  enableStoreLogging?: boolean
-}
-
 declare namespace NodeJS {
   export interface Global {
+    HermesInternal: null | {}
     window: Window
     document: Document
     __REMOTEDEV__: boolean
+    enableStoreLogging?: boolean
   }
 }
 
