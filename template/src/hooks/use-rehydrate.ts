@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { StoresNameType } from '../types/store-types'
 
@@ -12,7 +12,7 @@ const storesKeys = Object.keys(stores)
  * Hooks that rehydrates persisted stores on app launch.
  *
  * @param storesName - (Optional) Array of stores to rehydrate
- * @example `useRehydrate()` or `useRehydrate(['user'])`
+ * @example `useRehydrate()` or specify stores with `useRehydrate(['user'])`
  */
 export default function (
   storesName: StoresNameType[] = storesKeys as StoresNameType[],
@@ -21,10 +21,11 @@ export default function (
 
   if (!storesName?.length) return true
 
-  const [currentStep, setStep] = useState(1)
   const storesToRehydrate = storesName.length
+  const [currentStep, setStep] = useState(0)
 
   useEffect(() => {
+    let isMounted = true
     if (currentStep <= storesToRehydrate) {
       const name = storesName[currentStep]
       AsyncStorage.getItem(`@${appName}Store:${name}`)
@@ -32,9 +33,17 @@ export default function (
           if (response) {
             const data = JSON.parse(response)
             stores[name].rehydrate?.(data)
+            if (isMounted) setStep(currentStep + 1)
           }
         })
-        .finally(() => setStep(currentStep + 1))
+        .catch((e) => {
+          console.log('❌ useRehydrate', e)
+          if (isMounted) setStep(currentStep + 1)
+        })
+    }
+
+    return (): void => {
+      isMounted = false
     }
   }, [currentStep, storesName, storesToRehydrate])
 

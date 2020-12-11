@@ -10,7 +10,7 @@
     "start": "react-native start",
     "ra": "react-native run-android",
     "test": "yarn lint && yarn ts && yarn unit",
-    "lint": "npx eslint '*/**/*.{js,jsx,ts,tsx}' --fix",
+    "lint": "npx eslint '*/**/*.{js,ts,tsx}' --fix",
     "postinstall": "node ./scripts/silence-recycled-files-warning.js",
     "sign-android": "sh ./scripts/sign-android.sh",
     "rca": "cd ./android && ./gradlew clean && ./gradlew uninstallAll && cd .. && react-native run-android",
@@ -22,7 +22,7 @@
     "test"
   ],
   "dependencies": {
-    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-async-storage/async-storage": "^1.13.2",
     "@react-native-community/hooks": "^2.6.0",
     "i18n-js": "^3.8.0",
     "immer": "^8.0.0",
@@ -35,6 +35,7 @@
     "react-native-reanimated": "^1.13.2",
     "react-native-redash": "^14.2.4",
     "react-native-svg": "^12.1.0",
+    "use-memo-one": "git+https://github.com/alexreardon/use-memo-one",
     "zustand": "^3.2.0"
   },
   "devDependencies": {
@@ -74,22 +75,5 @@
     "react-native-svg-transformer": "^0.14.3",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
-  },
-  "jest": {
-    "preset": "react-native",
-    "automock": false,
-    "setupFiles": [
-      "./jest.setup.js",
-      "./node_modules/react-native-gesture-handler/jestSetup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "ts",
-      "tsx",
-      "node"
-    ]
   }
 }

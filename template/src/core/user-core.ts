@@ -1,5 +1,13 @@
 import api from '../api/api'
+
+import { resetStores } from '../store/stores/stores'
+import userStore from '../store/stores/user-store'
+import themeStore from '../store/stores/theme-store'
+
 import { LoginRequestType } from '../types/request-types'
+
+const updateUser = userStore.getState().update
+const updateTheme = themeStore.getState().update
 
 class User {
   /**
@@ -9,13 +17,28 @@ class User {
    */
   login = async (params: LoginRequestType['params']): Promise<void> => {
     try {
-      const user = await api('login', params)
-      console.log({ user })
+      const data = await api('login', params)
+      updateUser((user) => {
+        user.data = data
+      })
 
-      // Do something with user
+      // NOTE: Just used as an example
+      updateTheme((theme) => {
+        theme.data = {
+          background: 'rebeccapurple',
+          text: 'white',
+        }
+      })
     } catch (error) {
-      console.log('login ERROR:', error)
+      console.log('❌ core.login', error)
     }
+  }
+
+  /**
+   * Reset stores when logging out
+   */
+  logout = (): void => {
+    resetStores()
   }
 }
 

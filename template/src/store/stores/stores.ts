@@ -5,6 +5,7 @@ import persist from '../middlewares/persist-middleware'
 import logger from '../middlewares/logger-middleware'
 
 import userStore from './user-store'
+import themeStore from './theme-store'
 
 import {
   StoreType,
@@ -13,7 +14,7 @@ import {
 } from '../../types/store-types'
 
 // NOTE: Toggle store logging here (done based on Remote JS Debugging)
-window.enableStoreLogging = global.__REMOTEDEV__
+global.enableStoreLogging = global.__REMOTEDEV__
 
 interface CreateStoreOptions {
   logger?: boolean
@@ -73,10 +74,16 @@ export function createStore<N extends StoresNameType>(
 const resetUser = userStore.getState().reset
 const rehydrateUser = userStore.getState().rehydrate
 
+// THEME
+const resetTheme = themeStore.getState().reset
+const rehydrateTheme = themeStore.getState().rehydrate
+
 export function resetStores(): void {
   resetUser()
+  resetTheme()
 }
 
 export default {
   user: { rehydrate: rehydrateUser },
+  theme: { rehydrate: rehydrateTheme },
 }
