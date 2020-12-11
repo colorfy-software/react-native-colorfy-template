@@ -1,4 +1,4 @@
-import fs from 'fs'
+const fs = require('fs')
 
 const codeToObscure = /cycle.push\(cycle\[0\]\);(\s.*){5}/gim
 const problemFilePath = './node_modules/metro/src/lib/polyfills/require.js'
