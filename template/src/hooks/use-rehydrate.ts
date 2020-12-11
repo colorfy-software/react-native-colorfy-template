@@ -11,7 +11,7 @@ const storesKeys = Object.keys(stores)
 /**
  * Hooks that rehydrates persisted stores on app launch.
  *
- * @param { StoresNameType[]= } storesName - (Optional) Array of stores to rehydrate
+ * @param storesName - (Optional) Array of stores to rehydrate
  * @example `useRehydrate()` or `useRehydrate(['user'])`
  */
 export default function (

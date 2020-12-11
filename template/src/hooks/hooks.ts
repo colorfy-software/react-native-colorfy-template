@@ -1,1 +1,1 @@
-export { default as useRehydrate } from './useRehydrate'
+export { default as useRehydrate } from './use-rehydrate'
