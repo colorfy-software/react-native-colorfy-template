@@ -3,7 +3,7 @@ import { StyleSheet, ActivityIndicator } from 'react-native'
 import Animated, { Value } from 'react-native-reanimated'
 
 import { colors } from '../styles/colors'
-import { SPRING_CONFIG } from './AnimatedWrapper'
+import AnimatedWrapper, { SPRING_CONFIG } from './AnimatedWrapper'
 
 interface Props {
   loaderColor?: string
@@ -18,7 +18,7 @@ const ScreenLoader = ({
 }: Props): JSX.Element => {
   const color = loaderColor || 'white'
   const bgColor = backgroundColor || colors.PRIMARY
-  const transition = useRef(new Value(0)).current
+  const transition = useRef(new Value(Number(shown))).current
 
   useEffect(() => {
     if (shown) {
@@ -33,21 +33,23 @@ const ScreenLoader = ({
       }).start()
     }
   }, [shown, transition])
-
-  const opacity = Animated.interpolate(transition, {
-    inputRange: [0, 1],
-    outputRange: [0, 1],
-  })
-
   return (
-    <Animated.View
+    <AnimatedWrapper
       pointerEvents={shown ? 'auto' : 'none'}
+      animatedValue={transition}
+      type="animatedChange"
+      animation="fadeIn"
       style={StyleSheet.flatten([
         styles.container,
-        { backgroundColor: bgColor, opacity },
+        { backgroundColor: bgColor },
       ])}>
-      <ActivityIndicator size="large" color={color} />
-    </Animated.View>
+      <AnimatedWrapper
+        animatedValue={transition}
+        type="animatedChange"
+        staggerIndex={2}>
+        <ActivityIndicator size="large" color={color} />
+      </AnimatedWrapper>
+    </AnimatedWrapper>
   )
 }
 
