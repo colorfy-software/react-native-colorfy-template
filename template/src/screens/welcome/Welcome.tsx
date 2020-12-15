@@ -1,19 +1,14 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Button, SafeAreaView, StyleSheet, View } from 'react-native'
+import React, { useCallback, useEffect, useState } from 'react'
+import { Button, StyleSheet, View } from 'react-native'
 import shallow from 'zustand/shallow'
 
 import AppText from '../../components/AppText'
-import ScreenLoader from '../../components/ScreenLoader'
 
 import core from '../../core/core'
-import { colors } from '../../styles/colors'
 import useRehydrate from '../../hooks/use-rehydrate'
 import userStore from '../../store/stores/user-store'
 import themeStore from '../../store/stores/theme-store'
 import AnimatedWrapper from '../../components/AnimatedWrapper'
-import { Value } from 'react-native-reanimated'
-import size from '../../styles/size'
-import screen from '../../styles/screen'
 
 const Welcome = (): JSX.Element => {
   const isRehydrated = useRehydrate()
@@ -23,8 +18,6 @@ const Welcome = (): JSX.Element => {
     ({ data }) => [data.background, data.text],
     shallow,
   )
-
-  const animatedAuthState = useRef(new Value(0))
 
   useEffect(() => {
     if (isRehydrated) {
@@ -60,7 +53,7 @@ const Welcome = (): JSX.Element => {
   return (
     <View style={[styles.container, { backgroundColor }]}>
       <AnimatedWrapper>
-        <AppText type="title" color={color} style={{ fontSize: 72 }}>
+        <AppText type="title" color={color} style={styles.title}>
           Hi 👋
         </AppText>
       </AnimatedWrapper>
@@ -87,6 +80,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 72,
   },
 })
 
