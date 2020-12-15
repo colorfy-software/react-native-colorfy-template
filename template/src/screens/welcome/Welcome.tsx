@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { Button, SafeAreaView, StyleSheet } from 'react-native'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { Button, SafeAreaView, StyleSheet, View } from 'react-native'
 import shallow from 'zustand/shallow'
 
 import AppText from '../../components/AppText'
@@ -10,21 +10,25 @@ import { colors } from '../../styles/colors'
 import useRehydrate from '../../hooks/use-rehydrate'
 import userStore from '../../store/stores/user-store'
 import themeStore from '../../store/stores/theme-store'
+import AnimatedWrapper from '../../components/AnimatedWrapper'
+import { Value } from 'react-native-reanimated'
+import size from '../../styles/size'
+import screen from '../../styles/screen'
 
 const Welcome = (): JSX.Element => {
   const isRehydrated = useRehydrate()
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null)
-  const [isLoadingAuth, setIsLoadingAuth] = useState<boolean>(true)
   const firstName = userStore(({ data }) => data.firstName)
   const [backgroundColor, color] = themeStore(
     ({ data }) => [data.background, data.text],
     shallow,
   )
 
+  const animatedAuthState = useRef(new Value(0))
+
   useEffect(() => {
     if (isRehydrated) {
       setIsLoggedIn(core.user.isUserLoggedIn())
-      setIsLoadingAuth(false)
     }
   }, [isRehydrated])
 
@@ -33,13 +37,10 @@ const Welcome = (): JSX.Element => {
    * either log the user in or log the user out
    */
   const onAuthPress = useCallback(async () => {
-    setIsLoadingAuth(true)
-
     //  If user is already logged in we log them out
     if (isLoggedIn) {
       core.user.logout()
       setIsLoggedIn(false)
-      setIsLoadingAuth(false)
       return
     }
 
@@ -51,31 +52,33 @@ const Welcome = (): JSX.Element => {
       })
 
       setIsLoggedIn(true)
-      setIsLoadingAuth(false)
     } catch (error) {
       console.log('ERROR logging in: ', error)
     }
   }, [isLoggedIn])
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor }]}>
-      <AppText type="subtitle" color={color}>
-        {isLoggedIn ? `Hello, ${firstName}` : ''}
-      </AppText>
+    <View style={[styles.container, { backgroundColor }]}>
+      <AnimatedWrapper>
+        <AppText type="title" color={color} style={{ fontSize: 72 }}>
+          Hi 👋
+        </AppText>
+      </AnimatedWrapper>
 
-      <Button
-        title={isLoggedIn ? 'Log out' : 'Log in'}
-        color={color}
-        onPress={onAuthPress}
-      />
+      <AnimatedWrapper staggerIndex={1}>
+        <AppText type="subtitle" color={color}>
+          {isLoggedIn ? `Hello, ${firstName}` : ''}
+        </AppText>
+      </AnimatedWrapper>
 
-      {/* When loading state is true, we overlay the screen with a loader */}
-      <ScreenLoader
-        shown={isLoadingAuth}
-        backgroundColor="white"
-        loaderColor={colors.PRIMARY}
-      />
-    </SafeAreaView>
+      <AnimatedWrapper staggerIndex={3}>
+        <Button
+          title={isLoggedIn ? 'Log out' : 'Log in'}
+          color={color}
+          onPress={onAuthPress}
+        />
+      </AnimatedWrapper>
+    </View>
   )
 }
 

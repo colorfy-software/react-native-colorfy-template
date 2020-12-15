@@ -33,6 +33,7 @@ const ScreenLoader = ({
       }).start()
     }
   }, [shown, transition])
+
   return (
     <AnimatedWrapper
       pointerEvents={shown ? 'auto' : 'none'}
