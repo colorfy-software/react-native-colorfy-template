@@ -42,6 +42,39 @@ Array [
         ]
       }
     >
+      <SvgMock
+        fill="gold"
+        height={50}
+        stroke="transparent"
+        width={50}
+      />
+    </View>
+    <View
+      pointerEvents="auto"
+      style={
+        Array [
+          Object {},
+          Object {
+            "opacity": undefined,
+            "transform": Array [
+              Object {
+                "translateY": undefined,
+              },
+              Object {
+                "translateX": AnimatedValue {
+                  " __value": 0,
+                },
+              },
+              Object {
+                "scale": AnimatedValue {
+                  " __value": 1,
+                },
+              },
+            ],
+          },
+        ]
+      }
+    >
       <Text
         selectable={true}
         style={
@@ -52,7 +85,7 @@ Array [
           }
         }
       >
-        Hi 👋
+        Hi
       </Text>
     </View>
     <View
