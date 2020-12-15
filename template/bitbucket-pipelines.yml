@@ -20,10 +20,10 @@ pipelines:
             caches:
               - node
             script:
-              - yarn run tsc
+              - yarn run ts
         - step:
             name: 'Running Unit Tests'
             caches:
               - node
             script:
-              - yarn run jest
+              - yarn run unit

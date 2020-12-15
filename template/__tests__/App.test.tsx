@@ -3,6 +3,10 @@ import { render } from '@testing-library/react-native'
 
 import App from '../App'
 
-it('renders correctly', () => {
-  render(<App />)
+describe('App:', () => {
+  const { toJSON } = render(<App />)
+
+  it('renders correctly', async () => {
+    expect(toJSON()).toMatchSnapshot()
+  })
 })

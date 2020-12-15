@@ -6,7 +6,7 @@
     "android": "yarn ra",
     "ios": "react-native run-ios",
     "ts": "yarn tsc",
-    "unit": "yarn jest",
+    "unit": "yarn jest -u",
     "start": "react-native start",
     "ra": "react-native run-android",
     "test": "yarn lint && yarn ts && yarn unit",

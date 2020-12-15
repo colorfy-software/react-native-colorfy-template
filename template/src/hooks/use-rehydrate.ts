@@ -33,8 +33,8 @@ export default function (
           if (response) {
             const data = JSON.parse(response)
             stores[name].rehydrate?.(data)
-            if (isMounted) setStep(currentStep + 1)
           }
+          if (isMounted) setStep(currentStep + 1)
         })
         .catch((e) => {
           console.log('❌ useRehydrate', e)

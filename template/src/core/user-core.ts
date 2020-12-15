@@ -35,6 +35,11 @@ class User {
   }
 
   /**
+   * Returns if user is logged in. Uses ID from user store to determine logged in state
+   */
+  isUserLoggedIn = (): boolean => Boolean(userStore.getState().data.id)
+
+  /**
    * Reset stores when logging out
    */
   logout = (): void => {
