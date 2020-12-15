@@ -3,6 +3,7 @@ import { Button, StyleSheet, View } from 'react-native'
 import shallow from 'zustand/shallow'
 
 import AppText from '../../components/AppText'
+import Icon from '../../components/Icon/Icon'
 
 import core from '../../core/core'
 import useRehydrate from '../../hooks/use-rehydrate'
@@ -53,14 +54,18 @@ const Welcome = (): JSX.Element => {
   return (
     <View style={[styles.container, { backgroundColor }]}>
       <AnimatedWrapper>
-        <AppText type="title" color={color} style={styles.title}>
-          Hi 👋
-        </AppText>
+        <Icon name={isLoggedIn ? 'moon' : 'sun'} size={50} fill="gold" />
       </AnimatedWrapper>
 
       <AnimatedWrapper staggerIndex={1}>
+        <AppText type="title" color={color} style={styles.title}>
+          Hi
+        </AppText>
+      </AnimatedWrapper>
+
+      <AnimatedWrapper staggerIndex={2}>
         <AppText type="subtitle" color={color}>
-          {isLoggedIn ? `Hello, ${firstName}` : ''}
+          {isLoggedIn ? `Good to see you back, ${firstName}!` : ''}
         </AppText>
       </AnimatedWrapper>
 
