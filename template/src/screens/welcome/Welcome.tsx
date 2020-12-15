@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Button, SafeAreaView, StyleSheet, Text } from 'react-native'
+import { Button, SafeAreaView, StyleSheet } from 'react-native'
 import shallow from 'zustand/shallow'
 
 import AppText from '../../components/AppText'
+import ScreenLoader from '../../components/ScreenLoader'
 
 import core from '../../core/core'
+import { colors } from '../../styles/colors'
 import useRehydrate from '../../hooks/use-rehydrate'
 import userStore from '../../store/stores/user-store'
 import themeStore from '../../store/stores/theme-store'
-import ScreenLoader from '../../components/ScreenLoader'
-import { colors } from '../../styles/colors'
 
 const Welcome = (): JSX.Element => {
   const isRehydrated = useRehydrate()
@@ -21,10 +21,7 @@ const Welcome = (): JSX.Element => {
     shallow,
   )
 
-  console.log('isRehydrated: ', isRehydrated)
-
   useEffect(() => {
-    console.log('isRehydrated: ', isRehydrated)
     if (isRehydrated) {
       setIsLoggedIn(core.user.isUserLoggedIn())
       setIsLoadingAuth(false)
