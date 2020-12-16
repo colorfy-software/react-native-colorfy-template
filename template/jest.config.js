@@ -72,7 +72,9 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    '\\.svg': '<rootDir>/__mocks__/jest.moduleNameMapper.js',
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -117,7 +119,7 @@ module.exports = {
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
   setupFiles: [
-    './jest.setup.js',
+    '<rootDir>/__mocks__/jest.setup.js',
     './node_modules/react-native-gesture-handler/jestSetup.js',
   ],
 
