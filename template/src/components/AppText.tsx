@@ -13,11 +13,15 @@ import size from '../styles/size'
 const TEXT_STYLES = StyleSheet.create({
   title: {
     // fontFamily: 'Roboto',
+    fontSize: size.horizontalScale(32),
+  },
+  heading: {
+    // fontFamily: 'Roboto',
     fontSize: size.horizontalScale(24),
   },
   subtitle: {
     // fontFamily: 'Roboto-Medium',
-    fontSize: size.horizontalScale(21),
+    fontSize: size.horizontalScale(18),
   },
   body: {
     // fontFamily: 'Roboto-Light',
@@ -26,7 +30,7 @@ const TEXT_STYLES = StyleSheet.create({
   },
   label: {
     // fontFamily: 'Roboto',
-    fontSize: size.horizontalScale(14),
+    fontSize: size.horizontalScale(13),
   },
 })
 

@@ -157,6 +157,7 @@ function getAnimatedValue(
 const AnimateComponent = ({
   children,
   animation = 'fadeInUp',
+  pointerEvents = 'auto',
   interpolationValue,
   animatedValue,
   stateValue = false,
@@ -223,6 +224,7 @@ const AnimateComponent = ({
         style,
         { opacity, transform: [{ translateY }, { translateX }, { scale }] },
       ]}
+      pointerEvents={pointerEvents}
       onLayout={onLayout}>
       {children}
     </Animated.View>
