@@ -4,19 +4,13 @@ import { ViewStyle } from 'react-native'
 import * as SVGs from './files'
 
 /**
- * NOTE: Always use icons with the same view box size.
- * Make sure icons are normalized by the design team before accepting them.
+ * NOTE: Ensure icons are normalized by the design team before accepting them.
  * If needed, recommend using: https://jakearchibald.github.io/svgomg/ to do so.
  * Avoid adding static illustrations in this file as it's only meant for iconography.
  */
 
-export const ICONS = {
-  sun: SVGs.sun,
-  moon: SVGs.moon,
-}
-
 interface Props {
-  name: keyof typeof ICONS
+  name: keyof typeof SVGs
   size?: number
   stroke?: string
   fill?: string
@@ -30,7 +24,7 @@ const Icon = ({
   stroke = 'transparent',
   fill = 'transparent',
 }: Props): JSX.Element => {
-  const icon = ICONS[name]
+  const icon = SVGs[name]
 
   if (!icon) throw new Error(`"${name}" is not a valid icon name!`)
 
