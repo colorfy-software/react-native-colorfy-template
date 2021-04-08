@@ -9,41 +9,30 @@ export type MainStackParamType = {
   App: Record<string, unknown>
 }
 
-export type MainStackNavigationType<
-  T extends keyof MainStackParamType
-> = StackNavigationProp<MainStackParamType, T>
+export type MainStackNavigationType<T extends keyof MainStackParamType> = StackNavigationProp<MainStackParamType, T>
 
-export type MainStackRouteType<T extends keyof MainStackParamType> = RouteProp<
-  MainStackParamType,
-  T
->
+export type MainStackRouteType<T extends keyof MainStackParamType> = RouteProp<MainStackParamType, T>
 
 // AUTH STACK
 export type AuthStackParamType = {
   Welcome: Record<string, unknown>
 }
 
-export type AuthStackNavigationType<
-  T extends keyof AuthStackParamType
-> = StackNavigationProp<AuthStackParamType, T>
+export type AuthStackNavigationType<T extends keyof AuthStackParamType> = StackNavigationProp<AuthStackParamType, T>
 
-export type AuthStackRouteType<T extends keyof AuthStackParamType> = RouteProp<
-  AuthStackParamType,
-  T
->
+export type AuthStackRouteType<T extends keyof AuthStackParamType> = RouteProp<AuthStackParamType, T>
 
 // PROFILE STACK
 export type ProfileStackParamType = {
   ProfileScreen: Record<string, unknown>
 }
 
-export type ProfileStackNavigationType<
-  T extends keyof ProfileStackParamType
-> = StackNavigationProp<ProfileStackParamType, T>
+export type ProfileStackNavigationType<T extends keyof ProfileStackParamType> = StackNavigationProp<
+  ProfileStackParamType,
+  T
+>
 
-export type ProfileStackRouteType<
-  T extends keyof ProfileStackParamType
-> = RouteProp<ProfileStackParamType, T>
+export type ProfileStackRouteType<T extends keyof ProfileStackParamType> = RouteProp<ProfileStackParamType, T>
 
 // MAIN TABS
 export type MainTabParamType = {
@@ -53,14 +42,9 @@ export type MainTabParamType = {
   Profile: Record<string, unknown>
 }
 
-export type MainTabNavigationType<
-  T extends keyof MainTabParamType
-> = CompositeNavigationProp<
+export type MainTabNavigationType<T extends keyof MainTabParamType> = CompositeNavigationProp<
   BottomTabNavigationProp<MainTabParamType, T>,
   StackNavigationProp<MainStackParamType>
 >
 
-export type MainTabRouteType<T extends keyof MainTabParamType> = RouteProp<
-  MainTabParamType,
-  T
->
+export type MainTabRouteType<T extends keyof MainTabParamType> = RouteProp<MainTabParamType, T>

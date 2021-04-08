@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 function setupAndroidEmulator {
+    # NOTE: Let the code know if it should swap some functions with
+  # their mocked counterpart for E2E testing (see user-core.ts for an example)
+  echo "💡 Setting up E2E_CONFIG.IS_MOCKING_ENABLED for Detox"
+  sed -i '' 's/false/true/g' src/config/e2e-config.ts
+
   echo "🏁 Setup Android Emulator"
   SIMULATOR_IMAGE="system-images;android-28;google_apis;x86"
   SIMULATOR_NAME="Pixel2"
@@ -9,6 +14,9 @@ function setupAndroidEmulator {
   ANDROID_SDK_ROOT=~/Library/Android/sdk
   ANDROID_AVD_HOME=~/.android/avd
   PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+  
+  echo "🌬️ Cleaning up previous Android Emulator instances"
+  rm -f "${ANDROID_AVD_HOME}"/*.avd/*.lock
 
   echo "🤝 Accepts all SDK licences"
   yes | sdkmanager --licenses
@@ -21,6 +29,7 @@ function setupAndroidEmulator {
 }
 
 function setupiOSSimulator {
+  sed -i '' 's/false/true/g' src/config/e2e-config.ts
   brew tap wix/brew
   brew install applesimutils
   npx detox clean-framework-cache
@@ -35,20 +44,20 @@ function cleanupArtifacts {
 
 if [[ "$APPCENTER_XCODE_SCHEME" == "STAGING Release" ]]; then
   setupiOSSimulator
-  npx detox build -c ios.staging.ci
-  npx detox test -c ios.staging.ci --loglevel verbose --retries 3 --workers 3 --jest-report-specs --cleanup
+  npx detox build -c ios.staging.release.ci
+  npx detox test -c ios.staging.release.ci --loglevel verbose --retries 3 --cleanup
 elif [[ "$APPCENTER_XCODE_SCHEME" == "PROD Release" ]]; then
   setupiOSSimulator
-  npx detox build -c ios.staging.ci
-  npx detox test -c ios.staging.ci --loglevel verbose --retries 3 --workers 3 --jest-report-specs --cleanup
+  npx detox build -c ios.staging.release.ci
+  npx detox test -c ios.staging.release.ci --loglevel verbose --retries 3 --cleanup
 elif [[ "$APPCENTER_ANDROID_VARIANT" == "stagingRelease" ]]; then
   npx detox build -c android.staging.release --loglevel verbose
   setupAndroidEmulator
-  npx detox test -c android.staging.release --loglevel verbose --retries 3 --workers 3 --gpu guest --jest-report-specs --headless
+  npx detox test -c android.staging.release --loglevel verbose --retries 3 --gpu guest --headless
   cleanupArtifacts
 elif [[ "$APPCENTER_ANDROID_VARIANT" == "prodRelease" ]]; then
   npx detox build -c android.prod.release --loglevel verbose
   setupAndroidEmulator
-  npx detox test -c android.prod.release --loglevel verbose --retries 3 --workers 3 --gpu guest --jest-report-specs --headless
+  npx detox test -c android.prod.release --loglevel verbose --retries 3 --gpu guest --headless
   cleanupArtifacts
 fi

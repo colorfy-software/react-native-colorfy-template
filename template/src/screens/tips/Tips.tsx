@@ -1,15 +1,14 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+
+import AppText from '../../components/AppText'
 
 import { getLocalizedString } from '../../locales'
 
-const Tips = (): JSX.Element => {
-  return (
-    <View style={styles.container}>
-      <Text>{getLocalizedString('general.tips')}</Text>
-    </View>
-  )
-}
+const Tips = (): JSX.Element => (
+  <View style={styles.container}>
+    <AppText type="subTitle">{getLocalizedString('general.tips')}</AppText>
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {

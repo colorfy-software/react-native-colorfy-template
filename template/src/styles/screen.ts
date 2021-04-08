@@ -1,4 +1,4 @@
-import { Dimensions, Platform } from 'react-native'
+import { Dimensions, Platform, NativeModules, StatusBar } from 'react-native'
 
 type StyleSheet = {
   [key: string]:
@@ -23,11 +23,9 @@ const guidelineBaseHeight = 812
 const { width: ww, height: wh } = Dimensions.get('window')
 const [shortDimension, longDimension] = ww < wh ? [ww, wh] : [wh, ww]
 
-const hasNotch =
-  Platform.OS === 'ios' &&
-  !Platform.isPad &&
-  !Platform.isTVOS &&
-  (ww > 800 || wh > 800)
+const navBarHeight = Dimensions.get('screen').height - wh
+const hasVisibleNavigationKeys = Boolean(NativeModules.NavigationBar?.defaultHeight)
+const hasNotch = Platform.OS === 'ios' && !Platform.isPad && !Platform.isTVOS && (ww > 800 || wh > 800)
 const indicatorHeight = hasNotch ? 83 : 0
 const indicatorPadding = hasNotch ? 34 : 0
 const statusBarHeight = Platform.OS === 'android' ? 0 : hasNotch ? 44 : 24
@@ -39,21 +37,17 @@ const mq = (breakpoints: Breakpoints, input: Input): Output => {
   const maxWidthCondition = maxWidth ? ww < maxWidth : true
   const minHeightCondition = minHeight ? wh > minHeight : true
   const maxHeightCondition = maxHeight ? wh < maxHeight : true
-  return minWidthCondition &&
-    maxWidthCondition &&
-    minHeightCondition &&
-    maxHeightCondition
-    ? input
-    : {}
+  return minWidthCondition && maxWidthCondition && minHeightCondition && maxHeightCondition ? input : {}
 }
 
 const vw = (percentage: number): number => (percentage / 100) * ww
 
 const vh = (percentage: number): number => (percentage / 100) * wh
 
-export const screen = {
+export const screenStyles = {
   /**
-   * @description `boolean` - Is device an iPhone with notch
+   * Is device an iPhone with notch
+   * @returns boolean
    */
   hasNotch,
   /**
@@ -61,66 +55,86 @@ export const screen = {
    */
   mq,
   /**
-   * @description iPhoneX's bottom indicator zone height
+   * iPhoneX's bottom indicator zone height
    * @constant 83
    */
   indicatorHeight,
   /**
-   * @description iPhoneX's bottom indicator zone padding
+   * iPhoneX's bottom indicator zone padding
    * @constant 34
    */
   indicatorPadding,
   /**
-   * @description Is device an Android phone with a width <= 360
+   * Is device an Android phone with a width <= 360
+   * @returns boolean
    */
-  isSmallAndroid:
-    Platform.OS === 'android' && Dimensions.get('window').width <= 360,
+  isSmallAndroid: Platform.OS === 'android' && Dimensions.get('window').width <= 360,
   /**
-   * @description Is device screen "small" (by 2020 standards).
+   * Is device screen "small" (by 2020 standards).
    * Also includes non-notch Plus size iPhones.
+   * @returns boolean
    */
   isSmall: ww <= 375 || (ww <= 414 && !hasNotch),
   /**
-   * @description Device's status bar height
+   * Device's status bar height.
    */
   statusBarHeight,
   /**
-   * @description iPhoneX's status bar padding
+   * iPhoneX's status bar padding.
    * @constant 24
    */
   statusBarPadding,
   /**
-   * @param { number } percentage - Desired percentage of the screen (from 0 to 100)
-   * @returns Screen's width corresponding to the percentage asked
+   * Calculates screen's width corresponding to the percentage asked.
+   * @param percentage - Desired percentage of the screen (from 0 to 100)
    */
   vh,
   /**
-   * @param { number } percentage - Desired percentage of the screen (from 0 to 100)
-   * @returns Screen's height corresponding to the percentage asked
+   * Calculates screen's height corresponding to the percentage asked.
+   * @param percentage - Desired percentage of the screen (from 0 to 100)
    */
   vw,
   /**
+   * Calculates on scale of 0-1 width of the screen value given represents.
    * @param value - value to be interpolated
-   * @returns On scale of 0-1 width of the screen value given represents
    */
   width: (value: number): number => value * ww,
   /**
+   * Calculates on scale of 0-1 height of the screen value given represents.
    * @param value - value to be interpolated
-   * @returns On scale of 0-1 height of the screen value given represents
    */
   height: (value: number): number => value * wh,
   /**
-   * @description Scales width from base size to screen size.
+   * Scales width from base size to screen size.
    * @param width - width to be scaled
    * @returns Will return a linear scaled result of the provided width, based on your device's screen width
    */
-  horizontalScale: (width: number) =>
-    (shortDimension / guidelineBaseWidth) * width,
+  horizontalScale: (width: number) => (shortDimension / guidelineBaseWidth) * width,
   /**
-   * @description Scales height from base size to screen size.
+   * Scales height from base size to screen size.
    * @param height - height to be scaled
    * @returns Will return a linear scaled result of the provided height, based on your device's screen height
    */
-  verticalScale: (height: number) =>
-    (longDimension / guidelineBaseHeight) * height,
+  verticalScale: (height: number) => (longDimension / guidelineBaseHeight) * height,
+  /**
+   * Device screen height (minus status bar height on Android).
+   */
+  screenHeight: Platform.OS === 'android' ? Dimensions.get('screen').height - (StatusBar.currentHeight ?? 0) : wh,
+  /**
+   * Device window height (minus status bar height on Android).
+   */
+  windowHeight: Platform.OS === 'android' ? wh - (StatusBar.currentHeight ?? 0) : wh,
+  /**
+   * Navigation bar height on Android.
+   */
+  navBarHeight:
+    Platform.OS === 'android' && hasVisibleNavigationKeys
+      ? /**
+         * NOTE: The biggest possible value is the default navigation bar height of 48dp,
+         * the smallest one is the new Android 10 bottom bar with 16dp.
+         */
+        navBarHeight >= 48
+        ? 48
+        : 16
+      : 0,
 } as const

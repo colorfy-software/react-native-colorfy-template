@@ -18,7 +18,7 @@ Happy coding!
 
 ## 💫 Features
 
-This template has virtually everything you might need to kick-start a React Native app already built-in and setup:
+This template has virtually everything you might need to kick-start a React Native (0.64.0) app already built-in and setup:
 
 * [TypeScript](https://www.typescriptlang.org), for type safety
 * [ESLint](https://eslint.org), for code linting 
@@ -32,12 +32,14 @@ This template has virtually everything you might need to kick-start a React Nati
 * [Modalfy](https://colorfy-software.gitbook.io/react-native-modalfy), for handling custom modals
 * [Splash Screen](https://github.com/crazycodeboy/react-native-splash-screen), for a nice cross-platform way of dealing with splash screens 
 * [Reanimated](https://docs.swmansion.com/react-native-reanimated) + [Gesture
-  Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/) (v2 setup coming soon), for performant native
+  Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/), for performant native
   driven (- gesture) animations
-* [Redash](https://wcandillon.gitbook.io/redash/) (v2 setup coming soon), toolset for Reanimated & Gesture Handler
+* [Redash](https://wcandillon.gitbook.io/redash/), toolset for Reanimated & Gesture Handler
 * [Localize](https://github.com/zoontek/react-native-localize), for strings localization in JavaScript
+* [date-fns](https://date-fns.org), for date manipulation
 * [Device Info](https://github.com/react-native-device-info/react-native-device-info), for native device info
 * [zustand](https://github.com/pmndrs/zustand) + [AsyncStorage](https://github.com/react-native-async-storage/async-storage), for state management & data persistence
+* [Encrypted Storage](https://github.com/emeraldsanto/react-native-encrypted-storage), for sensitive data persistence in Android's EncryptedSharedPreferences and iOS' Keychain.
 * [Pre-commit](https://github.com/observing/pre-commit), for running the test suite before each commit
 * Support for Staging & Prod Android flavours/iOS targets out of the box
 * A bunch of useful commands listed down below
@@ -52,7 +54,7 @@ This template has virtually everything you might need to kick-start a React Nati
   ├── __mocks__ // All the mocks needed to setup unit tests
   ├── __tests__ // Holds all the unit tests (ran by Jest)
   ├── e2e // Holds all the E2E tests (ran by Detox)
-  ├── scripts // Various usuful scripts accessible via the commands in package.json
+  ├── scripts // Various useful scripts accessible via the commands in package.json
   │   ├── build-unsigned-ipa.sh // Builds an unsigned IPA of any iOS target
   │   ├── create-pipeline-badge.sh // Creates status SVG badge for the Bitbucket Pipelines to use
   │   ├── run-detox-ci.sh // Runs Detox in AppCenter (if @appcenter tag was used to setup project)
@@ -79,7 +81,6 @@ This template has virtually everything you might need to kick-start a React Nati
   │   ├── core // Internal SDK that takes care of all the business logic + some helpers
   │   │   ├── app-messages.ts // Each subclass of the core is a TypeScript file
   │   │   ├── core.ts // Root class of core (only file to be imported for use)
-  │   │   ├── devices-core.ts
   │   │   ├── events-core.ts
   │   │   └── user-core.ts
   │   ├── hooks // Global reusable Hooks
@@ -108,7 +109,6 @@ This template has virtually everything you might need to kick-start a React Nati
   │   │   │   └── persist-middleware.ts // Middleware file
   │   │   ├── stores
   │   │   │   ├── app-store.ts // Each store has its file
-  │   │   │   ├── devices-store.ts
   │   │   │   └── user-store.ts
   │   │   └── stores.ts // Main store file
   │   ├── styles // Global styling variables & device helpers
@@ -132,7 +132,7 @@ This template has virtually everything you might need to kick-start a React Nati
   ├── babel.config.js // Configuration file for Babel
   ├── bitbucket-pipelines.yml // Configuration file for Bitbucket Pipelines (CI)
   ├── detox.config.js // Detox configuration (E2E testing)
-  ├── index.d.ts // Useful to set TypeScript interfaces needed for libraries that don't provied them
+  ├── index.d.ts // Useful to set TypeScript interfaces needed for libraries that don't provided them
   ├── index.js // Entry point of the app
   ├── jest.config.js // Configuration file for Jest (unit test)
   └── tsconfig.json // Configuration file for the TypeScript compiler
@@ -205,8 +205,6 @@ An exhaustive list of all the commands available in `package.json` and their use
 
   Same behaviour as the previous command but for the **Android Prod Unsigned flavour in Release mode** this time.
 
-  **Note**: This is the command that creates the unsigned APK we send to Henkel for their internal store.
-
   ### `yarn apks`
 
   Generates the 3 aforementioned APKs in one go.
@@ -252,42 +250,23 @@ An exhaustive list of all the commands available in `package.json` and their use
 
   **Note**: `yarn test` is run by the CI/CD tool before any build. `yarn test-commit` is run before any commit is made from your local machine. Unless for specific and approved reasons: make sure to always pass this command before pushing your code.
 
-  ### `yarn detox-android-staging-debug`
+  ### `yarn detox-android-staging-debug`** | `yarn detox-android-staging-release`
 
-  Runs the E2E test suite with Detox on the **Android Staging flavour in Debug mode**.
-
-  ### `yarn detox-android-staging-release`
-
-  Runs the E2E test suite with Detox on the **Android Staging flavour in Release mode**.
-
-  ### `yarn detox-android-prod-debug`
-
-  Runs the E2E test suite with Detox on the **Android Prod flavour in Debug mode**.
-
-  ### `yarn detox-android-prod-release`
-
-  Runs the E2E test suite with Detox on the **Android Prod flavour in Release mode**.
-
-  ### `yarn detox-ios-staging-debug`
-
-  Runs the E2E test suite with Detox on the **iOS Staging target in Debug mode**.
-
-  ### `yarn detox-ios-staging-release`
-
-  Runs the E2E test suite with Detox on the **iOS Staging target in Release mode**.
-
-  ### `yarn detox-ios-prod-debug`
-
-  Runs the E2E test suite with Detox on the **iOS Prod target in Debug mode**.
-
-  ### `yarn detox-ios-prod-release`
-
-  Runs the E2E test suite with Detox on the **iOS Prod target in Release mode**.
+  Runs the E2E test suite with Detox on the **Android Staging flavour in Debug/Release mode**.
 
 
-  ### `yarn detox-ios-prod`
+  ### `yarn detox-android-prod-debug`** | `yarn detox-android-prod-release`
 
-  Runs the E2E test suite with Detox on the **iOS Prod target in Debug mode**.
+  Runs the E2E test suite with Detox on the **Android Prod flavour in Debug/Release mode**.
+
+
+  ### `yarn detox-ios-staging-debug`** | `yarn detox-ios-staging-release`
+
+  Runs the E2E test suite with Detox on the **iOS Staging target in Debug/Release mode**.
+
+  ### `yarn detox-ios-prod-debug`** | `yarn detox-ios-prod-release`
+
+  Runs the E2E test suite with Detox on the **iOS Prod target in Debug/Release mode**.
 
   ### `yarn detox-ci`
 

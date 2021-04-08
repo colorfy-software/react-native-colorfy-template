@@ -13,7 +13,7 @@ class App {
    */
   update = (data: Partial<AppType>): void => {
     const currentData = appStore.getState().data
-    updateApp((app) => {
+    updateApp(app => {
       app.data = { ...currentData, ...data }
     })
   }

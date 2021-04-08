@@ -12,51 +12,36 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		22AE57245FA84A678D907D38 /* Gotham-BookItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F633C0C3E23E406CA49CBC15 /* Gotham-BookItalic.otf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* appStarterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* appStarterTests.m */; };
-		309348A1109F4D219839E925 /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B25DF5608A4B4107A15437B0 /* Gotham-Medium.otf */; };
-		3D333258D3149537B398AA00 /* libPods-appStarter-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 071343C9497BE1F2EA522EC2 /* libPods-appStarter-tvOS.a */; };
-		5327C91C46644703A2340E02 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = B8B65464924C41BE854F05E8 /* Gotham-Book.otf */; };
+		3060CB26E56B47F3967A48AC /* NotoSansSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B82A0C36F45BE97A8AFD3 /* NotoSansSC-Regular.otf */; };
+		4B3195252035419CAA6ED891 /* NotoSansSC-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5326D2F1217845069F22F339 /* NotoSansSC-Bold.otf */; };
+		560975FB261F617D0078B44A /* NotoSansSC-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5326D2F1217845069F22F339 /* NotoSansSC-Bold.otf */; };
+		560975FC261F617D0078B44A /* NotoSansSC-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0486F29A6C0F4F1F974A11D2 /* NotoSansSC-Light.otf */; };
+		560975FD261F617D0078B44A /* NotoSansSC-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D97F100660FF404CAB5397B4 /* NotoSansSC-Medium.otf */; };
+		560975FE261F617D0078B44A /* NotoSansSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B82A0C36F45BE97A8AFD3 /* NotoSansSC-Regular.otf */; };
+		56097605261F61850078B44A /* NotoSansSC-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5326D2F1217845069F22F339 /* NotoSansSC-Bold.otf */; };
+		56097606261F61850078B44A /* NotoSansSC-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0486F29A6C0F4F1F974A11D2 /* NotoSansSC-Light.otf */; };
+		56097607261F61850078B44A /* NotoSansSC-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D97F100660FF404CAB5397B4 /* NotoSansSC-Medium.otf */; };
+		56097608261F61850078B44A /* NotoSansSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B82A0C36F45BE97A8AFD3 /* NotoSansSC-Regular.otf */; };
 		561E65EC25BAC6EB00C14D5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		561E65ED25BAC6EB00C14D5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		561E65F125BAC6EB00C14D5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		561E65F225BAC6EB00C14D5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		561E65F325BAC6EB00C14D5B /* Gotham-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D9F3301008421E9C851151 /* Gotham-Bold.otf */; };
-		561E65F425BAC6EB00C14D5B /* Gotham-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A59854769C0D43E2965BABDD /* Gotham-BoldItalic.otf */; };
-		561E65F525BAC6EB00C14D5B /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = B8B65464924C41BE854F05E8 /* Gotham-Book.otf */; };
-		561E65F625BAC6EB00C14D5B /* Gotham-BookItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F633C0C3E23E406CA49CBC15 /* Gotham-BookItalic.otf */; };
-		561E65F725BAC6EB00C14D5B /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9DAA2D771F4DF6952A375F /* Gotham-Light.otf */; };
-		561E65F825BAC6EB00C14D5B /* Gotham-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDE4FA11323247BB9B753F46 /* Gotham-LightItalic.otf */; };
-		561E65F925BAC6EB00C14D5B /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B25DF5608A4B4107A15437B0 /* Gotham-Medium.otf */; };
-		561E65FA25BAC6EB00C14D5B /* Gotham-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 01D3BA7AE3014AA7BCC6C5D5 /* Gotham-MediumItalic.otf */; };
-		561E660D25BAC7CB00C14D5B /* Staging-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 561E660C25BAC7CB00C14D5B /* Staging-Info.plist */; };
 		561E662625BAC97000C14D5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		561E662725BAC97000C14D5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		561E662B25BAC97000C14D5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		561E662C25BAC97000C14D5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		561E662D25BAC97000C14D5B /* Gotham-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D9F3301008421E9C851151 /* Gotham-Bold.otf */; };
-		561E662E25BAC97000C14D5B /* Gotham-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A59854769C0D43E2965BABDD /* Gotham-BoldItalic.otf */; };
-		561E662F25BAC97000C14D5B /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = B8B65464924C41BE854F05E8 /* Gotham-Book.otf */; };
-		561E663025BAC97000C14D5B /* Gotham-BookItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F633C0C3E23E406CA49CBC15 /* Gotham-BookItalic.otf */; };
-		561E663125BAC97000C14D5B /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9DAA2D771F4DF6952A375F /* Gotham-Light.otf */; };
-		561E663225BAC97000C14D5B /* Gotham-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDE4FA11323247BB9B753F46 /* Gotham-LightItalic.otf */; };
-		561E663325BAC97000C14D5B /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B25DF5608A4B4107A15437B0 /* Gotham-Medium.otf */; };
-		561E663425BAC97000C14D5B /* Gotham-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 01D3BA7AE3014AA7BCC6C5D5 /* Gotham-MediumItalic.otf */; };
 		561E664925BAC9CD00C14D5B /* Prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 561E664825BAC9CD00C14D5B /* Prod-Info.plist */; };
 		5E19091C7058A24F0320F15D /* libPods-PROD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B02F1091C857CFBDCAC8D2 /* libPods-PROD.a */; };
-		64F7602A0E3A4A1E825E1DF8 /* Gotham-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDE4FA11323247BB9B753F46 /* Gotham-LightItalic.otf */; };
-		7E5666EF6240850F8E8F8422 /* libPods-appStarter-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21941F0EE759A1DDACA33F3B /* libPods-appStarter-tvOSTests.a */; };
+		6B698D4F4D0D46BE9A7E5514 /* NotoSansSC-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D97F100660FF404CAB5397B4 /* NotoSansSC-Medium.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		927E36D244CD4D11CF512BCE /* libPods-appStarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D5049B300A297582AB9E0C /* libPods-appStarter.a */; };
-		A2CADF3422D24FC9923398CD /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9DAA2D771F4DF6952A375F /* Gotham-Light.otf */; };
 		A4319C2A7714A268FE2EDF52 /* libPods-appStarter-appStarterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB6D17F68521DAAE9B30246 /* libPods-appStarter-appStarterTests.a */; };
-		A8ED0808573848C698F56AE9 /* Gotham-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 01D3BA7AE3014AA7BCC6C5D5 /* Gotham-MediumItalic.otf */; };
-		B54394B019BD4821A3EE8E47 /* Gotham-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A59854769C0D43E2965BABDD /* Gotham-BoldItalic.otf */; };
-		BF345422B7A24C2BAFDDB13A /* Gotham-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D9F3301008421E9C851151 /* Gotham-Bold.otf */; };
 		D0D1B18A8D7AEA29F55DE264 /* libPods-appStarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D5049B300A297582AB9E0C /* libPods-appStarter.a */; };
+		F5AC2720E96F49A59401C6A6 /* NotoSansSC-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0486F29A6C0F4F1F974A11D2 /* NotoSansSC-Light.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +66,7 @@
 		00E356EE1AD99517003FC87E /* appStarterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appStarterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* appStarterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = appStarterTests.m; sourceTree = "<group>"; };
-		01D3BA7AE3014AA7BCC6C5D5 /* Gotham-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-MediumItalic.otf"; path = "../src/assets/fonts/Gotham-MediumItalic.otf"; sourceTree = "<group>"; };
-		071343C9497BE1F2EA522EC2 /* libPods-appStarter-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appStarter-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0486F29A6C0F4F1F974A11D2 /* NotoSansSC-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Light.otf"; path = "../src/assets/fonts/NotoSansSC-Light.otf"; sourceTree = "<group>"; };
 		103AA37373FC49183918FAAF /* Pods-appStarter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appStarter.debug.xcconfig"; path = "Target Support Files/Pods-appStarter/Pods-appStarter.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* appStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = appStarter/AppDelegate.h; sourceTree = "<group>"; };
@@ -93,35 +77,26 @@
 		1F52A0F29866025C423E2F44 /* Pods-appStarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appStarter.release.xcconfig"; path = "Target Support Files/Pods-appStarter/Pods-appStarter.release.xcconfig"; sourceTree = "<group>"; };
 		20484EE5506A8557A600CC39 /* Pods-PROD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PROD.release.xcconfig"; path = "Target Support Files/Pods-PROD/Pods-PROD.release.xcconfig"; sourceTree = "<group>"; };
 		20B02F1091C857CFBDCAC8D2 /* libPods-PROD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PROD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		21941F0EE759A1DDACA33F3B /* libPods-appStarter-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appStarter-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		22B94A24FF9F8AF20A44DD5B /* Pods-appStarter-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appStarter-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-appStarter-tvOS/Pods-appStarter-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		27767026E7B39156AE21FA4D /* Pods-appStarter-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appStarter-tvOS.release.xcconfig"; path = "Target Support Files/Pods-appStarter-tvOS/Pods-appStarter-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* appStarter-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "appStarter-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* appStarter-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "appStarter-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F7C4A40F189ABF2069BFD06 /* Pods-appStarter-appStarterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appStarter-appStarterTests.debug.xcconfig"; path = "Target Support Files/Pods-appStarter-appStarterTests/Pods-appStarter-appStarterTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3D391955CAB21AFB0700F3F9 /* Pods-appStarter-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appStarter-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-appStarter-tvOSTests/Pods-appStarter-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		44D9F3301008421E9C851151 /* Gotham-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-Bold.otf"; path = "../src/assets/fonts/Gotham-Bold.otf"; sourceTree = "<group>"; };
 		4F76C2372663DFAF32437DE0 /* Pods-STAGING.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STAGING.debug.xcconfig"; path = "Target Support Files/Pods-STAGING/Pods-STAGING.debug.xcconfig"; sourceTree = "<group>"; };
+		5326D2F1217845069F22F339 /* NotoSansSC-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Bold.otf"; path = "../src/assets/fonts/NotoSansSC-Bold.otf"; sourceTree = "<group>"; };
 		561E660025BAC6EB00C14D5B /* STAGING.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STAGING.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		561E660C25BAC7CB00C14D5B /* Staging-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Staging-Info.plist"; path = "appStarter/Staging-Info.plist"; sourceTree = "<group>"; };
 		561E663A25BAC97000C14D5B /* PROD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PROD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		561E664825BAC9CD00C14D5B /* Prod-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Prod-Info.plist"; path = "appStarter/Prod-Info.plist"; sourceTree = "<group>"; };
-		6B9DAA2D771F4DF6952A375F /* Gotham-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-Light.otf"; path = "../src/assets/fonts/Gotham-Light.otf"; sourceTree = "<group>"; };
-		7E9FF9DA070BD575CAAB8A2C /* Pods-appStarter-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appStarter-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-appStarter-tvOSTests/Pods-appStarter-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B8B82A0C36F45BE97A8AFD3 /* NotoSansSC-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Regular.otf"; path = "../src/assets/fonts/NotoSansSC-Regular.otf"; sourceTree = "<group>"; };
 		80D5049B300A297582AB9E0C /* libPods-appStarter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appStarter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = appStarter/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ACBADE577A92DD9307EF17D /* Pods-appStarter-appStarterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appStarter-appStarterTests.release.xcconfig"; path = "Target Support Files/Pods-appStarter-appStarterTests/Pods-appStarter-appStarterTests.release.xcconfig"; sourceTree = "<group>"; };
-		A59854769C0D43E2965BABDD /* Gotham-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-BoldItalic.otf"; path = "../src/assets/fonts/Gotham-BoldItalic.otf"; sourceTree = "<group>"; };
 		A6D62BE7ABCC43EDF9DD8FCC /* Pods-PROD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PROD.debug.xcconfig"; path = "Target Support Files/Pods-PROD/Pods-PROD.debug.xcconfig"; sourceTree = "<group>"; };
-		B25DF5608A4B4107A15437B0 /* Gotham-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-Medium.otf"; path = "../src/assets/fonts/Gotham-Medium.otf"; sourceTree = "<group>"; };
 		B574340B577A3E978A8DA9E4 /* Pods-STAGING.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STAGING.release.xcconfig"; path = "Target Support Files/Pods-STAGING/Pods-STAGING.release.xcconfig"; sourceTree = "<group>"; };
-		B8B65464924C41BE854F05E8 /* Gotham-Book.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-Book.otf"; path = "../src/assets/fonts/Gotham-Book.otf"; sourceTree = "<group>"; };
 		CAB6D17F68521DAAE9B30246 /* libPods-appStarter-appStarterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appStarter-appStarterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28366028C0669FD3FDDD47E /* libPods-STAGING.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-STAGING.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDE4FA11323247BB9B753F46 /* Gotham-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-LightItalic.otf"; path = "../src/assets/fonts/Gotham-LightItalic.otf"; sourceTree = "<group>"; };
+		D97F100660FF404CAB5397B4 /* NotoSansSC-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Medium.otf"; path = "../src/assets/fonts/NotoSansSC-Medium.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F633C0C3E23E406CA49CBC15 /* Gotham-BookItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-BookItalic.otf"; path = "../src/assets/fonts/Gotham-BookItalic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +121,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D333258D3149537B398AA00 /* libPods-appStarter-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +128,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E5666EF6240850F8E8F8422 /* libPods-appStarter-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,10 +188,6 @@
 			children = (
 				2F7C4A40F189ABF2069BFD06 /* Pods-appStarter-appStarterTests.debug.xcconfig */,
 				9ACBADE577A92DD9307EF17D /* Pods-appStarter-appStarterTests.release.xcconfig */,
-				22B94A24FF9F8AF20A44DD5B /* Pods-appStarter-tvOS.debug.xcconfig */,
-				27767026E7B39156AE21FA4D /* Pods-appStarter-tvOS.release.xcconfig */,
-				3D391955CAB21AFB0700F3F9 /* Pods-appStarter-tvOSTests.debug.xcconfig */,
-				7E9FF9DA070BD575CAAB8A2C /* Pods-appStarter-tvOSTests.release.xcconfig */,
 				103AA37373FC49183918FAAF /* Pods-appStarter.debug.xcconfig */,
 				1F52A0F29866025C423E2F44 /* Pods-appStarter.release.xcconfig */,
 				A6D62BE7ABCC43EDF9DD8FCC /* Pods-PROD.debug.xcconfig */,
@@ -236,8 +205,6 @@
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				80D5049B300A297582AB9E0C /* libPods-appStarter.a */,
 				CAB6D17F68521DAAE9B30246 /* libPods-appStarter-appStarterTests.a */,
-				071343C9497BE1F2EA522EC2 /* libPods-appStarter-tvOS.a */,
-				21941F0EE759A1DDACA33F3B /* libPods-appStarter-tvOSTests.a */,
 				20B02F1091C857CFBDCAC8D2 /* libPods-PROD.a */,
 				D28366028C0669FD3FDDD47E /* libPods-STAGING.a */,
 			);
@@ -283,14 +250,10 @@
 		961252F7C5734B609F9003A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				44D9F3301008421E9C851151 /* Gotham-Bold.otf */,
-				A59854769C0D43E2965BABDD /* Gotham-BoldItalic.otf */,
-				B8B65464924C41BE854F05E8 /* Gotham-Book.otf */,
-				F633C0C3E23E406CA49CBC15 /* Gotham-BookItalic.otf */,
-				6B9DAA2D771F4DF6952A375F /* Gotham-Light.otf */,
-				DDE4FA11323247BB9B753F46 /* Gotham-LightItalic.otf */,
-				B25DF5608A4B4107A15437B0 /* Gotham-Medium.otf */,
-				01D3BA7AE3014AA7BCC6C5D5 /* Gotham-MediumItalic.otf */,
+				5326D2F1217845069F22F339 /* NotoSansSC-Bold.otf */,
+				0486F29A6C0F4F1F974A11D2 /* NotoSansSC-Light.otf */,
+				D97F100660FF404CAB5397B4 /* NotoSansSC-Medium.otf */,
+				5B8B82A0C36F45BE97A8AFD3 /* NotoSansSC-Regular.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -307,6 +270,7 @@
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				082AC7CB522643492575E318 /* [CP] Copy Pods Resources */,
+				F74E91C2C1ED6151F6440CA6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,6 +293,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				3BB5DE2BFDA730A75C22A70B /* [CP] Copy Pods Resources */,
+				436DAB5A1743F69DBA23C8A3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -343,7 +308,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "appStarter-tvOS" */;
 			buildPhases = (
-				E98387DF0EE2824560391020 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -363,7 +327,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "appStarter-tvOSTests" */;
 			buildPhases = (
-				37EC9DB4F1C5777F91A8923E /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -389,6 +352,7 @@
 				561E65F025BAC6EB00C14D5B /* Resources */,
 				561E65FB25BAC6EB00C14D5B /* Bundle React Native code and images */,
 				7C8E27768B04E75FC5607AFB /* [CP] Copy Pods Resources */,
+				6ED6F453E79A1E518265C620 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -410,6 +374,7 @@
 				561E662A25BAC97000C14D5B /* Resources */,
 				561E663525BAC97000C14D5B /* Bundle React Native code and images */,
 				0C38E8826640C376F5365205 /* [CP] Copy Pods Resources */,
+				F459600FDCBF3F3815C6968C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -490,14 +455,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				BF345422B7A24C2BAFDDB13A /* Gotham-Bold.otf in Resources */,
-				B54394B019BD4821A3EE8E47 /* Gotham-BoldItalic.otf in Resources */,
-				5327C91C46644703A2340E02 /* Gotham-Book.otf in Resources */,
-				22AE57245FA84A678D907D38 /* Gotham-BookItalic.otf in Resources */,
-				A2CADF3422D24FC9923398CD /* Gotham-Light.otf in Resources */,
-				64F7602A0E3A4A1E825E1DF8 /* Gotham-LightItalic.otf in Resources */,
-				309348A1109F4D219839E925 /* Gotham-Medium.otf in Resources */,
-				A8ED0808573848C698F56AE9 /* Gotham-MediumItalic.otf in Resources */,
+				4B3195252035419CAA6ED891 /* NotoSansSC-Bold.otf in Resources */,
+				F5AC2720E96F49A59401C6A6 /* NotoSansSC-Light.otf in Resources */,
+				6B698D4F4D0D46BE9A7E5514 /* NotoSansSC-Medium.otf in Resources */,
+				3060CB26E56B47F3967A48AC /* NotoSansSC-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,17 +481,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56097605261F61850078B44A /* NotoSansSC-Bold.otf in Resources */,
+				56097606261F61850078B44A /* NotoSansSC-Light.otf in Resources */,
+				56097607261F61850078B44A /* NotoSansSC-Medium.otf in Resources */,
+				56097608261F61850078B44A /* NotoSansSC-Regular.otf in Resources */,
 				561E65F125BAC6EB00C14D5B /* LaunchScreen.storyboard in Resources */,
-				561E660D25BAC7CB00C14D5B /* Staging-Info.plist in Resources */,
 				561E65F225BAC6EB00C14D5B /* Images.xcassets in Resources */,
-				561E65F325BAC6EB00C14D5B /* Gotham-Bold.otf in Resources */,
-				561E65F425BAC6EB00C14D5B /* Gotham-BoldItalic.otf in Resources */,
-				561E65F525BAC6EB00C14D5B /* Gotham-Book.otf in Resources */,
-				561E65F625BAC6EB00C14D5B /* Gotham-BookItalic.otf in Resources */,
-				561E65F725BAC6EB00C14D5B /* Gotham-Light.otf in Resources */,
-				561E65F825BAC6EB00C14D5B /* Gotham-LightItalic.otf in Resources */,
-				561E65F925BAC6EB00C14D5B /* Gotham-Medium.otf in Resources */,
-				561E65FA25BAC6EB00C14D5B /* Gotham-MediumItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,17 +494,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				560975FB261F617D0078B44A /* NotoSansSC-Bold.otf in Resources */,
+				560975FC261F617D0078B44A /* NotoSansSC-Light.otf in Resources */,
+				560975FD261F617D0078B44A /* NotoSansSC-Medium.otf in Resources */,
+				560975FE261F617D0078B44A /* NotoSansSC-Regular.otf in Resources */,
 				561E662B25BAC97000C14D5B /* LaunchScreen.storyboard in Resources */,
 				561E662C25BAC97000C14D5B /* Images.xcassets in Resources */,
-				561E662D25BAC97000C14D5B /* Gotham-Bold.otf in Resources */,
 				561E664925BAC9CD00C14D5B /* Prod-Info.plist in Resources */,
-				561E662E25BAC97000C14D5B /* Gotham-BoldItalic.otf in Resources */,
-				561E662F25BAC97000C14D5B /* Gotham-Book.otf in Resources */,
-				561E663025BAC97000C14D5B /* Gotham-BookItalic.otf in Resources */,
-				561E663125BAC97000C14D5B /* Gotham-Light.otf in Resources */,
-				561E663225BAC97000C14D5B /* Gotham-LightItalic.otf in Resources */,
-				561E663325BAC97000C14D5B /* Gotham-Medium.otf in Resources */,
-				561E663425BAC97000C14D5B /* Gotham-MediumItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,28 +593,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		37EC9DB4F1C5777F91A8923E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-appStarter-tvOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3BB5DE2BFDA730A75C22A70B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -679,6 +609,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appStarter/Pods-appStarter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		436DAB5A1743F69DBA23C8A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appStarter/Pods-appStarter-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appStarter/Pods-appStarter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		561E65EA25BAC6EB00C14D5B /* Start Packager */ = {
@@ -712,7 +660,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		561E662425BAC97000C14D5B /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -746,6 +694,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		6ED6F453E79A1E518265C620 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-STAGING/Pods-STAGING-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-STAGING/Pods-STAGING-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		6FB5AC4842D77F40C577C278 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -831,26 +797,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E98387DF0EE2824560391020 /* [CP] Check Pods Manifest.lock */ = {
+		F459600FDCBF3F3815C6968C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-PROD/Pods-PROD-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-appStarter-tvOS-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PROD/Pods-PROD-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F74E91C2C1ED6151F6440CA6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appStarter-appStarterTests/Pods-appStarter-appStarterTests-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appStarter-appStarterTests/Pods-appStarter-appStarterTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -1016,6 +996,7 @@
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = appStarter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1040,6 +1021,7 @@
 				DEVELOPMENT_TEAM = LQR64VAQ48;
 				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = appStarter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1055,7 +1037,6 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22B94A24FF9F8AF20A44DD5B /* Pods-appStarter-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1083,7 +1064,6 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27767026E7B39156AE21FA4D /* Pods-appStarter-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1111,7 +1091,6 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D391955CAB21AFB0700F3F9 /* Pods-appStarter-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1138,7 +1117,6 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E9FF9DA070BD575CAAB8A2C /* Pods-appStarter-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1172,8 +1150,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LQR64VAQ48;
 				ENABLE_BITCODE = NO;
-				EXCLUDED_ARCHS = arm64;
-				INFOPLIST_FILE = "appStarter/STAGING-Info.plist";
+				EXCLUDED_ARCHS = "";
+				INFOPLIST_FILE = "appStarter/Staging-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1196,8 +1175,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LQR64VAQ48;
-				EXCLUDED_ARCHS = arm64;
-				INFOPLIST_FILE = "appStarter/STAGING-Info.plist";
+				EXCLUDED_ARCHS = "";
+				INFOPLIST_FILE = "appStarter/Staging-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1220,8 +1200,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LQR64VAQ48;
 				ENABLE_BITCODE = NO;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "appStarter/Prod-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1244,8 +1225,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LQR64VAQ48;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "appStarter/Prod-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1291,6 +1273,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1351,6 +1334,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

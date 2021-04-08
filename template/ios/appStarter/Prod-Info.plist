@@ -26,8 +26,6 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
@@ -38,17 +36,13 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Gotham-Bold.otf</string>
-		<string>Gotham-BoldItalic.otf</string>
-		<string>Gotham-Book.otf</string>
-		<string>Gotham-BookItalic.otf</string>
-		<string>Gotham-Light.otf</string>
-		<string>Gotham-LightItalic.otf</string>
-		<string>Gotham-Medium.otf</string>
-		<string>Gotham-MediumItalic.otf</string>
+		<string>NotoSansSC-Bold.otf</string>
+		<string>NotoSansSC-Light.otf</string>
+		<string>NotoSansSC-Medium.otf</string>
+		<string>NotoSansSC-Regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -59,8 +53,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

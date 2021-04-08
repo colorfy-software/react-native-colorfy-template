@@ -1,6 +1,6 @@
 import sleep from '../../src/utils/sleep'
 
-describe('🧰 Utils > sleep:', () => {
+describe('😴 Utils > sleep:', () => {
   it('throws an error if an invalid value is provided', async () => {
     // @ts-expect-error NOTE: We know the argument isn't a number
     await expect(async () => await sleep(undefined)).rejects.toThrowError()
@@ -19,9 +19,9 @@ describe('🧰 Utils > sleep:', () => {
 
     const timestampEnd = new Date()
 
-    expect(
-      timestampEnd.getTime() - timestampStart.getTime(),
-    ).toBeGreaterThanOrEqual(pauseDuration - 10)
+    expect(timestampEnd.getTime() - timestampStart.getTime()).toBeGreaterThanOrEqual(pauseDuration - 10)
+
+    expect.assertions(1)
   })
 
   it('does not pause code for more than the given amount of time', async () => {
@@ -32,14 +32,10 @@ describe('🧰 Utils > sleep:', () => {
 
     const timestampEnd = new Date()
 
-    console.log(
-      `Code slept for around ${
-        timestampEnd.getTime() - timestampStart.getTime()
-      } ms (expected 2000 ms)`,
-    )
+    console.log(`Code slept for around ${timestampEnd.getTime() - timestampStart.getTime()} ms (expected 2000 ms)`)
 
-    expect(timestampEnd.getTime() - timestampStart.getTime()).toBeLessThan(
-      pauseDuration + 1000,
-    )
+    expect(timestampEnd.getTime() - timestampStart.getTime()).toBeLessThan(pauseDuration + 1000)
+
+    expect.assertions(1)
   })
 })

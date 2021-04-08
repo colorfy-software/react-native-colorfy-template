@@ -1,17 +1,25 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '10.0'
+platform :ios, '12.1'
 
 def shared_pods
   config = use_native_modules!
-  use_react_native!(:path => config["reactNativePath"])
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # To enable Hermes on iOS, change `false` to `true` and then install pods.
+    :hermes_enabled => false
+  )
 
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
-  # you should disable these next few lines.
-  use_flipper!
+  # you should disable the next few line.
+  use_flipper!()
+
+  permissions_path = '../node_modules/react-native-permissions/ios'
+
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
 end
 
 
@@ -20,15 +28,6 @@ target 'appStarter' do
   
   target 'appStarterTests' do
     inherit! :complete
-    # Pods for testing
-  end
-end
-
-target 'appStarter-tvOS' do
-  # Pods for appStarter-tvOS
-
-  target 'appStarter-tvOSTests' do
-    inherit! :search_paths
     # Pods for testing
   end
 end
@@ -44,10 +43,5 @@ target 'PROD' do
 end
 
 post_install do |installer|
-  flipper_post_install(installer)
-
-  # Retrieved from: https://stackoverflow.com/a/63955114
-  installer.pods_project.build_configurations.each do |config|
-    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
-  end
+  react_native_post_install(installer)
 end

@@ -1,16 +1,14 @@
 module.exports = {
   root: true,
   extends: [
-    '@react-native-community',
+    'prettier',
     'standard',
     'eslint:recommended',
+    '@react-native-community',
+    'eslint-config-prettier',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
-    'eslint-config-prettier',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'detox'],
@@ -42,7 +40,7 @@ module.exports = {
     'react/jsx-max-depth': [
       2,
       {
-        max: 3,
+        max: 4,
       },
     ],
     'react/display-name': 0,
@@ -121,14 +119,7 @@ module.exports = {
         },
       },
     ],
-    'react/jsx-props-no-spreading': [
-      2,
-      {
-        html: 'enforce',
-        custom: 'enforce',
-        explicitSpread: 'ignore',
-      },
-    ],
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-sort-props': [
       2,
       {
@@ -161,6 +152,7 @@ module.exports = {
     'react/no-unused-state': 1,
     'react/no-will-update-set-state': 2,
     'react/prop-types': 0,
+    'react/react-in-jsx-scope': 0,
     'react/self-closing-comp': 2,
     'react-native/no-unused-styles': 2,
     'react-native/no-inline-styles': 2,

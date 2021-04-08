@@ -1,64 +1,41 @@
 import core from '../../src/core/core'
-import appStore, {
-  initialState as initialAppState,
-} from '../../src/store/stores/app-store'
-import devicesStore, {
-  initialState as initialDevicesState,
-} from '../../src/store/stores/devices-store'
-import userStore, {
-  initialState as initialUserState,
-} from '../../src/store/stores/user-store'
 import { storesToReset } from '../../src/store/stores'
+import appStore, { initialState as initialAppState } from '../../src/store/stores/app-store'
+import userStore, { initialState as initialUserState } from '../../src/store/stores/user-store'
 
-describe('🧠 Core > user:', () => {
+describe('🙍 Core > user:', () => {
   it.each([
-    [{ firstName: 'J' }, { firstName: 'J' }],
-    [{ firstName: 'John' }, { firstName: 'John' }],
-    [{ lastName: 'Doe' }, { firstName: 'John', lastName: 'Doe' }],
-    [{ firstName: undefined }, { firstName: undefined, lastName: 'Doe' }],
+    [{ UID: '42' }, { UID: '42' }],
+    [{ UID: '43' }, { UID: '43' }],
+    [{ isActive: true }, { UID: '43', isActive: true }],
+    [{ UID: undefined }, { UID: undefined, isActive: true }],
     [
-      { id: '42', firstName: 'John' },
-      { id: '42', firstName: 'John', lastName: 'Doe' },
+      { UID: '42', emails: { unverified: ['test@jest.com'] } },
+      { UID: '42', emails: { unverified: ['test@jest.com'] }, isActive: true },
     ],
   ])('update() does update the store', (updateData, expectedStore) => {
+    // @ts-expect-error NOTE: We know the argument isn't a complete user object.
     core.user.update(updateData)
     const updatedStore = userStore.getState().data
     expect(updatedStore).toStrictEqual(expectedStore)
   })
 
-  it('isLoggedIn() returns the correct state of login', () => {
-    core.user.update({ id: '42' })
-    const isLoggedInA = core.user.isLoggedIn()
-    expect(isLoggedInA).toBeTruthy()
-
-    core.user.logout()
-    const isLoggedInB = core.user.isLoggedIn()
-    expect(isLoggedInB).toBeFalsy()
-
-    expect.assertions(2)
-  })
-
-  it('logout() resets stores properly', () => {
+  it('logout() resets stores properly', async () => {
     // NOTE: We first populate the stores to be sure that they're indeed being reset afterwards
-    core.user.update({ id: '42' })
-    const userID = userStore.getState().data.id
+    core.user.update({ UID: '42' })
+    const userID = userStore.getState().data.UID
 
     expect(userID).toStrictEqual('42')
 
     // NOTE: Now we make sure we test all the expected stores were reset
-    const resetStores = core.user.logout()
+    const resetStores = await core.user.logout()
     expect(resetStores).toStrictEqual(storesToReset)
 
-    resetStores.forEach((store) => {
+    resetStores?.forEach(store => {
       switch (store) {
         case 'app': {
           const resetAppState = appStore.getState().data
           expect(resetAppState).toStrictEqual(initialAppState)
-          break
-        }
-        case 'devices': {
-          const resetDevicesState = devicesStore.getState().data
-          expect(resetDevicesState).toStrictEqual(initialDevicesState)
           break
         }
         case 'user': {
@@ -67,12 +44,10 @@ describe('🧠 Core > user:', () => {
           break
         }
         default:
-          throw Error(
-            `Some being reset by core.user.logout() is not being tested by Jest`,
-          )
+          throw Error(`Some store being reset by core.user.logout() is not being tested by Jest`)
       }
     })
 
-    expect.assertions(5)
+    expect.assertions(4)
   })
 })

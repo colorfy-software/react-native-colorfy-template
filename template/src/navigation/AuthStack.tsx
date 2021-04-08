@@ -1,4 +1,3 @@
-import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import { AuthStackParamType } from '../types/navigation-types'

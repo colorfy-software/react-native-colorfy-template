@@ -18,21 +18,21 @@ const LOGIN_FORM = {
 
 const LOGIN_FORM_VALIDATION: FormValidatorType<typeof LOGIN_FORM> = {
   email: {
-    validatorFn: (value): true | string => {
+    validatorFn: (value): false | string => {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       const isEmail = re.test(value)
 
       if (isEmail) {
-        return true
+        return false
       }
 
       return 'This is not a valid email format'
     },
   },
   password: {
-    validatorFn: (value): true | string => {
+    validatorFn: (value): false | string => {
       if (value.length >= 6) {
-        return true
+        return false
       }
 
       return 'Password needs to be longer than 6 characters'
@@ -40,7 +40,7 @@ const LOGIN_FORM_VALIDATION: FormValidatorType<typeof LOGIN_FORM> = {
   },
 }
 
-describe('🪝 Hooks > useForm:', () => {
+describe('📝 Hooks > useForm:', () => {
   it('checks for incorrect form values', () => {
     const { result } = renderHook(() =>
       useForm(
@@ -50,8 +50,8 @@ describe('🪝 Hooks > useForm:', () => {
           password: 0,
         },
         LOGIN_FORM_VALIDATION,
-        (values) => {
-          console.log({ values })
+        () => {
+          // console.log({ values })
         },
       ),
     )
@@ -67,15 +67,15 @@ describe('🪝 Hooks > useForm:', () => {
         LOGIN_FORM,
         {
           email: {
-            validatorFn: true,
+            validatorFn: false,
           },
           password: {
             // @ts-expect-error NOTE: We know the argument isn't a Number
             validatorFn: 5,
           },
         },
-        (values) => {
-          console.log({ values })
+        () => {
+          // console.log({ values })
         },
       ),
     )
@@ -83,20 +83,22 @@ describe('🪝 Hooks > useForm:', () => {
     expect(result.error?.message).toBe(
       'useForm() expected validatorFN() of type Function or Boolean for key: password, but got number',
     )
+
+    expect.assertions(1)
   })
 
   it('keeps tracks of updates in form', () => {
     const { result } = renderHook(() =>
-      useForm(LOGIN_FORM, LOGIN_FORM_VALIDATION, (values) => {
-        console.log({ values })
+      useForm(LOGIN_FORM, LOGIN_FORM_VALIDATION, () => {
+        // console.log({ values })
       }),
     )
 
     expect(result.current.state.email).toBe('')
 
     expect(result.current.errors).toStrictEqual({
-      email: true,
-      password: true,
+      email: false,
+      password: false,
     })
 
     act(() => {
@@ -122,8 +124,8 @@ describe('🪝 Hooks > useForm:', () => {
 
   it('handles inputs updates and submits as expected', () => {
     const { result } = renderHook(() =>
-      useForm(LOGIN_FORM, LOGIN_FORM_VALIDATION, (values) => {
-        console.log({ values })
+      useForm(LOGIN_FORM, LOGIN_FORM_VALIDATION, () => {
+        // console.log({ values })
       }),
     )
 
@@ -133,8 +135,8 @@ describe('🪝 Hooks > useForm:', () => {
     })
 
     expect(result.current.errors).toStrictEqual({
-      email: true,
-      password: true,
+      email: false,
+      password: false,
     })
 
     act(() => {
@@ -142,7 +144,7 @@ describe('🪝 Hooks > useForm:', () => {
       result.current.onHandleChange('password', '123456')
     })
 
-    console.log(result.current.state)
+    // console.log(result.current.state)
 
     expect(result.current.state).toStrictEqual({
       email: 'hello@woop.com',
@@ -154,8 +156,8 @@ describe('🪝 Hooks > useForm:', () => {
     })
 
     expect(result.current.errors).toStrictEqual({
-      email: true,
-      password: true,
+      email: false,
+      password: false,
     })
 
     expect.assertions(4)

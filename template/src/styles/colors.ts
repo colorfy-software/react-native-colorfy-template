@@ -17,7 +17,7 @@ const hexToRGB = (hex: string): RGBType | null => {
     : null
 }
 
-export const colors = {
+export const colorsStyles = {
   /**
    *  Main BLACK color
    *  @constant '#121212'
@@ -29,15 +29,30 @@ export const colors = {
    */
   SECONDARY: '#e20e17',
   /**
-   * Default WHITE background color
-   * @constant '#fafafa'
+   * RED error color.
+   * @constant '#e20e17'
    */
-  BACKGROUND: '#fafafa',
+  ERROR: '#e20e17',
+  /**
+   * Default GREY text color.
+   * @constant '#000000'
+   */
+  TEXT: '#000000',
+  /**
+   * Default WHITE background color
+   * @constant '#ffffff'
+   */
+  BACKGROUND: '#ffffff',
   /**
    * Default GREY icon color
    * @constant '#d8d8d8'
    */
   ICON: '#d8d8d8',
+  /**
+   * Default LIGHT GREY text color.
+   * @constant '#bdbbbb'
+   */
+  LIGHT_GREY: '#bdbbbb',
 
   /**
    * Transforms hex with alpha to rgba

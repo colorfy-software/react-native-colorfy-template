@@ -1,16 +1,6 @@
-import React, { memo, useRef, useEffect } from 'react'
-import {
-  StyleProp,
-  ViewProps,
-  ViewStyle,
-  LayoutChangeEvent,
-} from 'react-native'
-import Animated, {
-  Value,
-  Node,
-  interpolate,
-  Extrapolate,
-} from 'react-native-reanimated'
+import { memo, useRef, useEffect } from 'react'
+import { StyleProp, ViewProps, ViewStyle, LayoutChangeEvent } from 'react-native'
+import Animated, { Value, Node, interpolate, Extrapolate } from 'react-native-reanimated'
 import { useSpringTransition } from 'react-native-redash'
 
 import { screen } from '../styles/style-guide'
@@ -28,9 +18,8 @@ export const SPRING_CONFIG = {
   restSpeedThreshold: 0.001,
 }
 
-interface Props {
-  children: JSX.Element | JSX.Element[]
-  animation?: 'fadeInUp' | 'fadeInDown' | 'fadeIn'
+interface PropsType {
+  animation?: 'fadeInUp' | 'fadeInDown' | 'fadeIn' | 'scaleMessageIn' | 'scaleIn' | 'slideInRight'
   type?: 'mount' | 'interpolation' | 'animatedChange' | 'stateChange'
   staggerTime?: number | undefined
   springConfig?: typeof SPRING_CONFIG
@@ -42,15 +31,13 @@ interface Props {
   style?: StyleProp<Animated.AnimateStyle<ViewStyle>>
   initialDelay?: number
   pointerEvents?: ViewProps['pointerEvents']
-  onLayout?:
-    | Animated.Node<((event: LayoutChangeEvent) => void) | undefined>
-    | ViewProps['onLayout']
+  onLayout?: Animated.Node<((event: LayoutChangeEvent) => void) | undefined> | ViewProps['onLayout']
   testID?: ViewProps['testID']
 }
 
 function createPaddingForValue(
   side: 'left' | 'right',
-  type: Props['type'],
+  type: PropsType['type'],
   staggerIndex: number | undefined,
 ): number {
   let value = side === 'left' ? 0 : 2
@@ -65,28 +52,26 @@ function createPaddingForValue(
   return value
 }
 
-function createInputRange(
-  type: Props['type'],
-  staggerIndex: Props['staggerIndex'],
-): number[] {
-  return [
-    createPaddingForValue('left', type, staggerIndex),
-    1,
-    createPaddingForValue('right', type, staggerIndex),
-  ]
+function createInputRange(type: PropsType['type'], staggerIndex: PropsType['staggerIndex']): number[] {
+  return [createPaddingForValue('left', type, staggerIndex), 1, createPaddingForValue('right', type, staggerIndex)]
 }
 
 function createYValue(
-  type: Props['type'],
-  animation: Props['animation'],
+  type: PropsType['type'],
+  animation: PropsType['animation'],
   animatedValue: Value<number> | Node<number>,
-  staggerIndex: Props['staggerIndex'],
+  staggerIndex: PropsType['staggerIndex'],
 ): Node<number> {
   switch (animation) {
     case 'fadeInUp':
       return interpolate(animatedValue, {
         inputRange: createInputRange(type, staggerIndex),
         outputRange: [screen.verticalScale(100), 0, -screen.verticalScale(100)],
+      })
+    case 'scaleMessageIn':
+      return interpolate(animatedValue, {
+        inputRange: createInputRange(type, staggerIndex),
+        outputRange: [screen.verticalScale(30), 0, -screen.verticalScale(30)],
       })
     case 'fadeInDown':
       return interpolate(animatedValue, {
@@ -100,10 +85,10 @@ function createYValue(
 }
 
 function createOpacityValue(
-  type: Props['type'],
-  animation: Props['animation'],
+  type: PropsType['type'],
+  animation: PropsType['animation'],
   animatedValue: Value<number> | Node<number>,
-  staggerIndex: Props['staggerIndex'],
+  staggerIndex: PropsType['staggerIndex'],
 ): Node<number> {
   switch (animation) {
     case 'fadeInUp':
@@ -122,27 +107,67 @@ function createOpacityValue(
         outputRange: [0, 1, 0],
         extrapolate: Extrapolate.CLAMP,
       })
+    case 'scaleIn':
+      return interpolate(animatedValue, {
+        inputRange: createInputRange(type, staggerIndex),
+        outputRange: [0, 1, 0],
+        extrapolate: Extrapolate.CLAMP,
+      })
+    case 'slideInRight':
+      return interpolate(animatedValue, {
+        inputRange: createInputRange(type, staggerIndex),
+        outputRange: [1, 1, 1],
+        extrapolate: Extrapolate.CLAMP,
+      })
     default:
       return new Value(1)
   }
 }
 
-function createScaleValue(animation: Props['animation']): Node<number> {
+function createScaleValue(
+  type: PropsType['type'],
+  animation: PropsType['animation'],
+  animatedValue: Value<number> | Node<number>,
+  staggerIndex: PropsType['staggerIndex'],
+): Node<number> {
   switch (animation) {
+    case 'scaleMessageIn':
+      return interpolate(animatedValue, {
+        inputRange: createInputRange(type, staggerIndex),
+        outputRange: [0.92, 1, 1.08],
+        extrapolate: Extrapolate.CLAMP,
+      })
+    case 'scaleIn':
+      return interpolate(animatedValue, {
+        inputRange: createInputRange(type, staggerIndex),
+        outputRange: [0.2, 1, 1.2],
+        extrapolate: Extrapolate.CLAMP,
+      })
     default:
       return new Value(1)
   }
 }
 
-function createXValue(animation: Props['animation']): Node<number> {
+function createXValue(
+  type: PropsType['type'],
+  animation: PropsType['animation'],
+  animatedValue: Value<number> | Node<number>,
+  staggerIndex: PropsType['staggerIndex'],
+): Node<number> {
   switch (animation) {
+    case 'slideInRight':
+      return interpolate(animatedValue, {
+        inputRange: createInputRange(type, staggerIndex),
+        outputRange: [0, -screen.width(1), -screen.width(1)],
+        extrapolate: Extrapolate.CLAMP,
+      })
     default:
       return new Value(0)
   }
 }
 
 function getAnimatedValue(
-  type: Props['type'],
+  type: PropsType['type'],
   mountAnimatedValue: Value<number> | Node<number>,
   interpolationValue?: Value<number> | Node<number>,
   animatedValue?: Value<number> | Node<number>,
@@ -173,7 +198,7 @@ const AnimateComponent = ({
   initialDelay = 0,
   onLayout,
   testID,
-}: Props): JSX.Element => {
+}: React.PropsWithChildren<PropsType>): JSX.Element => {
   const mountAnimatedValue = useRef(new Value(0)).current
   const stateAnimatedValue = useSpringTransition(stateValue, {
     damping: 600,
@@ -208,29 +233,15 @@ const AnimateComponent = ({
     stateAnimatedValue,
   )
 
-  const translateY = createYValue(
-    type,
-    animation,
-    animatedValueToUse,
-    staggerIndex,
-  )
-
-  const translateX = createXValue(animation)
-  const scale = createScaleValue(animation)
-  const opacity = createOpacityValue(
-    type,
-    animation,
-    animatedValueToUse,
-    staggerIndex,
-  )
+  const translateY = createYValue(type, animation, animatedValueToUse, staggerIndex)
+  const translateX = createXValue(type, animation, animatedValueToUse, staggerIndex)
+  const scale = createScaleValue(type, animation, animatedValueToUse, staggerIndex)
+  const opacity = createOpacityValue(type, animation, animatedValueToUse, staggerIndex)
 
   return (
     <Animated.View
       testID={testID}
-      style={[
-        style,
-        { opacity, transform: [{ translateY }, { translateX }, { scale }] },
-      ]}
+      style={[style, { opacity, transform: [{ translateY }, { translateX }, { scale }] }]}
       pointerEvents={pointerEvents}
       onLayout={onLayout}>
       {children}

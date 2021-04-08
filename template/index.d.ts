@@ -1,6 +1,6 @@
 declare namespace NodeJS {
   export interface Global {
-    HermesInternal: null | {}
+    HermesInternal: null | Record<string, unknown>
     window: Window
     document: Document
     __REMOTEDEV__: boolean

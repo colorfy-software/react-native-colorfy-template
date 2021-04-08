@@ -1,17 +1,18 @@
 import create, { StateCreator, UseStore } from 'zustand'
 import produce from 'immer'
 
+import { StoreType, StoresDataType, StoresNameType } from '../types/store-types'
+
+import CONFIG from '../config/app-config'
+
 import persist from './middlewares/persist-middleware'
 import logger from './middlewares/logger-middleware'
 
 import appStore from './stores/app-store'
 import userStore from './stores/user-store'
-import devicesStore from './stores/devices-store'
-
-import { StoreType, StoresDataType, StoresNameType } from '../types/store-types'
 
 // NOTE: Toggle store logging here (done based on Remote JS Debugging state)
-global.enableStoreLogging = global.__REMOTEDEV__
+global.enableStoreLogging = CONFIG.IS_REMOTE_DEBUGGING
 
 interface CreateStoreOptions {
   logger?: boolean
@@ -19,11 +20,10 @@ interface CreateStoreOptions {
 }
 
 /**
- * Function that creates and returns a zustand store
- *
- * @param store - Name of the store
- * @param data - Initial data of the store
- * @param options - (Optional) Config to use for store setup
+ * Function that creates and returns a zustand store.
+ * @param store - `string`— Name of the store.
+ * @param data - `StoresDataType`— Initial data of the store.
+ * @param options - `CreateStoreOptions`— Optional. Config to use for store setup.
  */
 export function createStore<N extends StoresNameType>(
   name: N,
@@ -32,22 +32,13 @@ export function createStore<N extends StoresNameType>(
 ): UseStore<StoreType<StoresDataType[N]>> {
   const pipe = (
     ...fns: Array<
-      (
-        store: N,
-        config: StateCreator<StoreType<StoresDataType[N]>>,
-      ) => StateCreator<StoreType<StoresDataType[N]>>
+      (store: N, config: StateCreator<StoreType<StoresDataType[N]>>) => StateCreator<StoreType<StoresDataType[N]>>
     >
-  ) => (
-    n: N,
-    s: StateCreator<StoreType<StoresDataType[N]>>,
-  ): StateCreator<StoreType<StoresDataType[N]>> =>
+  ) => (n: N, s: StateCreator<StoreType<StoresDataType[N]>>): StateCreator<StoreType<StoresDataType[N]>> =>
     fns.length ? fns.reduce((c, f) => f(n, c), s) : s
 
   let middlewares: Array<
-    (
-      store: N,
-      config: StateCreator<StoreType<StoresDataType[N]>>,
-    ) => StateCreator<StoreType<StoresDataType[N]>>
+    (store: N, config: StateCreator<StoreType<StoresDataType[N]>>) => StateCreator<StoreType<StoresDataType[N]>>
   > = []
   if (options?.logger) middlewares = [...middlewares, logger]
   if (options?.persist) middlewares = [...middlewares, persist]
@@ -55,47 +46,23 @@ export function createStore<N extends StoresNameType>(
   const applyMiddlewares = pipe(...middlewares)
 
   return create<StoreType<StoresDataType[N]>>(
-    applyMiddlewares(name, (set) => ({
+    applyMiddlewares(name, set => ({
       data,
-      update: (producer): void => set(produce((store) => producer(store))),
-      rehydrate: (persistedData: { data: StoresDataType[N] }): void =>
-        set(persistedData),
+      update: (producer): void => set(produce(store => producer(store))),
+      rehydrate: (persistedData: { data: StoresDataType[N] }): void => set(persistedData),
       reset: (): void => set({ data }),
     })),
   )
 }
 
 // NOTE: We add all the stores we want to persist/reset here
-
-// APP
-// FIXME: For some odd reason Jest refused to acknowledge that appStore is not undefined here 🧐
-const resetApp = appStore?.getState().reset
-const rehydrateApp = appStore?.getState().rehydrate
-
-// DEVICES
-const resetDevices = devicesStore.getState().reset
-const rehydrateDevices = devicesStore.getState().rehydrate
-
-// USER
-const resetUser = userStore.getState().reset
-const rehydrateUser = userStore.getState().rehydrate
-
-export const storesToReset: (keyof StoresDataType)[] = [
-  'app',
-  'devices',
-  'user',
-]
+export const storesToReset: (keyof StoresDataType)[] = ['app', 'user']
+export const storesToRehydrate: (keyof StoresDataType)[] = storesToReset
 
 export function resetStores(): (keyof StoresDataType)[] {
-  resetApp?.()
-  resetDevices()
-  resetUser()
-  // NOTE: We return this array to help test from Jest that the proper stores were reset
+  appStore?.getState().reset?.()
+  userStore?.getState().reset?.()
+  // NOTE: We return this array to help test from Jest
+  // that the proper stores were reset
   return storesToReset
-}
-
-export default {
-  app: { rehydrate: rehydrateApp },
-  devices: { rehydrate: rehydrateDevices },
-  user: { rehydrate: rehydrateUser },
 }

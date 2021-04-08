@@ -5,5 +5,11 @@
         "profile": "Profile",
         "tips": "Tips",
         "logout": "Log out"
+    },
+    "errors": {
+        "requiredField": "This field is required",
+        "passwordTooLong": "Password needs to be less than 30 characters long.",
+        "invalidEmail": "Sorry, *{{value}}* is not a valid email address. Please double check the email you've entered and try again.",
+        "passwordRules": "Your password must be *at least 8 characters long*, with at least three of the following kinds of characters: *uppercase, lowercase, number, and/or symbols*."
     }
 }

@@ -63,11 +63,11 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 
-
-# Yarn
-yarn.lock
-
 # Tests
 __tests__/*.ok
 /ios/build/
 .bbrun.sh
+
+# SonarQube
+__coverage__
+.scannerwork

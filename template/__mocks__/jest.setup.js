@@ -1,12 +1,9 @@
-import 'react-native-gesture-handler/jestSetup'
-import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock'
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('jest-fetch-mock').enableMocks()
-jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage)
-jest.mock('react-native-reanimated', () =>
-  jest.requireActual('react-native-reanimated/mock'),
+jest.mock('@react-native-async-storage/async-storage', () =>
+  require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
 )
+jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'))
 jest.mock('react-native-reanimated', () => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const Reanimated = require('react-native-reanimated/mock')
@@ -20,7 +17,10 @@ jest.mock('react-native-reanimated', () => {
 })
 
 // NOTE: Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
-jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+jest.mock('react-native/Libraries/LayoutAnimation/LayoutAnimation', () => ({
+  easeInEaseOut: jest.fn(),
+}))
 
 jest.mock('react-native-localize', () => {
   const getLocales = () => [
@@ -76,3 +76,16 @@ jest.mock('react-native-localize', () => {
     removeEventListener,
   }
 })
+
+jest.mock('react-native-device-info', () => require('react-native-device-info/jest/react-native-device-info-mock.js'))
+
+jest.mock('react-native-encrypted-storage', () => ({
+  getItem: jest.fn(),
+  setItem: jest.fn(),
+  removeItem: jest.fn(),
+  clear: jest.fn(),
+}))
+
+jest.mock('@react-native-community/netinfo', () => require('@react-native-community/netinfo/jest/netinfo-mock.js'))
+
+jest.mock('react-native-permissions', () => require('react-native-permissions/mock'))

@@ -5,5 +5,11 @@
         "profile": "Profil",
         "tips": "Tips",
         "logout": "Abmelden"
+    },
+    "errors": {
+        "requiredField": "Dieses Feld ist erforderlich",
+        "passwordTooLong": "Das Passwort muss aus unter 30 Zeichen bestehen.",
+        "invalidEmail": "Tut mir leid, *{{value}}* ist keine gültige E-Mail-Adresse. Bitte überprüfen Sie die E-Mail-Adresse, die Sie eingegeben haben, und versuchen Sie es noch mal.",
+        "passwordRules": "Das Passwort muss *mindestens aus acht Zeichen* bestehen und drei der folgenden Zeichen enthalten: *Großbuchstabe, Kleinbuchstabe, Zahl und/oder Sonderzeichen*."
     }
 }

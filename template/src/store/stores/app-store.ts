@@ -3,8 +3,8 @@ import { AppType } from '../../types/store-types'
 
 export const initialState: AppType = {
   navigationState: 'auth',
-  isMockingDevice: false,
-  isFirstDisplayOfDashboard: true,
+  pushPermissions: false,
+  isFirstDisplayOfHome: true,
 }
 
 export default createStore('app', initialState, { persist: true })

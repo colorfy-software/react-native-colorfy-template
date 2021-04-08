@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
-import {
-  StackCardInterpolatedStyle,
-  createStackNavigator,
-} from '@react-navigation/stack'
+import { useEffect, useRef } from 'react'
+import { Platform, StatusBar } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { StackCardInterpolatedStyle, createStackNavigator } from '@react-navigation/stack'
 
 import TabBar from './TabBar'
 import AuthStack from './AuthStack'
@@ -18,6 +16,8 @@ import Activity from '../screens/activity/Activity'
 import { MainStackParamType, MainTabParamType } from '../types/navigation-types'
 
 import core from '../core/core'
+import sleep from '../utils/sleep'
+import NavigationUtil from '../utils/navigation'
 import useRehydrate from '../hooks/use-rehydrate'
 import appStore from '../store/stores/app-store'
 import userStore from '../store/stores/user-store'
@@ -32,10 +32,7 @@ const disableDefaultAnimation = (): StackCardInterpolatedStyle => ({
 })
 
 const AppBottomTab = (): JSX.Element => (
-  <MainBottomTab.Navigator
-    initialRouteName="Home"
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    tabBar={(props): JSX.Element => <TabBar {...props} />}>
+  <MainBottomTab.Navigator initialRouteName="Home" tabBar={(props): JSX.Element => <TabBar {...props} />}>
     <MainBottomTab.Screen name="Home" component={Home} />
     <MainBottomTab.Screen name="Tips" component={Tips} />
     <MainBottomTab.Screen name="Activity" component={Activity} />
@@ -45,19 +42,40 @@ const AppBottomTab = (): JSX.Element => (
 
 export default (): JSX.Element => {
   const isRehydrated = useRehydrate()
+  const routeNameRef = useRef<string | undefined>()
   const navigationState = appStore(({ data }) => data.navigationState)
-  // TODO: Simple placeholder, to be replaced once Gigya is set up
-  const hasValidToken = userStore(({ data }) => data.id)
+  const hasValidToken = userStore(({ data }) => data.UID)
 
   useEffect(() => {
     if (isRehydrated) {
       core.app.update({ navigationState: hasValidToken ? 'app' : 'auth' })
-      SplashScreen?.hide()
+      if (Platform.OS === 'ios') StatusBar.setBarStyle('dark-content', false)
+      /**
+       * NOTE: Hides the auth screen that appears briefly
+       * before rehydration when the user was already logged in.
+       */
+      sleep(250).then(() => SplashScreen?.hide())
     }
   }, [hasValidToken, isRehydrated])
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      ref={NavigationUtil.setRef}
+      onReady={() => {
+        // @ts-expect-error NOTE: Implemented as per https://reactnavigation.org/docs/navigating-without-navigation-prop#handling-initialization
+        NavigationUtil.isReadyRef.current = true
+      }}
+      onStateChange={async () => {
+        const previousRouteName = routeNameRef.current
+        const currentRouteName = NavigationUtil.setRef?.current?.getCurrentRoute()?.name
+
+        if (previousRouteName !== currentRouteName) {
+          console.log('screenView', currentRouteName)
+        }
+
+        // NOTE: Saving the current route name for later comparison
+        routeNameRef.current = currentRouteName
+      }}>
       <MainStack.Navigator headerMode="none">
         {navigationState === 'auth' && (
           <MainStack.Screen

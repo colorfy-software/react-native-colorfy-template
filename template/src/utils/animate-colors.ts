@@ -1,6 +1,6 @@
 import Animated from 'react-native-reanimated'
 
-interface Input {
+interface InputType {
   animatedValue: Animated.Adaptable<number>
   inputRange: number[]
   outputRange: string[]
@@ -33,28 +33,26 @@ const white = { r: 255, g: 255, b: 255 }
  * Used to animate changes in color. Pass in your animated value, inputRange, and hexColor[] as an outputRange
  * @param input
  */
-const animateColors = (input: Input): Animated.Node<number> => {
-  const colors = input.outputRange.map(
-    (hexColor) => hexToRgb(hexColor) || white,
-  )
+const animateColors = (input: InputType): Animated.Node<number> => {
+  const colors = input.outputRange.map(hexColor => hexToRgb(hexColor) || white)
   const r = round(
     interpolate(input.animatedValue, {
       inputRange: input.inputRange,
-      outputRange: colors.map((c) => c.r),
+      outputRange: colors.map(c => c.r),
       extrapolate: Extrapolate.CLAMP,
     }),
   )
   const g = round(
     interpolate(input.animatedValue, {
       inputRange: input.inputRange,
-      outputRange: colors.map((c) => c.g),
+      outputRange: colors.map(c => c.g),
       extrapolate: Extrapolate.CLAMP,
     }),
   )
   const b = round(
     interpolate(input.animatedValue, {
       inputRange: input.inputRange,
-      outputRange: colors.map((c) => c.b),
+      outputRange: colors.map(c => c.b),
       extrapolate: Extrapolate.CLAMP,
     }),
   )

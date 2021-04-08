@@ -118,10 +118,7 @@ module.exports = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: [
-    '<rootDir>/__mocks__/jest.setup.js',
-    './node_modules/react-native-gesture-handler/jestSetup.js',
-  ],
+  setupFiles: ['<rootDir>/__mocks__/jest.setup.js', './node_modules/react-native-gesture-handler/jestSetup.js'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
@@ -163,9 +160,7 @@ module.exports = {
   // transform: undefined,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: [
-    '/node_modules/(?!(react-native|react-native-gesture-handler|react-native-iphone-x-helper|react-native-modalfy|react-native-reanimated|react-native-redash|react-native-splash-screen|@react-navigation/stack)/)',
-  ],
+  transformIgnorePatterns: ['node_modules/(?!(@?react-native-?.*|(@react-navigation/.*))/)'],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

@@ -1,15 +1,16 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+
+import AppText from '../../components/AppText'
 
 import { getLocalizedString } from '../../locales'
 
-const Home = (): JSX.Element => {
-  return (
-    <View testID="Home" style={styles.container}>
-      <Text testID="Home.Title">{getLocalizedString('general.home')}</Text>
-    </View>
-  )
-}
+const Home = (): JSX.Element => (
+  <View testID="Home" style={styles.container}>
+    <AppText type="subTitle" testID="Home.Title">
+      {getLocalizedString('general.home')}
+    </AppText>
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {

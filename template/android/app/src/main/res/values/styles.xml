@@ -1,13 +1,13 @@
 <resources>
 
-    <style name="AppTheme.Launcher" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme.Launcher" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:windowBackground">@drawable/launch_screen</item>
         <item name="android:datePickerDialogTheme">@style/Dialog.Theme</item>
         <item name="android:timePickerDialogTheme">@style/Dialog.Theme</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:navigationBarColor">@color/colorPrimary</item>
         <item name="android:windowBackground">@drawable/app_screen</item>
@@ -16,7 +16,7 @@
         <item name="android:timePickerDialogTheme">@style/Dialog.Theme</item>
     </style>
 
-    <style name="Dialog.Theme" parent="Theme.AppCompat.Light.Dialog">
+    <style name="Dialog.Theme" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:textColorPrimary">@color/colorDark</item>
     </style>

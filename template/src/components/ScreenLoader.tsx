@@ -1,29 +1,28 @@
-import React, { memo, useEffect, useRef } from 'react'
-import { StyleSheet, ActivityIndicator, ViewProps } from 'react-native'
+import { memo, useEffect, useRef, useState } from 'react'
 import Animated, { Value } from 'react-native-reanimated'
+import { StyleSheet, ActivityIndicator, ViewProps } from 'react-native'
 
-import { colors } from '../styles/colors'
 import AnimatedWrapper, { SPRING_CONFIG } from './AnimatedWrapper'
 
-interface Props {
+import { colors } from '../styles/style-guide'
+
+interface PropsType {
   loaderColor?: string
   backgroundColor?: string
   shown: boolean
   testID?: ViewProps['testID']
 }
 
-const ScreenLoader = ({
-  loaderColor,
-  backgroundColor,
-  testID,
-  shown,
-}: Props): JSX.Element => {
+const ScreenLoader = ({ loaderColor, backgroundColor, testID, shown }: PropsType): JSX.Element | null => {
   const color = loaderColor || 'white'
   const bgColor = backgroundColor || colors.PRIMARY
   const transition = useRef(new Value(Number(shown))).current
+  // NOTE: This is needed for Detox not go into an infinite loop because of the ongoing loader animation.
+  const [shouldRender, setShouldRender] = useState(shown)
 
   useEffect(() => {
     if (shown) {
+      if (!shouldRender) setShouldRender(true)
       Animated.spring(transition, {
         toValue: 1,
         ...SPRING_CONFIG,
@@ -32,9 +31,13 @@ const ScreenLoader = ({
       Animated.spring(transition, {
         toValue: 0,
         ...SPRING_CONFIG,
-      }).start()
+      }).start(({ finished }) => {
+        if (finished) setShouldRender(false)
+      })
     }
-  }, [shown, transition])
+  }, [shouldRender, shown, transition])
+
+  if (!shouldRender) return null
 
   return (
     <AnimatedWrapper
@@ -43,14 +46,8 @@ const ScreenLoader = ({
       animatedValue={transition}
       type="animatedChange"
       animation="fadeIn"
-      style={StyleSheet.flatten([
-        styles.container,
-        { backgroundColor: bgColor },
-      ])}>
-      <AnimatedWrapper
-        animatedValue={transition}
-        type="animatedChange"
-        staggerIndex={2}>
+      style={StyleSheet.flatten([styles.container, { backgroundColor: bgColor }])}>
+      <AnimatedWrapper animatedValue={transition} type="animatedChange" staggerIndex={2}>
         <ActivityIndicator size="large" color={color} />
       </AnimatedWrapper>
     </AnimatedWrapper>
@@ -67,7 +64,7 @@ const styles = StyleSheet.create({
   },
 })
 
-function propsAreEqual(prevProps: Props, nextProps: Props): boolean {
+function propsAreEqual(prevProps: PropsType, nextProps: PropsType): boolean {
   return prevProps.shown === nextProps.shown
 }
 

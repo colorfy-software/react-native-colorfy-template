@@ -17,9 +17,9 @@ export default function <K extends keyof RequestTypes>(
       }
     } else {
       console.error(
-        `${request} is not a valid request name.\n\nPossible requests are:${Object.keys(
-          requests,
-        ).map((c) => `\n• ${c}`)}`,
+        `${request} is not a valid request name.\n\nPossible requests are:${Object.keys(requests).map(
+          c => `\n• ${c}`,
+        )}`,
       )
     }
   })

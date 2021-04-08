@@ -1,21 +1,18 @@
-import React from 'react'
-import { View, Text, Pressable, PressableProps, StyleSheet } from 'react-native'
-import {
-  BottomTabBarProps,
-  BottomTabNavigationOptions,
-} from '@react-navigation/bottom-tabs'
+import { View, Pressable, PressableProps, StyleSheet } from 'react-native'
+import { BottomTabBarProps, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 
 import Icon from '../components/icon/Icon'
+import AppText from '../components/AppText'
 
-import { colors, screen } from '../styles/style-guide'
 import { getLocalizedString } from '../locales'
+import { colors, screen } from '../styles/style-guide'
 
 interface TabBarItemType {
   isFocused: boolean
   routeName: keyof typeof LABELS
-  onLongPress: PressableProps['onLongPress']
   onPress: PressableProps['onPress']
   options: BottomTabNavigationOptions
+  onLongPress: PressableProps['onLongPress']
 }
 
 const LABELS = {
@@ -25,14 +22,8 @@ const LABELS = {
   profile: getLocalizedString('general.profile'),
 }
 
-const TabBarItem = ({
-  isFocused,
-  routeName,
-  onLongPress,
-  onPress,
-  options,
-}: TabBarItemType): JSX.Element => {
-  const color = isFocused ? colors.PRIMARY : colors.ICON
+const TabBarItem = ({ isFocused, routeName, onLongPress, onPress, options }: TabBarItemType): JSX.Element => {
+  const color = isFocused ? colors.SECONDARY : colors.ICON
   return (
     <Pressable
       accessibilityRole="button"
@@ -43,16 +34,14 @@ const TabBarItem = ({
       onPress={onPress}
       onLongPress={onLongPress}>
       <Icon size={28} color={color} name={routeName} />
-      <Text style={{ color }}>{LABELS[routeName]}</Text>
+      <AppText type="label" color={color}>
+        {LABELS[routeName]}
+      </AppText>
     </Pressable>
   )
 }
 
-const TabBar = ({
-  state,
-  descriptors,
-  navigation,
-}: BottomTabBarProps): JSX.Element | null => {
+const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps): JSX.Element | null => {
   const focusedOptions = descriptors[state.routes[state.index].key].options
 
   if (focusedOptions.tabBarVisible === false) return null
@@ -70,7 +59,6 @@ const TabBar = ({
 
         const isFocused = state.index === index
 
-        // TODO: Implement scroll to top on press if route is focused
         const onPress = (): void => {
           const event = navigation.emit({
             type: 'tabPress',

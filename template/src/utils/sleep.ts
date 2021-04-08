@@ -11,5 +11,5 @@ export default function (milliseconds: number): Promise<Promise<void>> {
   ) {
     throw Error(`${milliseconds} is not a valid number, which sleep() expects`)
   }
-  return new Promise((resolve) => setTimeout(resolve, milliseconds))
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
 }

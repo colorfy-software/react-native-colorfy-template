@@ -1,45 +1,39 @@
 import mitt, { EventHandlerMap, Handler } from 'mitt'
 
+// NOTE: Make sure to always write tests for every new method you add.
+
 /**
  * This is a Vue inspired global event handler.
- *
  * You can send events with specific keys, and then listen to those keys elsewhere.
- *
  * @example DrawerMenu.tsx => core.events.send('drawer_menu_pan', { panX, panY })
- * @example Home.tsx => core.events.listen('drawer_menu_pan', (message) => console.log(message)) // An now you can animate home screen easily in sync with drawer
+ * @example Home.tsx => core.events.listen('drawer_menu_pan', (message) => console.log(message)) // An now you can animate home screen easily in sync with drawer for ie.
  */
-
-// NOTE: Make sure to always write tests for every new method you add
 class Events {
   emitter = mitt()
 
   /**
-   * Sends a message to a given channel
-   *
-   * @param channel - Channel to send the message toStrictEqual
-   * @param message - Message to send
+   * Sends a message to a given channel.
+   * @param channel - `string`— Channel to send the message toStrictEqual.
+   * @param message - `Record<string, string | number>`— Data to send.
    * @example DrawerMenu.tsx => core.events.send('drawer_menu_pan', { panX, panY })
    */
-  send = (
-    channel: string,
-    params: { [key: string]: string | number },
-  ): void => {
-    this.emitter.emit(channel, params)
+  send = (channel: string, message: Record<string, string | number> | string | number): void => {
+    this.emitter.emit(channel, message)
   }
 
   /**
-   * Listens to a given channel
-   *
-   * @param channel - Channel to listen to
-   * @param onMessage - Listen to call when a message is received
-   * @example Home.tsx => core.events.listen('drawer_menu_pan', (message) => console.log(message)) // An now you can animate home screen easily in sync with drawer
+   * Listens to a given channel.
+   * @param channel -  `string`— Channel to listen to.
+   * @param onMessage - `Handler`— Listen to call when a message is received.
+   * @example Home.tsx => core.events.listen('drawer_menu_pan', (message) => console.log(message)) // An now you can animate home screen easily in sync with drawer for ie.
    */
-  listen = (channel: string, onMessage: Handler<unknown>): void => {
+  listen = <T>(channel: string, onMessage: Handler<T>): void => {
     this.emitter.on(channel, onMessage)
   }
 
   /**
-   * Clears all the events listeners
+   * Clears all the events listeners.
+   * @returns `EventHandlerMap`— The empty event handler Map.
    */
   clearAll = (): EventHandlerMap => {
     this.emitter.all.clear()

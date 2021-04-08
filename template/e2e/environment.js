@@ -1,9 +1,5 @@
-const {
-  DetoxCircusEnvironment,
-  SpecReporter,
-  WorkerAssignReporter,
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-} = require('detox/runners/jest-circus')
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { DetoxCircusEnvironment, SpecReporter, WorkerAssignReporter } = require('detox/runners/jest-circus')
 
 class CustomDetoxEnvironment extends DetoxCircusEnvironment {
   constructor(config, context) {

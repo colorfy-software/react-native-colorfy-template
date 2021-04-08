@@ -1,33 +1,17 @@
 import { useState } from 'react'
 
+import { isBoolean, isFunction, isObject, isString } from '../utils/validation'
+
 // useForm LIBRARY TYPES
 
 type Form = { [key: string]: string }
 
 interface ValidationType<K> {
-  validatorFn: ((value: string, values: K) => true | string) | true | string
+  validatorFn: ((value: string, values: K) => false | string) | false | string
   // validateOn: 'submit' | 'update'
 }
 
 export type FormValidatorType<T> = { [key in keyof T]: ValidationType<T> }
-
-// HELPER FUNCTIONS
-
-function isString(value: unknown): boolean {
-  return typeof value === 'string'
-}
-
-function isObject(value: unknown): boolean {
-  return typeof value === 'object' && value !== null
-}
-
-function isFunction(value: unknown): boolean {
-  return !!(value && {}.toString.call(value) === '[object Function]')
-}
-
-function isBoolean(value: unknown): boolean {
-  return typeof value === 'boolean'
-}
 
 function hasValidParamDataStructure<K>(
   formSchema: K,
@@ -41,9 +25,7 @@ function hasValidParamDataStructure<K>(
   }
 
   if (!isObject(formSchema)) {
-    throw new Error(
-      `useForm() expected formSchema to be an object, but received ${typeof formSchema}`,
-    )
+    throw new Error(`useForm() expected formSchema to be an object, but received ${typeof formSchema}`)
   }
 
   if (isObject(formSchema)) {
@@ -68,9 +50,7 @@ function hasValidParamDataStructure<K>(
   }
 
   if (!isObject(formValidation)) {
-    throw new Error(
-      `useForm() expected formValidation to be an object, but received ${typeof formValidation}`,
-    )
+    throw new Error(`useForm() expected formValidation to be an object, but received ${typeof formValidation}`)
   }
 
   if (isObject(formValidation)) {
@@ -78,10 +58,10 @@ function hasValidParamDataStructure<K>(
     const formValidationKeys = Object.keys(formValidation)
 
     formValidationValues.forEach((value, index) => {
-      if (!value.validatorFn) {
-        throw new Error(
-          `useForm() expected validatorFn() to be present in validation schema`,
-        )
+      // console.log('formValidationValues', value.validatorFn)
+
+      if (typeof value.validatorFn === 'undefined') {
+        throw new Error(`useForm() expected validatorFn() to be present in validation schema`)
       }
 
       if (!isFunction(value.validatorFn) && !isBoolean(value.validatorFn)) {
@@ -101,9 +81,7 @@ function hasValidParamDataStructure<K>(
   }
 
   if (!isFunction(onSubmitForm)) {
-    throw new Error(
-      `useForm() expected onSubmitForm to be a Function, but received ${typeof onSubmitForm}`,
-    )
+    throw new Error(`useForm() expected onSubmitForm to be a Function, but received ${typeof onSubmitForm}`)
   }
 }
 
@@ -122,11 +100,11 @@ function hasValidParamDataStructure<K>(
  * const LOGIN_FORM_VALIDATION: FormValidatorType<typeof LOGIN_FORM> = {
  *  email: {
  *    validationOn: 'submit',
- *    validationFn: (value): true | string => isLengthy(value) && isValidEmail(value)
+ *    validationFn: (value): false | string => isLengthy(value) && isValidEmail(value)
  *  },
  *  password: {
  *    validateOn: 'submit',
- *    validationFn: (value): true | string => isLengthy(value) && (value.length >= 6 ? true : 'Password needs to be 6 characters or more')
+ *    validationFn: (value): false | string => isLengthy(value) && (value.length >= 6 ? false : 'Password needs to be 6 characters or more')
  *  }
  * }
  *
@@ -143,23 +121,25 @@ export default function useForm<K extends Form>(
   formSchema: K,
   formValidation: { [key: string]: ValidationType<K> },
   onSubmitForm: (values: K) => void | Promise<void>,
+  onErrors?: ((errors: { [key in keyof K]: string | false }) => void) | undefined,
 ): {
   onHandleChange: (stateKey: keyof K, value: string) => void
   onHandleSubmit: () => void
+  clearErrors: () => void
   clearState: () => void
   state: K
-  errors: { [key in keyof K]: true | string }
+  errors: { [key in keyof K]: false | string }
 } {
   // Validate incoming data
   hasValidParamDataStructure(formSchema, formValidation, onSubmitForm)
 
   const [state, setState] = useState<K>(formSchema)
-  const [errors, setErrors] = useState<{ [key in keyof K]: true | string }>(
-    (function (): { [key in keyof K]: true | string } {
+  const [errors, setErrors] = useState<{ [key in keyof K]: false | string }>(
+    (function (): { [key in keyof K]: false | string } {
       let errs = formSchema
 
       for (const [key] of Object.entries(formSchema)) {
-        errs = { ...errs, [key]: true }
+        errs = { ...errs, [key]: false }
       }
 
       return errs
@@ -167,7 +147,7 @@ export default function useForm<K extends Form>(
   )
 
   const onHandleChange = (stateKey: keyof K, value: string): void => {
-    setState((s) => ({
+    setState(s => ({
       ...s,
       [stateKey]: value,
     }))
@@ -176,44 +156,44 @@ export default function useForm<K extends Form>(
   const onHandleSubmit = (): void => {
     const valueKeys = Object.keys(state)
     const validator = formValidation
+    let currentErrors = errors
 
-    const errorsArray = valueKeys.map((key) => {
+    const errorsArray = valueKeys.map(key => {
       const validationForKey = validator[key]
       const validationFunction = validationForKey.validatorFn
       const value = state[key]
 
-      let errorForKey: boolean | string = true
+      let errorForKey: boolean | string = false
 
       if (
         isFunction(validationFunction) &&
-        isString(
-          typeof validationFunction === 'function' &&
-            validationFunction(value, state),
-        )
+        isString(typeof validationFunction === 'function' && validationFunction(value, state))
       ) {
-        errorForKey =
-          typeof validationFunction === 'function'
-            ? validationFunction(value, state)
-            : errorForKey
-      } else if (
-        !isFunction(validationFunction) &&
-        (isBoolean(validationFunction) || isString(validationFunction))
-      ) {
-        setErrors((err) => Object.assign(err, { [key]: validationFunction }))
+        errorForKey = typeof validationFunction === 'function' ? validationFunction(value, state) : errorForKey
+      } else if (!isFunction(validationFunction) && (isBoolean(validationFunction) || isString(validationFunction))) {
+        errorForKey = isBoolean(validationFunction)
+          ? false
+          : typeof validationFunction === 'string'
+          ? validationFunction
+          : false
+
+        currentErrors = { ...currentErrors, [key]: errorForKey }
       }
 
-      setErrors((err) => Object.assign(err, { [key]: errorForKey }))
+      currentErrors = { ...currentErrors, [key]: errorForKey }
 
       return errorForKey
     })
 
-    const hasErrors = errorsArray.filter(
-      (error) => error && typeof error === 'string' && error.length > 0,
-    )
+    const hasErrors = errorsArray.filter(error => typeof error === 'string' && error.length > 0)
 
     if (hasErrors && hasErrors.length === 0 && state) {
       // send submit callback
       onSubmitForm(state)
+    } else {
+      setErrors(currentErrors)
+
+      onErrors?.(currentErrors)
     }
   }
 
@@ -221,10 +201,25 @@ export default function useForm<K extends Form>(
     setState(formSchema)
   }
 
+  const clearErrors = (): void => {
+    setErrors(
+      (function (): { [key in keyof K]: false | string } {
+        let errs = formSchema
+
+        for (const [key] of Object.entries(formSchema)) {
+          errs = { ...errs, [key]: false }
+        }
+
+        return errs
+      })(),
+    )
+  }
+
   return {
     onHandleChange,
     onHandleSubmit,
     clearState,
+    clearErrors,
     state,
     errors,
   }
@@ -243,12 +238,12 @@ export default function useForm<K extends Form>(
 // > = {
 //   email: {
 //     validateOn: 'submit',
-//     validatorFn: (value): true | string => {
+//     validatorFn: (value): false | string => {
 //       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 //       const isEmail = re.test(value)
 
 //       if (isEmail) {
-//         return true
+//         return false
 //       }
 
 //       return 'This is not a valid email format'
@@ -256,9 +251,9 @@ export default function useForm<K extends Form>(
 //   },
 //   password: {
 //     validateOn: 'submit',
-//     validatorFn: (value): true | string => {
+//     validatorFn: (value): false | string => {
 //       if (value.length >= 6) {
-//         return true
+//         return false
 //       }
 
 //       return 'Password needs to be longer than 6 characters'
@@ -266,8 +261,8 @@ export default function useForm<K extends Form>(
 //   },
 //   passwordConfirmation: {
 //     validateOn: 'submit',
-//     validatorFn: (value, values): true | string =>
-//       values.password === value ? true : 'The passwords do not match',
+//     validatorFn: (value, values): false | string =>
+//       values.password === value ? false : 'The passwords do not match',
 //   },
 // }
 
