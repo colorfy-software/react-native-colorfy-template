@@ -4,9 +4,9 @@
  * If need be, any SVG should only use one specific color for fill, another for stroke, etc if needed.
  */
 
-// module.exports = {
-//   replaceAttrValues: {
-//     '#121212': '{props.fill}',
-//     '#fefefe': '{props.stroke}',
-//   },
-// }
+module.exports = {
+  replaceAttrValues: {
+    '#000': '{props.fill}',
+    '#000': '{props.stroke}',
+  },
+}

@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useRef } from 'react'
-import { StyleSheet, ActivityIndicator } from 'react-native'
+import { StyleSheet, ActivityIndicator, ViewProps } from 'react-native'
 import Animated, { Value } from 'react-native-reanimated'
 
 import { colors } from '../styles/colors'
@@ -9,11 +9,13 @@ interface Props {
   loaderColor?: string
   backgroundColor?: string
   shown: boolean
+  testID?: ViewProps['testID']
 }
 
 const ScreenLoader = ({
   loaderColor,
   backgroundColor,
+  testID,
   shown,
 }: Props): JSX.Element => {
   const color = loaderColor || 'white'
@@ -36,6 +38,7 @@ const ScreenLoader = ({
 
   return (
     <AnimatedWrapper
+      testID={testID}
       pointerEvents={shown ? 'auto' : 'none'}
       animatedValue={transition}
       type="animatedChange"

@@ -1,0 +1,9 @@
+{
+    "general": {
+        "activity": "Aktivität",
+        "home": "Home",
+        "profile": "Profil",
+        "tips": "Tips",
+        "logout": "Abmelden"
+    }
+}

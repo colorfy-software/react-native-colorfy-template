@@ -29,6 +29,7 @@ build/
 .gradle
 local.properties
 *.iml
+*.hprof
 
 # Visual Studio Code
 #
@@ -43,7 +44,6 @@ yarn-error.log
 # BUCK
 buck-out/
 \.buckd/
-*.keystore
 !debug.keystore
 
 # fastlane
@@ -65,5 +65,9 @@ buck-out/
 
 
 # Yarn
-
 yarn.lock
+
+# Tests
+__tests__/*.ok
+/ios/build/
+.bbrun.sh

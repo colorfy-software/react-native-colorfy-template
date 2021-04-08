@@ -1,5 +1,5 @@
 import CONFIG from '../config/app-config'
-import { LoginRequestType } from '../types/request-types'
+import { LoginRequestType } from '../types/requests-types'
 
 export const login = async (
   params: LoginRequestType['params'],

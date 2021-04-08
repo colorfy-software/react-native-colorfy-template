@@ -1,14 +1,19 @@
 import React, { memo, useRef, useEffect } from 'react'
-import { StyleProp, ViewStyle, LayoutChangeEvent } from 'react-native'
+import {
+  StyleProp,
+  ViewProps,
+  ViewStyle,
+  LayoutChangeEvent,
+} from 'react-native'
 import Animated, {
   Value,
   Node,
   interpolate,
   Extrapolate,
 } from 'react-native-reanimated'
-
-import size from '../styles/size'
 import { useSpringTransition } from 'react-native-redash'
+
+import { screen } from '../styles/style-guide'
 
 /**
  * Used to define the stagger time of each element when using animation type "mount"
@@ -36,11 +41,11 @@ interface Props {
   staggerIndex?: number
   style?: StyleProp<Animated.AnimateStyle<ViewStyle>>
   initialDelay?: number
-  pointerEvents?: 'box-none' | 'none' | 'box-only' | 'auto' | undefined
+  pointerEvents?: ViewProps['pointerEvents']
   onLayout?:
-    | ((event: LayoutChangeEvent) => void)
     | Animated.Node<((event: LayoutChangeEvent) => void) | undefined>
-    | undefined
+    | ViewProps['onLayout']
+  testID?: ViewProps['testID']
 }
 
 function createPaddingForValue(
@@ -81,12 +86,12 @@ function createYValue(
     case 'fadeInUp':
       return interpolate(animatedValue, {
         inputRange: createInputRange(type, staggerIndex),
-        outputRange: [size.verticalScale(100), 0, -size.verticalScale(100)],
+        outputRange: [screen.verticalScale(100), 0, -screen.verticalScale(100)],
       })
     case 'fadeInDown':
       return interpolate(animatedValue, {
         inputRange: createInputRange(type, staggerIndex),
-        outputRange: [-size.verticalScale(50), 0, size.verticalScale(50)],
+        outputRange: [-screen.verticalScale(50), 0, screen.verticalScale(50)],
       })
 
     default:
@@ -167,6 +172,7 @@ const AnimateComponent = ({
   style = {},
   initialDelay = 0,
   onLayout,
+  testID,
 }: Props): JSX.Element => {
   const mountAnimatedValue = useRef(new Value(0)).current
   const stateAnimatedValue = useSpringTransition(stateValue, {
@@ -220,6 +226,7 @@ const AnimateComponent = ({
 
   return (
     <Animated.View
+      testID={testID}
       style={[
         style,
         { opacity, transform: [{ translateY }, { translateX }, { scale }] },

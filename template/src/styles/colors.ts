@@ -19,9 +19,25 @@ const hexToRGB = (hex: string): RGBType | null => {
 
 export const colors = {
   /**
-   * @constant '#333ddd'
+   *  Main BLACK color
+   *  @constant '#121212'
    */
-  PRIMARY: '#333ddd',
+  PRIMARY: '#121212',
+  /**
+   * Main RED color
+   * @constant '#e20e17'
+   */
+  SECONDARY: '#e20e17',
+  /**
+   * Default WHITE background color
+   * @constant '#fafafa'
+   */
+  BACKGROUND: '#fafafa',
+  /**
+   * Default GREY icon color
+   * @constant '#d8d8d8'
+   */
+  ICON: '#d8d8d8',
 
   /**
    * Transforms hex with alpha to rgba

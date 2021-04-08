@@ -1,4 +1,4 @@
-import { RequestTypes } from '../types/request-types'
+import { RequestTypes } from '../types/requests-types'
 import requests from './requests'
 
 export default function <K extends keyof RequestTypes>(

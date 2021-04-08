@@ -4,6 +4,8 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
+#import "RNSplashScreen.h"
+
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -43,6 +45,23 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  // Sets background color as #121212 during Metro compilation
+//  UIView* launchScreenView = [[UIView alloc] initWithFrame:CGRectMake(0,0,[[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height)];
+//  launchScreenView.backgroundColor = [[UIColor alloc]initWithRed:0.07 green:0.07 blue:0.07 alpha:1];
+//  rootView.loadingView = launchScreenView;
+
+  // Displays logs in Release mode
+  // RCTSetLogThreshold(RCTLogLevelInfo - 1);
+  
+  // Forces date picker UI for iOS 14
+  if (@available(iOS 14, *)) {
+    UIDatePicker *picker = [UIDatePicker appearance];
+    picker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+  }
+  
+  [RNSplashScreen show];
+  
   return YES;
 }
 

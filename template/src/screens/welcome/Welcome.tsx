@@ -1,93 +1,56 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { Button, StyleSheet, View } from 'react-native'
-import shallow from 'zustand/shallow'
-
-import AppText from '../../components/AppText'
-import Icon from '../../components/Icon/Icon'
+import React from 'react'
+import { Button, Image, StyleSheet, Text, View } from 'react-native'
 
 import core from '../../core/core'
-import useRehydrate from '../../hooks/use-rehydrate'
-import userStore from '../../store/stores/user-store'
-import themeStore from '../../store/stores/theme-store'
-import AnimatedWrapper from '../../components/AnimatedWrapper'
+import { colors, screen } from '../../styles/style-guide'
 
 const Welcome = (): JSX.Element => {
-  const isRehydrated = useRehydrate()
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null)
-  const firstName = userStore(({ data }) => data.firstName)
-  const [backgroundColor, color] = themeStore(
-    ({ data }) => [data.background, data.text],
-    shallow,
-  )
-
-  useEffect(() => {
-    if (isRehydrated) {
-      setIsLoggedIn(core.user.isUserLoggedIn())
-    }
-  }, [isRehydrated])
-
-  /**
-   * Based on whether `isLoggedIn` is true or not, we
-   * either log the user in or log the user out
-   */
-  const onAuthPress = useCallback(async () => {
-    //  If user is already logged in we log them out
-    if (isLoggedIn) {
-      core.user.logout()
-      setIsLoggedIn(false)
-      return
-    }
-
-    // If user isn't logged in, we try to perform login request
-    try {
-      await core.user.login({
-        email: 'hello@world.com',
-        password: 'super_secure_1234',
-      })
-
-      setIsLoggedIn(true)
-    } catch (error) {
-      console.log('ERROR logging in: ', error)
-    }
-  }, [isLoggedIn])
+  const onLoginPress = (): void => {
+    core.user.update({ id: '42', firstName: 'Tim', lastName: 'Apple' })
+    core.app.update({ navigationState: 'app' })
+  }
 
   return (
-    <View style={[styles.container, { backgroundColor }]}>
-      <AnimatedWrapper>
-        <Icon name={isLoggedIn ? 'moon' : 'sun'} size={50} fill="gold" />
-      </AnimatedWrapper>
-
-      <AnimatedWrapper staggerIndex={1}>
-        <AppText type="title" color={color} style={styles.title}>
-          Hi
-        </AppText>
-      </AnimatedWrapper>
-
-      <AnimatedWrapper staggerIndex={2}>
-        <AppText type="subtitle" color={color}>
-          {isLoggedIn ? `Good to see you back, ${firstName}!` : ''}
-        </AppText>
-      </AnimatedWrapper>
-
-      <AnimatedWrapper staggerIndex={3}>
-        <Button
-          title={isLoggedIn ? 'Log out' : 'Log in'}
-          color={color}
-          onPress={onAuthPress}
+    <View testID="Login" style={styles.container}>
+      <View style={styles.header}>
+        <Image
+          testID="Login.Logo"
+          style={styles.logo}
+          source={require('../../assets/logo.png')}
+          fadeDuration={0}
         />
-      </AnimatedWrapper>
+        <Text style={styles.text}>App Starter</Text>
+      </View>
+      <Button
+        testID="Login.Button"
+        title="Log in"
+        color={colors.SECONDARY}
+        onPress={onLoginPress}
+      />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: screen.vw(100),
+    height: screen.vh(100),
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  header: {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    fontSize: 72,
+  logo: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 20,
+  },
+  text: {
+    fontSize: 22,
+    fontWeight: '900',
   },
 })
 

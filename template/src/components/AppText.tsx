@@ -5,32 +5,33 @@ import {
   StyleSheet,
   StyleProp,
   TextStyle,
+  TextProps,
   GestureResponderEvent,
 } from 'react-native'
 
-import size from '../styles/size'
+import { screen } from '../styles/style-guide'
 
 const TEXT_STYLES = StyleSheet.create({
   title: {
     // fontFamily: 'Roboto',
-    fontSize: size.horizontalScale(32),
+    fontSize: screen.horizontalScale(32),
   },
   heading: {
     // fontFamily: 'Roboto',
-    fontSize: size.horizontalScale(24),
+    fontSize: screen.horizontalScale(24),
   },
   subtitle: {
     // fontFamily: 'Roboto-Medium',
-    fontSize: size.horizontalScale(18),
+    fontSize: screen.horizontalScale(18),
   },
   body: {
     // fontFamily: 'Roboto-Light',
-    fontSize: size.horizontalScale(16),
-    lineHeight: size.horizontalScale(16) * 1.38,
+    fontSize: screen.horizontalScale(16),
+    lineHeight: screen.horizontalScale(16) * 1.38,
   },
   label: {
     // fontFamily: 'Roboto',
-    fontSize: size.horizontalScale(13),
+    fontSize: screen.horizontalScale(13),
   },
 })
 
@@ -44,6 +45,7 @@ interface Props {
   ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip' | undefined
   numberOfLines?: number | undefined
   selectable?: boolean | undefined
+  testID?: TextProps['testID']
 }
 
 const AppText = ({
@@ -54,8 +56,9 @@ const AppText = ({
   style,
   numberOfLines,
   ellipsizeMode,
-  onPress,
   selectable = true,
+  onPress,
+  testID,
 }: Props): JSX.Element => {
   const predefinedStyles = (type && TEXT_STYLES[type]) || {}
   const passedStyles = style || {}
@@ -87,6 +90,7 @@ const AppText = ({
 
   return (
     <NativeText
+      testID={testID}
       selectable={selectable}
       numberOfLines={numberOfLines || undefined}
       ellipsizeMode={ellipsizeMode || undefined}

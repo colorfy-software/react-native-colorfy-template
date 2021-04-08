@@ -1,10 +1,12 @@
+import { useState } from 'react'
+
 // useForm LIBRARY TYPES
 
 type Form = { [key: string]: string }
 
 interface ValidationType<K> {
-  validatorFn: (value: string, values: K) => true | string
-  validateOn: 'submit' | 'update'
+  validatorFn: ((value: string, values: K) => true | string) | true | string
+  // validateOn: 'submit' | 'update'
 }
 
 export type FormValidatorType<T> = { [key in keyof T]: ValidationType<T> }
@@ -13,6 +15,96 @@ export type FormValidatorType<T> = { [key in keyof T]: ValidationType<T> }
 
 function isString(value: unknown): boolean {
   return typeof value === 'string'
+}
+
+function isObject(value: unknown): boolean {
+  return typeof value === 'object' && value !== null
+}
+
+function isFunction(value: unknown): boolean {
+  return !!(value && {}.toString.call(value) === '[object Function]')
+}
+
+function isBoolean(value: unknown): boolean {
+  return typeof value === 'boolean'
+}
+
+function hasValidParamDataStructure<K>(
+  formSchema: K,
+  formValidation: { [key: string]: ValidationType<K> },
+  onSubmitForm: (values: K) => void | Promise<void>,
+): void {
+  // TEST formSchema
+
+  if (!formSchema) {
+    throw new Error('useForm() expected formSchema to be present')
+  }
+
+  if (!isObject(formSchema)) {
+    throw new Error(
+      `useForm() expected formSchema to be an object, but received ${typeof formSchema}`,
+    )
+  }
+
+  if (isObject(formSchema)) {
+    const formSchemaValues = Object.values(formSchema)
+    const formSchemaKeys = Object.keys(formSchema)
+
+    formSchemaValues.forEach((value, index) => {
+      if (!isString(value)) {
+        const key = formSchemaKeys[index]
+
+        throw new Error(
+          `useForm() expected type string for key: ${key}, but got ${typeof value}. All values need to be of type string`,
+        )
+      }
+    })
+  }
+
+  // TEST formValidation
+
+  if (!formValidation) {
+    throw new Error('useForm() expected formValidation to be present')
+  }
+
+  if (!isObject(formValidation)) {
+    throw new Error(
+      `useForm() expected formValidation to be an object, but received ${typeof formValidation}`,
+    )
+  }
+
+  if (isObject(formValidation)) {
+    const formValidationValues = Object.values(formValidation)
+    const formValidationKeys = Object.keys(formValidation)
+
+    formValidationValues.forEach((value, index) => {
+      if (!value.validatorFn) {
+        throw new Error(
+          `useForm() expected validatorFn() to be present in validation schema`,
+        )
+      }
+
+      if (!isFunction(value.validatorFn) && !isBoolean(value.validatorFn)) {
+        const key = formValidationKeys[index]
+
+        throw new Error(
+          `useForm() expected validatorFN() of type Function or Boolean for key: ${key}, but got ${typeof value.validatorFn}`,
+        )
+      }
+    })
+  }
+
+  // TEST onSubmitForm
+
+  if (!onSubmitForm) {
+    throw new Error('useForm() expected onSubmitForm to be present')
+  }
+
+  if (!isFunction(onSubmitForm)) {
+    throw new Error(
+      `useForm() expected onSubmitForm to be a Function, but received ${typeof onSubmitForm}`,
+    )
+  }
 }
 
 // ACTUAL useForm FUNCTION
@@ -53,40 +145,64 @@ export default function useForm<K extends Form>(
   onSubmitForm: (values: K) => void | Promise<void>,
 ): {
   onHandleChange: (stateKey: keyof K, value: string) => void
-  onHandleSubmit: (state: K) => void
+  onHandleSubmit: () => void
   clearState: () => void
   state: K
   errors: { [key in keyof K]: true | string }
 } {
-  let state = formSchema
-  let errors: { [key in keyof K]: true | string } = formSchema
+  // Validate incoming data
+  hasValidParamDataStructure(formSchema, formValidation, onSubmitForm)
+
+  const [state, setState] = useState<K>(formSchema)
+  const [errors, setErrors] = useState<{ [key in keyof K]: true | string }>(
+    (function (): { [key in keyof K]: true | string } {
+      let errs = formSchema
+
+      for (const [key] of Object.entries(formSchema)) {
+        errs = { ...errs, [key]: true }
+      }
+
+      return errs
+    })(),
+  )
 
   const onHandleChange = (stateKey: keyof K, value: string): void => {
-    state = Object.assign(state, { [stateKey]: value })
+    setState((s) => ({
+      ...s,
+      [stateKey]: value,
+    }))
   }
 
-  const onHandleSubmit = (newState: K): void => {
-    const valueKeys = Object.keys(newState)
+  const onHandleSubmit = (): void => {
+    const valueKeys = Object.keys(state)
     const validator = formValidation
 
     const errorsArray = valueKeys.map((key) => {
       const validationForKey = validator[key]
       const validationFunction = validationForKey.validatorFn
-      const validateOn = validationForKey.validateOn
-      const value = newState[key]
+      const value = state[key]
 
-      let errorForKey: boolean | string = ''
+      let errorForKey: boolean | string = true
 
-      if (validateOn === 'submit') {
-        if (
-          isString(validationFunction(value, newState)) &&
-          !isString(errorForKey)
-        ) {
-          errorForKey = validationFunction(value, newState)
-        }
+      if (
+        isFunction(validationFunction) &&
+        isString(
+          typeof validationFunction === 'function' &&
+            validationFunction(value, state),
+        )
+      ) {
+        errorForKey =
+          typeof validationFunction === 'function'
+            ? validationFunction(value, state)
+            : errorForKey
+      } else if (
+        !isFunction(validationFunction) &&
+        (isBoolean(validationFunction) || isString(validationFunction))
+      ) {
+        setErrors((err) => Object.assign(err, { [key]: validationFunction }))
       }
 
-      errors = Object.assign(errors, { [key]: errorForKey })
+      setErrors((err) => Object.assign(err, { [key]: errorForKey }))
 
       return errorForKey
     })
@@ -95,14 +211,14 @@ export default function useForm<K extends Form>(
       (error) => error && typeof error === 'string' && error.length > 0,
     )
 
-    if (hasErrors && hasErrors.length === 0) {
+    if (hasErrors && hasErrors.length === 0 && state) {
       // send submit callback
       onSubmitForm(state)
     }
   }
 
   const clearState = (): void => {
-    state = formSchema
+    setState(formSchema)
   }
 
   return {

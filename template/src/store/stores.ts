@@ -4,12 +4,13 @@ import produce from 'immer'
 import persist from './middlewares/persist-middleware'
 import logger from './middlewares/logger-middleware'
 
+import appStore from './stores/app-store'
 import userStore from './stores/user-store'
-import themeStore from './stores/theme-store'
+import devicesStore from './stores/devices-store'
 
 import { StoreType, StoresDataType, StoresNameType } from '../types/store-types'
 
-// NOTE: Toggle store logging here (done based on Remote JS Debugging)
+// NOTE: Toggle store logging here (done based on Remote JS Debugging state)
 global.enableStoreLogging = global.__REMOTEDEV__
 
 interface CreateStoreOptions {
@@ -66,20 +67,35 @@ export function createStore<N extends StoresNameType>(
 
 // NOTE: We add all the stores we want to persist/reset here
 
+// APP
+// FIXME: For some odd reason Jest refused to acknowledge that appStore is not undefined here 🧐
+const resetApp = appStore?.getState().reset
+const rehydrateApp = appStore?.getState().rehydrate
+
+// DEVICES
+const resetDevices = devicesStore.getState().reset
+const rehydrateDevices = devicesStore.getState().rehydrate
+
 // USER
 const resetUser = userStore.getState().reset
 const rehydrateUser = userStore.getState().rehydrate
 
-// THEME
-const resetTheme = themeStore.getState().reset
-const rehydrateTheme = themeStore.getState().rehydrate
+export const storesToReset: (keyof StoresDataType)[] = [
+  'app',
+  'devices',
+  'user',
+]
 
-export function resetStores(): void {
+export function resetStores(): (keyof StoresDataType)[] {
+  resetApp?.()
+  resetDevices()
   resetUser()
-  resetTheme()
+  // NOTE: We return this array to help test from Jest that the proper stores were reset
+  return storesToReset
 }
 
 export default {
+  app: { rehydrate: rehydrateApp },
+  devices: { rehydrate: rehydrateDevices },
   user: { rehydrate: rehydrateUser },
-  theme: { rehydrate: rehydrateTheme },
 }

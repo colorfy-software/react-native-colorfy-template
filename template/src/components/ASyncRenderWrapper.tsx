@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo, Fragment } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, ViewProps, StyleSheet } from 'react-native'
 
 import ScreenLoader from './ScreenLoader'
 
@@ -9,6 +9,7 @@ interface Props {
   showContent?: boolean
   backgroundColor?: string
   loaderColor?: string
+  testID?: ViewProps['testID']
 }
 
 const WaitForThread = ({
@@ -17,6 +18,7 @@ const WaitForThread = ({
   backgroundColor,
   loaderColor,
   showContent,
+  testID,
 }: Props): JSX.Element => {
   const [interactionsDone, setInteractionsDone] = useState(false)
 
@@ -40,6 +42,7 @@ const WaitForThread = ({
       )}
       {loader || (
         <ScreenLoader
+          testID={testID}
           shown={
             (typeof showContent !== 'undefined' && !showContent) ||
             (typeof showContent === 'undefined' && !interactionsDone)

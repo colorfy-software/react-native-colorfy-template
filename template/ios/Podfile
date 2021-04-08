@@ -3,23 +3,24 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'appStarter' do
+def shared_pods
   config = use_native_modules!
-
   use_react_native!(:path => config["reactNativePath"])
-
-  target 'appStarterTests' do
-    inherit! :complete
-    # Pods for testing
-  end
 
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable these next few lines.
   use_flipper!
-  post_install do |installer|
-    flipper_post_install(installer)
+end
+
+
+target 'appStarter' do
+  shared_pods
+  
+  target 'appStarterTests' do
+    inherit! :complete
+    # Pods for testing
   end
 end
 
@@ -29,5 +30,24 @@ target 'appStarter-tvOS' do
   target 'appStarter-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
+  end
+end
+
+target 'STAGING' do
+  shared_pods
+  inherit! :search_paths
+end
+
+target 'PROD' do
+  shared_pods
+  inherit! :search_paths
+end
+
+post_install do |installer|
+  flipper_post_install(installer)
+
+  # Retrieved from: https://stackoverflow.com/a/63955114
+  installer.pods_project.build_configurations.each do |config|
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
   end
 end

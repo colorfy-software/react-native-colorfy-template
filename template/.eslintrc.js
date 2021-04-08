@@ -13,8 +13,26 @@ module.exports = {
     'eslint-config-prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'detox'],
+  overrides: [
+    {
+      files: ['*.e2e.js'],
+      env: {
+        'detox/detox': true,
+        jest: true,
+        'jest/globals': true,
+      },
+    },
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+      },
+    },
+  ],
   rules: {
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'error',
     'react/jsx-filename-extension': [
       2,
       {
@@ -108,6 +126,7 @@ module.exports = {
       {
         html: 'enforce',
         custom: 'enforce',
+        explicitSpread: 'ignore',
       },
     ],
     'react/jsx-sort-props': [
@@ -135,7 +154,7 @@ module.exports = {
     'react/no-did-mount-set-state': 2,
     'react/no-direct-mutation-state': 2,
     'react/no-did-update-set-state': 2,
-    'react/no-multi-comp': 2,
+    'react/no-multi-comp': 0,
     'react/no-redundant-should-component-update': 2,
     'react/no-unescaped-entities': 1,
     'react/no-unsafe': 0,
@@ -146,19 +165,12 @@ module.exports = {
     'react-native/no-unused-styles': 2,
     'react-native/no-inline-styles': 2,
     'react-native/no-raw-text': 0,
-    '@typescript-eslint/no-use-before-define': 0,
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/ban-ts-ignore': 0,
     'no-extend-native': 0,
     'no-tabs': 0,
     'no-nested-ternary': 0,
     'no-async-promise-executor': 0,
   },
-  overrides: [
-    {
-      files: ['*.js'],
-      rules: {
-        '@typescript-eslint/explicit-function-return-type': 'off',
-      },
-    },
-  ],
 }

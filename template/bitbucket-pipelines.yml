@@ -1,29 +1,89 @@
 image: node:latest
 
-pipelines:
-  default:
-    - step:
+definitions: &default_steps
+  steps:
+    - step: &clear-cache
+        name: 'Resetting cache'
+        script:
+          - pipe: atlassian/bitbucket-clear-cache:3.1.1
+            variables:
+              BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+              BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+    - step: &install
         name: 'Installing Dependencies'
         caches:
           - node
         script:
           - yarn --ignore-engines install
+    - step: &linter
+        name: 'Running Linter'
+        caches:
+          - node
+        script:
+          - yarn run lint
+          - cd __tests__ && touch lint.ok
+        artifacts:
+          - __tests__/**
+    - step: &ts
+        name: 'Running Type Checker'
+        caches:
+          - node
+        script:
+          - yarn run ts
+          - cd __tests__ && touch ts.ok
+        artifacts:
+          - __tests__/**
+    - step: &unit
+        name: 'Running Unit Tests'
+        caches:
+          - node
+        script:
+          - yarn run unit
+          - cd __tests__ && touch unit.ok
+        artifacts:
+          - __tests__/**
+
+pipelines:
+  default:
+    - step: *clear-cache
+    - step: *install
     - parallel:
-        - step:
-            name: 'Running Linter'
-            caches:
-              - node
-            script:
-              - yarn run lint
-        - step:
-            name: 'Running Type Checker'
-            caches:
-              - node
-            script:
-              - yarn run ts
-        - step:
-            name: 'Running Unit Tests'
-            caches:
-              - node
-            script:
-              - yarn run unit
+        - step: *linter
+        - step: *ts
+        - step: *unit
+  branches:
+    master:
+      - step: *clear-cache
+      - step:
+          name: 'Resetting Badge'
+          script:
+            - scripts/create-pipeline-badge.sh 'reset'
+          artifacts:
+            - __tests__/**
+      - step:
+          name: 'Uploading Badge'
+          script:
+            - pipe: atlassian/bitbucket-upload-file:0.1.2
+              variables:
+                BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+                BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+                FILENAME: '__tests__/status.svg'
+      - step: *install
+      - parallel:
+          - step: *linter
+          - step: *ts
+          - step: *unit
+      - step:
+          name: 'Creating Badge'
+          script:
+            - scripts/create-pipeline-badge.sh
+          artifacts:
+            - __tests__/**
+      - step:
+          name: 'Uploading Badge'
+          script:
+            - pipe: atlassian/bitbucket-upload-file:0.1.2
+              variables:
+                BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+                BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+                FILENAME: '__tests__/status.svg'

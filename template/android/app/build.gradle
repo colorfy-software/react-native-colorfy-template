@@ -120,6 +120,26 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+/**
+ * We have to do this manually until AppCenter supports incrementing the
+ * version code automatically. Snippet retrieved from:
+ * https://github.com/microsoft/appcenter/issues/21#issuecomment-577482761.
+ */
+def getVersionCode = { ->
+  def isAppCenter = System.getenv('APPCENTER_BUILD_ID') != null;
+
+  if (isAppCenter) {
+    try {
+      def appCenterBuildId = Integer.parseInt(System.getenv('APPCENTER_BUILD_ID'))
+      return appCenterBuildId
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  return 1 // Update your version code here if you don't use AppCenter
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -128,12 +148,16 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    flavorDimensions "default"
+
     defaultConfig {
         applicationId "com.appstarter"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode getVersionCode()
         versionName "1.0"
+        testBuildType System.getProperty('testBuildType', 'debug')
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     splits {
         abi {
@@ -141,6 +165,17 @@ android {
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+        }
+    }
+    productFlavors {
+        staging {
+            applicationId "com.appstarter.staging"
+            resValue "string", "app_name", "Starter Staging"
+        }
+
+        prod {
+            applicationId "com.appstarter.prod"
+            resValue "string", "app_name", "App Starter"
         }
     }
     signingConfigs {
@@ -163,6 +198,12 @@ android {
                 keyPassword 'android'
             }
         }
+        unsigned {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
     }
     buildTypes {
         debug {
@@ -171,7 +212,16 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
+            matchingFallbacks = ['release', 'debug']
             signingConfig signingConfigs.release
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+        unsigned {
+            // Caution! In production, you need to generate your own keystore file.
+            // see https://reactnative.dev/docs/signed-apk-android.
+            matchingFallbacks = ['release', 'debug']
+            signingConfig signingConfigs.unsigned
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -199,6 +249,8 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+    androidTestImplementation('com.wix:detox:+')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'

@@ -1,49 +1,37 @@
-import api from '../api/api'
-
 import { resetStores } from '../store/stores'
 import userStore from '../store/stores/user-store'
-import themeStore from '../store/stores/theme-store'
 
-import { LoginRequestType } from '../types/request-types'
+import { UserType, StoresDataType } from '../types/store-types'
+
+import core from './core'
 
 const updateUser = userStore.getState().update
-const updateTheme = themeStore.getState().update
 
+// NOTE: Make sure to always write tests for every new method you add
 class User {
   /**
-   * Handles login request to backend using API middleware
+   * Updates the user store
    *
-   * @see `src/api/api.ts`
+   * @param data - Object to update the user store with
    */
-  login = async (params: LoginRequestType['params']): Promise<void> => {
-    try {
-      const data = await api('login', params)
-      updateUser((user) => {
-        user.data = data
-      })
-
-      // NOTE: Just used as an example
-      updateTheme((theme) => {
-        theme.data = {
-          background: 'rebeccapurple',
-          text: 'white',
-        }
-      })
-    } catch (error) {
-      console.log('❌ core.login', error)
-    }
+  update = (data: Partial<UserType>): void => {
+    const currentData = userStore.getState().data
+    updateUser((user) => {
+      user.data = { ...currentData, ...data }
+    })
   }
 
   /**
    * Returns if user is logged in. Uses ID from user store to determine logged in state
    */
-  isUserLoggedIn = (): boolean => Boolean(userStore.getState().data.id)
+  isLoggedIn = (): boolean => Boolean(userStore.getState().data.id)
 
   /**
    * Reset stores when logging out
    */
-  logout = (): void => {
-    resetStores()
+  logout = (): (keyof StoresDataType)[] => {
+    core.app.update({ navigationState: 'auth' })
+    return resetStores()
   }
 }
 

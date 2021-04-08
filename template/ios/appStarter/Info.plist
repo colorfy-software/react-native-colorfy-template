@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>appStarter</string>
+	<string>Starter Dev</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -39,6 +39,17 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Gotham-Bold.otf</string>
+		<string>Gotham-BoldItalic.otf</string>
+		<string>Gotham-Book.otf</string>
+		<string>Gotham-BookItalic.otf</string>
+		<string>Gotham-Light.otf</string>
+		<string>Gotham-LightItalic.otf</string>
+		<string>Gotham-Medium.otf</string>
+		<string>Gotham-MediumItalic.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

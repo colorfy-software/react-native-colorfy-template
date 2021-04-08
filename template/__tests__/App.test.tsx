@@ -6,7 +6,7 @@ import App from '../App'
 describe('App:', () => {
   const { toJSON } = render(<App />)
 
-  it('renders correctly', async () => {
+  it('renders correctly', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 })
