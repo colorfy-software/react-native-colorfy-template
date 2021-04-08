@@ -1,5 +1,23 @@
 {
   "name": "react-native-colorfy-template",
+  "description": "Comprehensive template for the React Native apps built at colorfy GmbH",
   "version": "1.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colorfy-software/react-native-colorfy-template.git"
+  },
+  "keywords": [
+    "react-native",
+    "typescript",
+    "template",
+    "boilerplate"
+  ],
+  "authors": [
+    "Charles Mangwa",
+    "Kristjan Vool"
+  ],
+  "bugs": {
+    "url": "https://github.com/colorfy-software/react-native-colorfy-template/issues"
+  },
   "license": "MIT"
 }
