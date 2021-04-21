@@ -12,7 +12,6 @@ colorfy GmbH
 
 ## 🚦 Quick start
 
-For the regular setup, you can simply go for:
 ```sh
 npx react-native init MyApp --template react-native-colorfy-template
 ```
