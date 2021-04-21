@@ -10,6 +10,12 @@ colorfy GmbH
   </a>.</strong>
 </h4>
 
+<p align="center">
+  <a href="https://www.npmjs.org/package/react-native-colorfy-template">
+    <img src="https://badge.fury.io/js/react-native-colorfy-template.svg" alt="Current npm package version." />
+  </a>
+</p>
+
 ## 🚦 Quick start
 
 ```sh
