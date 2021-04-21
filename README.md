@@ -20,7 +20,7 @@ Happy coding!
 
 ## 💫 Features
 
-This template has virtually everything you might need to kick-start a React Native (0.64.0) app already built-in and setup:
+This template has virtually everything you might need to kick-start a React Native (0.64.0) app already built-in and set up:
 
 * [TypeScript](https://www.typescriptlang.org), for type safety
 * [ESLint](https://eslint.org), for code linting 
