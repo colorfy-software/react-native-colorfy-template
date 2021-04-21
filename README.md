@@ -1,13 +1,16 @@
-# 🧰 Colorfy App Template
+<h1 align="center">
+  <a href="https://github.com/colorfy-software/react-native-colorfy-template" target="_blank" rel="noopener noreferrer">
+    🧰 Colorfy App Template
+  </a>
+</h1>
 
-> Comprehensive template for the React Native apps built at [colorfy GmbH](https://colorfy.me).
+<h4 align="center">
+  <strong>Comprehensive template for the React Native apps built at <a href="https://colorfy.me" target="_blank" rel="noopener noreferrer">
+colorfy GmbH
+  </a>.</strong>
+</h4>
 
 ## 🚦 Quick start
-
-If you are using AppCenter for continuous deployment:
-```sh
-npx react-native init MyApp --template react-native-colorfy-template@appcenter
-```
 
 For the regular setup, you can simply go for:
 ```sh
@@ -26,20 +29,18 @@ This template has virtually everything you might need to kick-start a React Nati
 * [Jest](https://jestjs.io) + [Testing Library](https://testing-library.com), for unit testing
 * [Detox](https://github.com/wix/Detox), for end-to-end testing
 * [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines), for continuous integration
-* [AppCenter](https://appcenter.ms), for continuous deployment
+* [Bitrise](https://www.bitrise.io) or [AppCenter](https://appcenter.ms), for continuous deployment
 * [React Navigation](https://reactnavigation.org) v5, for screen navigation
 * [React Native SVG](https://github.com/react-native-svg/react-native-svg), for rendering `.svg` files directly
 * [Modalfy](https://colorfy-software.gitbook.io/react-native-modalfy), for handling custom modals
-* [Splash Screen](https://github.com/crazycodeboy/react-native-splash-screen), for a nice cross-platform way of dealing with splash screens 
-* [Reanimated](https://docs.swmansion.com/react-native-reanimated) + [Gesture
-  Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/), for performant native
-  driven (- gesture) animations
+* [Splash Screen](https://github.com/crazycodeboy/react-native-splash-screen) & [Make](https://github.com/bamlab/react-native-make), for a nice cross-platform way of dealing with splash screens & app icons
+* [Reanimated](https://docs.swmansion.com/react-native-reanimated) + [Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/), for performant native driven (- gesture) animations
 * [Redash](https://wcandillon.gitbook.io/redash/), toolset for Reanimated & Gesture Handler
 * [Localize](https://github.com/zoontek/react-native-localize), for strings localization in JavaScript
 * [date-fns](https://date-fns.org), for date manipulation
 * [Device Info](https://github.com/react-native-device-info/react-native-device-info), for native device info
-* [zustand](https://github.com/pmndrs/zustand) + [AsyncStorage](https://github.com/react-native-async-storage/async-storage), for state management & data persistence
-* [Encrypted Storage](https://github.com/emeraldsanto/react-native-encrypted-storage), for sensitive data persistence in Android's EncryptedSharedPreferences and iOS' Keychain.
+* [zustand](https://github.com/pmndrs/zustand), [z-fy](https://colorfy-software.gitbook.io/z-fy) & [AsyncStorage](https://github.com/react-native-async-storage/async-storage), for state management & data persistence
+* [Encrypted Storage](https://github.com/emeraldsanto/react-native-encrypted-storage), for sensitive data persistence in Android's EncryptedSharedPreferences and iOS' Keychain
 * [Pre-commit](https://github.com/observing/pre-commit), for running the test suite before each commit
 * Support for Staging & Prod Android flavours/iOS targets out of the box
 * A bunch of useful commands listed down below
@@ -57,10 +58,10 @@ This template has virtually everything you might need to kick-start a React Nati
   ├── scripts // Various useful scripts accessible via the commands in package.json
   │   ├── build-unsigned-ipa.sh // Builds an unsigned IPA of any iOS target
   │   ├── create-pipeline-badge.sh // Creates status SVG badge for the Bitbucket Pipelines to use
-  │   ├── run-detox-ci.sh // Runs Detox in AppCenter (if @appcenter tag was used to setup project)
+  │   ├── generate-signed-android-keystore.sh // Generates a keystore file to sign Android APKs
   │   ├── postinstall.sh // Runs after each modification to the project dependencies list to run Jetifier and update Pods
-  │   ├── sign-android.sh // Generates a keystore file to sign Android APKs
-  │   └── silence-recycled-files-warning.js // Silence some annoying warning to pollute the console
+  │   ├── run-detox-ci.sh // Runs Detox in AppCenter (if @appcenter tag was used to setup project)
+  │   └── silence-recycled-files-warning.js // Silence some annoying warning that pollute the console
   ├── src // App root folder
   │   ├── api // Contains all the API requests
   │   │   ├── api.ts
@@ -142,7 +143,7 @@ This template has virtually everything you might need to kick-start a React Nati
 ## 💻 Contributions
 
 This template is a very opinionated approach to React Native apps that the team uses at colorfy.
-Therefore, we won't consider requests that do not align with our goals & vision. However, feel free to voice your opinions if need be: our position might change!
+Therefore, we won't necessarily consider requests that do not align with our goals & vision. However, feel free to voice your opinions if need be: our position might change!
 
 You can also consider doing so [_from the inside_](https://colorfy.me/jobs/) 👀…
 

@@ -15,9 +15,7 @@ export const CONFIG = {
    */
   IS_STAGING: (): boolean => {
     const bundleId = DeviceInfo.getBundleId()
-    if (bundleId === 'com.appstarter.staging' || bundleId === 'org.reactjs.native.example.STAGING') {
-      return true
-    }
+    if (bundleId === 'com.appstarter.staging') return true
     return false
   },
   /**
@@ -25,9 +23,7 @@ export const CONFIG = {
    */
   IS_PROD: (): boolean => {
     const bundleId = DeviceInfo.getBundleId()
-    if (bundleId === 'com.appstarter.prod' || bundleId === 'org.reactjs.native.example.PROD') {
-      return true
-    }
+    if (bundleId === 'com.appstarter.prod') return true
     return false
   },
 }
