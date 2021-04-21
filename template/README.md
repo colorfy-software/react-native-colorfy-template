@@ -26,9 +26,13 @@ Once that's done, you'll have a few files and folder to update after initializin
      `Display name` & `Bundle Identifier`. Repeat the process until `STAGING Debug`, `STAGING Release`, `PROD Debug` &
      `PROD Release` have been updated.
 2. Add the Apple team key to the `ios/exportOptions.plist` at `#L14` for generating unsigned IPAs manually.
-3. To allow Detox to access your iOS builds: open your `.xcworkspace` file with Xcode > File (in the top bar) > Workspace Settings > Derived Data (set it to `Workspace-relative Location`) > `DerivedData` (edit the field to be `build` instead).
+3. To allow Detox to access your iOS builds: open your `.xcworkspace` file with Xcode > File (in macOS top bar) >
+   Workspace Settings > Derived Data (set it to `Workspace-relative Location`) > `DerivedData` > edit the field to be
+   `build` instead.
 4. Create or update your Android Emulator name to `'Pixel2'` to run Detox locally.
-5. To update the splash screen color, modify: `android/res/values/colors.xml` & in Xcode: `LaunchScreen.storyboard > View Controller Scene > View Controller > View : Background` in the Attributes inspector (5th icon in the right panel)
+5. To update the splash screen color, modify: 
+   * Android: `android/res/values/colors.xml`
+   * iOS: inside Xcode, `LaunchScreen.storyboard > View Controller Scene > View Controller > View : Background` in the Attributes inspector (5th icon in the right panel)
 6. For [Bitrise](https://www.bitrise.io)/[AppCenter](https://appcenter.ms) (CD) to work correctly, you need to create all the Android & iOS store apps and manually publish build `1` (only!). 
    
     If you're working at colorfy, following the [CI/CD setup guide](https://colorfy.atlassian.net/wiki/spaces/COLORFY/pages/2572484609/Build+Automation) would get you up and running in no time!
@@ -194,6 +198,6 @@ Deletes the iOS build folder (equates to deleting the usual `~/Library/Developer
 
 ### `yarn set-app-icon {SOURCE_FILE_PATH}`
 
-Updates the app icon for both iOS and Android apps using [react-native-make](https://github.com/bamlab/react-native-make/blob/master/docs/set-icon.md). Only needs a 1024 x 1024 source file.
+Updates the app icon for both iOS and Android apps using [react-native-make](https://github.com/bamlab/react-native-make/blob/master/docs/set-icon.md). Only needs a 1024 x 1024 non-transparent source file.
 
 Eg: `yarn set-app-icon /Users/charles/Desktop/new_icon_1024.png`.

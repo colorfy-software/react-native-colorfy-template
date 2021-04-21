@@ -306,7 +306,7 @@ An exhaustive list of all the commands available in `package.json` and their use
 
   ### `yarn set-app-icon {SOURCE_FILE_PATH}`
 
-  Updates the app icon for both iOS and Android apps using [react-native-make](https://github.com/bamlab/react-native-make/blob/master/docs/set-icon.md). Only needs a 1024 x 1024 source file.
+  Updates the app icon for both iOS and Android apps using [react-native-make](https://github.com/bamlab/react-native-make/blob/master/docs/set-icon.md). Only needs a 1024 x 1024 non-transparent source file.
   
   Eg: `yarn set-app-icon /Users/charles/Desktop/new_icon_1024.png`.
 </details>
