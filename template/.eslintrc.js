@@ -164,5 +164,6 @@ module.exports = {
     'no-tabs': 0,
     'no-nested-ternary': 0,
     'no-async-promise-executor': 0,
+    'object-shorthand': ['error', 'always'],
   },
 }
