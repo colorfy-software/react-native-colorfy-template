@@ -5,14 +5,12 @@
 </h1>
 
 <h4 align="center">
-  <strong>Comprehensive template for the React Native apps built at <a href="https://colorfy.me" target="_blank" rel="noopener noreferrer">
-colorfy GmbH
-  </a>.</strong>
+  <strong>Comprehensive template for the React Native apps built at <a href="https://colorfy.me" target="_blank" rel="noopener noreferrer">colorfy GmbH</a>.</strong>
 </h4>
 
 <p align="center">
-  <a href="https://www.npmjs.org/package/react-native-colorfy-template">
-    <img src="https://badge.fury.io/js/react-native-colorfy-template.svg" alt="Current npm package version." />
+  <a href="https://www.npmjs.org/package/react-native-colorfy-template" target="_blank" rel="noopener noreferrer">
+    <img src="https://badge.fury.io/js/react-native-colorfy-template.svg" alt="npm version" />
   </a>
 </p>
 
@@ -90,8 +88,7 @@ This template has virtually everything you might need to kick-start a React Nati
   │   │   ├── events-core.ts
   │   │   └── user-core.ts
   │   ├── hooks // Global reusable Hooks
-  │   │   ├── use-form.tsx // One file per Hook
-  │   │   └── use-rehydrate.tsx
+  │   │   └── use-form.tsx // One Hook per file
   │   ├── locales // Setup for the app localization (JS side, not native)
   │   │   ├── de.json
   │   │   ├── en.json
@@ -110,11 +107,9 @@ This template has virtually everything you might need to kick-start a React Nati
   │   │       ├── sections // If screen has sections that are used only within the screen, put them here
   │   │       └── Activity.tsx // Component file for the screen
   │   ├── store // State management with zustand
-  │   │   ├── middlewares // Folder for the store middlewares
-  │   │   │   ├── logger-middleware.ts // Middleware file
-  │   │   │   └── persist-middleware.ts // Middleware file
+  │   │   ├── middlewares // Folder for the custom store middlewares
   │   │   ├── stores
-  │   │   │   ├── app-store.ts // Each store has its file
+  │   │   │   ├── app-store.ts // Each store has its own file
   │   │   │   └── user-store.ts
   │   │   └── stores.ts // Main store file
   │   ├── styles // Global styling variables & device helpers
@@ -145,10 +140,13 @@ This template has virtually everything you might need to kick-start a React Nati
   ```
 </details>
 
-## 💻 Contributions
+## 🤝 Contributing
 
 This template is a very opinionated approach to React Native apps that the team uses at colorfy.
-Therefore, we won't necessarily consider requests that do not align with our goals & vision. However, feel free to voice your opinions if need be: our position might change!
+
+**Therefore, we won't necessarily consider requests that do not align with our goals/vision/use cases for this template.**
+
+However, feel free to voice your opinions if need be: our position might change!
 
 You can also consider doing so [_from the inside_](https://colorfy.me/jobs/) 👀…
 

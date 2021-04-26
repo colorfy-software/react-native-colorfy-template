@@ -12,10 +12,7 @@
     "template",
     "boilerplate"
   ],
-  "authors": [
-    "Charles Mangwa",
-    "Kristjan Vool"
-  ],
+  "author": "Charles Mangwa <charlesmangwa@gmail.com> (https://github.com/CharlesMangwa), Kristjan Vool <kristjanfou@gmail.com> (https://github.com/iremlopsum)",
   "bugs": {
     "url": "https://github.com/colorfy-software/react-native-colorfy-template/issues"
   },

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Platform, StatusBar } from 'react-native'
+import { useRehydrate } from '@colorfy-software/zfy'
 import SplashScreen from 'react-native-splash-screen'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -18,7 +19,6 @@ import { MainStackParamType, MainTabParamType } from '../types/navigation-types'
 import core from '../core/core'
 import sleep from '../utils/sleep'
 import NavigationUtil from '../utils/navigation'
-import useRehydrate from '../hooks/use-rehydrate'
 import appStore from '../store/stores/app-store'
 import userStore from '../store/stores/user-store'
 
@@ -41,10 +41,10 @@ const AppBottomTab = (): JSX.Element => (
 )
 
 export default (): JSX.Element => {
-  const isRehydrated = useRehydrate()
-  const routeNameRef = useRef<string | undefined>()
+  const isRehydrated = useRehydrate({ app: appStore, user: userStore })
   const navigationState = appStore(({ data }) => data.navigationState)
   const hasValidToken = userStore(({ data }) => data.UID)
+  const routeNameRef = useRef<string | undefined>()
 
   useEffect(() => {
     if (isRehydrated) {

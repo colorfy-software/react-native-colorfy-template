@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Animated, Keyboard, LayoutAnimation, Platform, UIManager, View } from 'react-native'
+import { Animated, Keyboard, LayoutAnimation, Platform, View } from 'react-native'
 import { ModalOptions, ModalProvider, ModalStackConfig, createModalStack } from 'react-native-modalfy'
 
 import core from './core/core'
@@ -77,12 +77,6 @@ const App = (): JSX.Element => {
   const keyboardDidHide = useCallback(() => {
     Platform.OS === 'android' && syncWindowHeight(screen.screenHeight)
   }, [syncWindowHeight])
-
-  useEffect(() => {
-    if (Platform.OS === 'android') {
-      UIManager.setLayoutAnimationEnabledExperimental?.(true)
-    }
-  }, [])
 
   useEffect(() => {
     Keyboard.addListener('keyboardWillShow', keyboardWillShow)

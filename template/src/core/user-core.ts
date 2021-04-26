@@ -13,9 +13,8 @@ class User {
    * @param data - Object to update the user store with
    */
   update = (data: Partial<UserType>): void => {
-    const currentData = userStore.getState().data
     updateUser(user => {
-      user.data = { ...currentData, ...data }
+      user.data = { ...user.data, ...data }
     })
   }
 

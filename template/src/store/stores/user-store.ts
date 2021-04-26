@@ -1,9 +1,10 @@
-import { createStore } from '../stores'
-import { UserType } from '../../types/store-types'
+import { createStore } from '@colorfy-software/zfy'
 
-export const initialState = {} as UserType
+import { StoresDataType } from '../../types/store-types'
 
-export default createStore('user', initialState, {
-  logger: true,
-  persist: true,
+export const initialState = {} as StoresDataType['user']
+
+export default createStore<StoresDataType, 'user'>('user', initialState, {
+  log: true,
+  persist: { lazyRehydration: false },
 })
