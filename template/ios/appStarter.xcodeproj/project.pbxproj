@@ -35,6 +35,9 @@
 		561E662B25BAC97000C14D5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		561E662C25BAC97000C14D5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		561E664925BAC9CD00C14D5B /* Prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 561E664825BAC9CD00C14D5B /* Prod-Info.plist */; };
+		56E09BAC26A835BE00CF4ECE /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E09BAB26A835BE00CF4ECE /* Bridge.swift */; };
+		56E09BAD26A835BE00CF4ECE /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E09BAB26A835BE00CF4ECE /* Bridge.swift */; };
+		56E09BAE26A835BE00CF4ECE /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E09BAB26A835BE00CF4ECE /* Bridge.swift */; };
 		5E19091C7058A24F0320F15D /* libPods-PROD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B02F1091C857CFBDCAC8D2 /* libPods-PROD.a */; };
 		6B698D4F4D0D46BE9A7E5514 /* NotoSansSC-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D97F100660FF404CAB5397B4 /* NotoSansSC-Medium.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -86,6 +89,8 @@
 		561E660C25BAC7CB00C14D5B /* Staging-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Staging-Info.plist"; path = "appStarter/Staging-Info.plist"; sourceTree = "<group>"; };
 		561E663A25BAC97000C14D5B /* PROD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PROD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		561E664825BAC9CD00C14D5B /* Prod-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Prod-Info.plist"; path = "appStarter/Prod-Info.plist"; sourceTree = "<group>"; };
+		56E09BA826A835BD00CF4ECE /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		56E09BAB26A835BE00CF4ECE /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = appStarter/Bridge.swift; sourceTree = "<group>"; };
 		5B8B82A0C36F45BE97A8AFD3 /* NotoSansSC-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Regular.otf"; path = "../src/assets/fonts/NotoSansSC-Regular.otf"; sourceTree = "<group>"; };
 		80D5049B300A297582AB9E0C /* libPods-appStarter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appStarter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = appStarter/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -179,6 +184,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				56E09BAB26A835BE00CF4ECE /* Bridge.swift */,
+				56E09BA826A835BD00CF4ECE /* Bridging-Header.h */,
 			);
 			name = appStarter;
 			sourceTree = "<group>";
@@ -399,7 +406,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = LQR64VAQ48;
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1250;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -412,9 +419,11 @@
 					};
 					561E65E825BAC6EB00C14D5B = {
 						DevelopmentTeam = LQR64VAQ48;
+						LastSwiftMigration = 1250;
 					};
 					561E662225BAC97000C14D5B = {
 						DevelopmentTeam = LQR64VAQ48;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -888,6 +897,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				56E09BAC26A835BE00CF4ECE /* Bridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,6 +924,7 @@
 			files = (
 				561E65EC25BAC6EB00C14D5B /* AppDelegate.m in Sources */,
 				561E65ED25BAC6EB00C14D5B /* main.m in Sources */,
+				56E09BAD26A835BE00CF4ECE /* Bridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,6 +934,7 @@
 			files = (
 				561E662625BAC97000C14D5B /* AppDelegate.m in Sources */,
 				561E662725BAC97000C14D5B /* main.m in Sources */,
+				56E09BAE26A835BE00CF4ECE /* Bridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -946,6 +958,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2F7C4A40F189ABF2069BFD06 /* Pods-appStarter-appStarterTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -969,6 +982,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9ACBADE577A92DD9307EF17D /* Pods-appStarter-appStarterTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = appStarterTests/Info.plist;
@@ -1005,6 +1019,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = appStarter;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1030,6 +1045,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = appStarter;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1161,6 +1177,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1186,6 +1203,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1211,6 +1229,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1236,6 +1255,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
