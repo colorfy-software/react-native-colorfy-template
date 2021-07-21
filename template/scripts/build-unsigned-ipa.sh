@@ -37,6 +37,7 @@ elif [[ $# = 1 ]]; then
 elif [[ $# > 2 ]]; then
   echo -e "\n${RED}You provided too many arguments, expected only 2. ie: 'PROD' 42 ${NC} \n"
 else
+  osascript -e 'display alert "💡 Disable Flipper 💡" message "Remember to comment use_flipper!() out of the Podfile and run pod install before building unsigned IPAs!"'
   cd ${ROOT}/ios
 
   SCHEME=${1}
@@ -48,7 +49,7 @@ else
   xcodebuild -workspace ${ROOT}/ios/${APP_NAME}.xcworkspace -scheme "${SCHEME} Release" -sdk iphoneos -configuration AppStoreDistribution archive -archivePath ${IPA_PATH}/"${SCHEME} Release".xcarchive
   xcodebuild -exportArchive -archivePath ${IPA_PATH}/"${SCHEME} Release".xcarchive -exportOptionsPlist ${ROOT}/ios/exportOptions.plist -exportPath ${IPA_PATH}
   
-  echo -e "Your unsigned IPA file is available at: ${BLUE_LINK}${IPA_PATH}${NC}\n"
+  echo -e "Unsigned IPA file available at: ${BLUE_LINK}${IPA_PATH}${NC}\n"
   
   echo -e "${GREEN}Done!${NC}"
 
