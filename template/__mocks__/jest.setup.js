@@ -17,7 +17,6 @@ jest.mock('react-native-reanimated', () => {
 })
 
 // NOTE: Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 jest.mock('react-native/Libraries/LayoutAnimation/LayoutAnimation', () => ({
   easeInEaseOut: jest.fn(),
 }))
@@ -89,3 +88,33 @@ jest.mock('react-native-encrypted-storage', () => ({
 jest.mock('@react-native-community/netinfo', () => require('@react-native-community/netinfo/jest/netinfo-mock.js'))
 
 jest.mock('react-native-permissions', () => require('react-native-permissions/mock'))
+
+jest.mock('react-native-onesignal', () => ({
+  setRequiresUserPrivacyConsent: jest.fn(),
+  setNotificationOpenedHandler: jest.fn(),
+  addPermissionObserver: jest.fn(),
+  removeExternalUserId: jest.fn(),
+  provideUserConsent: jest.fn(),
+  setLogLevel: jest.fn(),
+  sendTags: jest.fn(),
+  setAppId: jest.fn(),
+}))
+
+jest.mock('date-fns', () => ({
+  __esModule: true,
+  isEqual: (dateLeft, dateRight) => new Date(dateLeft).getTime() === new Date(dateRight).getTime(),
+  isSameMonth: (dateLeft, dateRight) =>
+    new Date(dateLeft).getFullYear() === new Date(dateRight).getFullYear() &&
+    new Date(dateLeft).getMonth() === new Date(dateRight).getMonth(),
+  getTime: date => new Date(date).getTime(),
+  startOfMonth: date => {
+    const output = new Date(date)
+    output.setDate(1)
+    output.setHours(0, 0, 0, 0)
+    return output
+  },
+}))
+
+jest.mock('@react-native-clipboard/clipboard', () => ({
+  setString: jest.fn(),
+}))
