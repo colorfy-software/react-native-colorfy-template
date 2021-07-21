@@ -83,7 +83,6 @@
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/runtime": "^7.14.8",
-    "@bam.tech/react-native-make": "^3.0.3",
     "@react-native-community/eslint-config": "^3.0.0",
     "@testing-library/jest-native": "^4.0.1",
     "@testing-library/react-hooks": "^7.0.1",
