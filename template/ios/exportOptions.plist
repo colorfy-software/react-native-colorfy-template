@@ -6,9 +6,9 @@
 	<false/>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>com.appStarter.prod</key>
+		<key>com.appstarter.prod</key>
 		<string>INSERT_VALUE_HERE</string>
-		<key>com.appStarter.prod.OneSignalNotificationServiceExtensionProd</key>
+		<key>com.appstarter.prod.OneSignalNotificationServiceExtensionProd</key>
 		<string>INSERT_VALUE_HERE</string>
 	</dict>
 	<key>method</key>
