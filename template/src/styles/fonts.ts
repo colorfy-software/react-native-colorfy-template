@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { screenStyles } from './screen'
+import { deviceStyles } from './device'
 
 export enum FontFamilyEnum {
   /**
@@ -27,7 +27,7 @@ export const typographyStyles = StyleSheet.create({
    */
   bigTitle: {
     fontFamily: FontFamilyEnum.notoSansScBold,
-    fontSize: screenStyles.horizontalScale(31),
+    fontSize: deviceStyles.horizontalScale(31),
     lineHeight: 36,
     letterSpacing: -0.55,
   },
@@ -36,7 +36,7 @@ export const typographyStyles = StyleSheet.create({
    */
   title: {
     fontFamily: FontFamilyEnum.notoSansScBold,
-    fontSize: screenStyles.horizontalScale(24),
+    fontSize: deviceStyles.horizontalScale(24),
     lineHeight: 29,
     letterSpacing: -0.5,
   },
@@ -45,7 +45,7 @@ export const typographyStyles = StyleSheet.create({
    */
   subTitle: {
     fontFamily: FontFamilyEnum.notoSansScBold,
-    fontSize: screenStyles.horizontalScale(20),
+    fontSize: deviceStyles.horizontalScale(20),
     lineHeight: 24,
     letterSpacing: -0.5,
   },
@@ -54,7 +54,7 @@ export const typographyStyles = StyleSheet.create({
    */
   body: {
     fontFamily: FontFamilyEnum.notoSansScMedium,
-    fontSize: screenStyles.horizontalScale(14),
+    fontSize: deviceStyles.horizontalScale(14),
     lineHeight: 16,
     letterSpacing: -0.3,
   },
@@ -63,7 +63,7 @@ export const typographyStyles = StyleSheet.create({
    */
   label: {
     fontFamily: FontFamilyEnum.notoSansScRegular,
-    fontSize: screenStyles.horizontalScale(10),
+    fontSize: deviceStyles.horizontalScale(10),
     lineHeight: 16,
     letterSpacing: -0.21,
   },

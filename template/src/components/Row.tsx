@@ -14,7 +14,7 @@ import { PropsWithChildren, ComponentProps } from 'react'
 import Icon from './icon/Icon'
 import AppText from './AppText'
 
-import { colors, screen } from '../styles/style-guide'
+import { colors, device } from '../styles/style-guide'
 
 interface PropsType {
   title?: string
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: screen.verticalScale(12),
+    paddingVertical: device.verticalScale(12),
   },
   text: {
     maxWidth: '80%',
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   loaderContainer: {
-    marginRight: screen.horizontalScale(10),
+    marginRight: device.horizontalScale(10),
   },
   icon: {
     transform: [{ rotate: '180deg' }],

@@ -3,7 +3,7 @@ import { StyleProp, ViewProps, ViewStyle, LayoutChangeEvent } from 'react-native
 import Animated, { Value, Node, interpolate, Extrapolate } from 'react-native-reanimated'
 import { useSpringTransition } from 'react-native-redash'
 
-import { screen } from '../styles/style-guide'
+import { device } from '../styles/style-guide'
 
 /**
  * Used to define the stagger time of each element when using animation type "mount"
@@ -66,17 +66,17 @@ function createYValue(
     case 'fadeInUp':
       return interpolate(animatedValue, {
         inputRange: createInputRange(type, staggerIndex),
-        outputRange: [screen.verticalScale(100), 0, -screen.verticalScale(100)],
+        outputRange: [device.verticalScale(100), 0, -device.verticalScale(100)],
       })
     case 'scaleMessageIn':
       return interpolate(animatedValue, {
         inputRange: createInputRange(type, staggerIndex),
-        outputRange: [screen.verticalScale(30), 0, -screen.verticalScale(30)],
+        outputRange: [device.verticalScale(30), 0, -device.verticalScale(30)],
       })
     case 'fadeInDown':
       return interpolate(animatedValue, {
         inputRange: createInputRange(type, staggerIndex),
-        outputRange: [-screen.verticalScale(50), 0, screen.verticalScale(50)],
+        outputRange: [-device.verticalScale(50), 0, device.verticalScale(50)],
       })
 
     default:
@@ -158,7 +158,7 @@ function createXValue(
     case 'slideInRight':
       return interpolate(animatedValue, {
         inputRange: createInputRange(type, staggerIndex),
-        outputRange: [0, -screen.width(1), -screen.width(1)],
+        outputRange: [0, -device.width(1), -device.width(1)],
         extrapolate: Extrapolate.CLAMP,
       })
     default:

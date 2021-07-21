@@ -1,5 +1,5 @@
 import { colorsStyles } from './colors'
-import { screenStyles } from './screen'
+import { deviceStyles } from './device'
 import { typographyStyles, FontFamilyEnum } from './fonts'
 
 export const boxShadow = {
@@ -11,4 +11,4 @@ export const boxShadow = {
 } as const
 
 // NOTE: This is required so that VS Code will auto import these variables from this file only.
-export { FontFamilyEnum as FontFamily, colorsStyles as colors, screenStyles as screen, typographyStyles as typography }
+export { FontFamilyEnum as FontFamily, colorsStyles as colors, deviceStyles as device, typographyStyles as typography }

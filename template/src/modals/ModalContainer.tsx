@@ -9,7 +9,7 @@ import AppText from '../components/AppText'
 import Button from '../components/Button'
 
 import { getLocalizedString } from '../locales'
-import { colors, screen } from '../styles/style-guide'
+import { colors, device } from '../styles/style-guide'
 
 interface PropsType {
   title?: string
@@ -136,13 +136,13 @@ const ModalContainer = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: screen.vw(100),
+    width: device.vw(100),
     alignSelf: 'stretch',
     backgroundColor: 'white',
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
-    maxHeight: screen.windowHeight - screen.statusBarHeight,
-    ...(screen.hasNotch && {
+    maxHeight: device.windowHeight - device.statusBarHeight,
+    ...(device.hasNotch && {
       paddingBottom: 20,
       alignSelf: 'center',
       borderTopLeftRadius: 35,

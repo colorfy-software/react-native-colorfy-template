@@ -5,7 +5,7 @@ import Icon from '../components/icon/Icon'
 import AppText from '../components/AppText'
 
 import { getLocalizedString } from '../locales'
-import { colors, screen } from '../styles/style-guide'
+import { colors, device } from '../styles/style-guide'
 
 interface TabBarItemType {
   isFocused: boolean
@@ -99,8 +99,8 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps): JSX.Elem
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    width: screen.vw(100),
-    height: screen.hasNotch ? 49 + screen.indicatorPadding : 55,
+    width: device.vw(100),
+    height: device.hasNotch ? 49 + device.indicatorPadding : 55,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
@@ -111,11 +111,11 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
   },
   tab: {
-    width: screen.vw(100 / Object.keys(LABELS).length),
+    width: device.vw(100 / Object.keys(LABELS).length),
     height: 75,
     alignItems: 'center',
-    justifyContent: screen.hasNotch ? 'flex-start' : 'center',
-    paddingTop: screen.hasNotch ? 5 : 0,
+    justifyContent: device.hasNotch ? 'flex-start' : 'center',
+    paddingTop: device.hasNotch ? 5 : 0,
   },
 })
 

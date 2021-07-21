@@ -20,12 +20,12 @@ type Output = StyleSheet
 const guidelineBaseWidth = 375
 const guidelineBaseHeight = 812
 
-const { width: ww, height: wh } = Dimensions.get('window')
-const [shortDimension, longDimension] = ww < wh ? [ww, wh] : [wh, ww]
+const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
 
-const navBarHeight = Dimensions.get('screen').height - wh
+const navBarHeight = Dimensions.get('screen').height - windowHeight
 const hasVisibleNavigationKeys = Boolean(NativeModules.NavigationBar?.defaultHeight)
-const hasNotch = Platform.OS === 'ios' && !Platform.isPad && !Platform.isTVOS && (ww > 800 || wh > 800)
+const hasNotch =
+  Platform.OS === 'ios' && !Platform.isPad && !Platform.isTVOS && (windowWidth > 800 || windowHeight > 800)
 const indicatorHeight = hasNotch ? 83 : 0
 const indicatorPadding = hasNotch ? 34 : 0
 const statusBarHeight = Platform.OS === 'android' ? 0 : hasNotch ? 44 : 24
@@ -33,18 +33,18 @@ const statusBarPadding = hasNotch ? 24 : 0
 
 const mq = (breakpoints: Breakpoints, input: Input): Output => {
   const { minWidth, maxWidth, minHeight, maxHeight } = breakpoints
-  const minWidthCondition = minWidth ? ww > minWidth : true
-  const maxWidthCondition = maxWidth ? ww < maxWidth : true
-  const minHeightCondition = minHeight ? wh > minHeight : true
-  const maxHeightCondition = maxHeight ? wh < maxHeight : true
+  const minWidthCondition = minWidth ? windowWidth > minWidth : true
+  const maxWidthCondition = maxWidth ? windowWidth < maxWidth : true
+  const minHeightCondition = minHeight ? windowHeight > minHeight : true
+  const maxHeightCondition = maxHeight ? windowHeight < maxHeight : true
   return minWidthCondition && maxWidthCondition && minHeightCondition && maxHeightCondition ? input : {}
 }
 
-const vw = (percentage: number): number => (percentage / 100) * ww
+const vw = (percentage: number): number => (percentage / 100) * windowWidth
 
-const vh = (percentage: number): number => (percentage / 100) * wh
+const vh = (percentage: number): number => (percentage / 100) * windowHeight
 
-export const screenStyles = {
+export const deviceStyles = {
   /**
    * Is device an iPhone with notch
    * @returns boolean
@@ -74,7 +74,7 @@ export const screenStyles = {
    * Also includes non-notch Plus size iPhones.
    * @returns boolean
    */
-  isSmall: ww <= 375 || (ww <= 414 && !hasNotch),
+  isSmall: windowWidth <= 375 || (windowWidth <= 414 && !hasNotch),
   /**
    * Device's status bar height.
    */
@@ -98,32 +98,33 @@ export const screenStyles = {
    * Calculates on scale of 0-1 width of the screen value given represents.
    * @param value - value to be interpolated
    */
-  width: (value: number): number => value * ww,
+  width: (value: number): number => value * windowWidth,
   /**
    * Calculates on scale of 0-1 height of the screen value given represents.
    * @param value - value to be interpolated
    */
-  height: (value: number): number => value * wh,
+  height: (value: number): number => value * windowHeight,
   /**
    * Scales width from base size to screen size.
    * @param width - width to be scaled
    * @returns Will return a linear scaled result of the provided width, based on your device's screen width
    */
-  horizontalScale: (width: number) => (shortDimension / guidelineBaseWidth) * width,
+  horizontalScale: (width: number) => (windowWidth / guidelineBaseWidth) * width,
   /**
    * Scales height from base size to screen size.
    * @param height - height to be scaled
    * @returns Will return a linear scaled result of the provided height, based on your device's screen height
    */
-  verticalScale: (height: number) => (longDimension / guidelineBaseHeight) * height,
+  verticalScale: (height: number) => (windowHeight / guidelineBaseHeight) * height,
   /**
    * Device screen height (minus status bar height on Android).
    */
-  screenHeight: Platform.OS === 'android' ? Dimensions.get('screen').height - (StatusBar.currentHeight ?? 0) : wh,
+  screenHeight:
+    Platform.OS === 'android' ? Dimensions.get('screen').height - (StatusBar.currentHeight ?? 0) : windowHeight,
   /**
    * Device window height (minus status bar height on Android).
    */
-  windowHeight: Platform.OS === 'android' ? wh - (StatusBar.currentHeight ?? 0) : wh,
+  windowHeight: Platform.OS === 'android' ? windowHeight - (StatusBar.currentHeight ?? 0) : windowHeight,
   /**
    * Navigation bar height on Android.
    */

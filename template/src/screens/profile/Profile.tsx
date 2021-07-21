@@ -5,7 +5,7 @@ import Button from '../../components/Button'
 import AppText from '../../components/AppText'
 
 import core from '../../core/core'
-import { screen } from '../../styles/style-guide'
+import { device } from '../../styles/style-guide'
 import { getLocalizedString } from '../../locales'
 import userStore from '../../store/stores/user-store'
 
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    marginTop: screen.verticalScale(30),
+    marginTop: device.verticalScale(30),
   },
 })
 

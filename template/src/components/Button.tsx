@@ -3,7 +3,7 @@ import { ActivityIndicator, Pressable, StyleSheet, StyleProp, TextStyle, ViewSty
 
 import AppText from './AppText'
 
-import { colors, screen } from '../styles/style-guide'
+import { colors, device } from '../styles/style-guide'
 
 interface PropsType {
   children?: React.ReactNode
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: screen.verticalScale(5),
-    paddingHorizontal: screen.horizontalScale(25),
+    paddingVertical: device.verticalScale(5),
+    paddingHorizontal: device.horizontalScale(25),
     borderWidth: 2,
   },
   title: {
-    fontSize: screen.horizontalScale(16),
+    fontSize: device.horizontalScale(16),
     lineHeight: 20,
     textAlign: 'center',
   },
