@@ -4,10 +4,17 @@
 <dict>
 	<key>generateAppStoreInformation</key>
 	<false/>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>com.appStarter.prod</key>
+		<string>INSERT_VALUE_HERE</string>
+		<key>com.appStarter.prod.OneSignalNotificationServiceExtensionProd</key>
+		<string>INSERT_VALUE_HERE</string>
+	</dict>
 	<key>method</key>
 	<string>app-store</string>
 	<key>signingStyle</key>
-	<string>automatic</string>
+	<string>manual</string>
 	<key>stripSwiftSymbols</key>
 	<true/>
 	<key>teamID</key>

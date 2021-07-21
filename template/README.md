@@ -25,19 +25,29 @@ Once that's done, you'll have a few files and folder to update after initializin
      `Pods` one) > Select a target (any `STAGING` or `PROD`) in Xcode's top bar > `General` > `Identity` > Update
      `Display name` & `Bundle Identifier`. Repeat the process until `STAGING Debug`, `STAGING Release`, `PROD Debug` &
      `PROD Release` have been updated.
-2. Add the Apple team key to the `ios/exportOptions.plist` at `#L14` for generating unsigned IPAs manually.
+2. Add the Apple team key & provisioning profiles info to the `ios/exportOptions.plist` for generating unsigned IPAs manually.
 3. To allow Detox to access your iOS builds: open your `.xcworkspace` file with Xcode > File (in macOS top bar) >
    Workspace Settings > Derived Data (set it to `Workspace-relative Location`) > `DerivedData` > edit the field to be
    `build` instead.
+
+   _If you have never done it, install Detox CLI & Xcode tools on your Mac:_
+
+   ```sh
+   brew tap wix/brew
+   brew install applesimutils
+   xcode-select --install
+   npm i -g detox-cli
+   ```
 4. Create or update your Android Emulator name to `'Pixel2'` to run Detox locally.
 5. To update the splash screen color, modify: 
    * Android: `android/res/values/colors.xml`
    * iOS: inside Xcode, `LaunchScreen.storyboard > View Controller Scene > View Controller > View : Background` in the Attributes inspector (5th icon in the right panel)
-6. For [Bitrise](https://www.bitrise.io)/[AppCenter](https://appcenter.ms) (CD) to work correctly, you need to create all the Android & iOS store apps and manually publish build `1` (only!). 
+6. If you're using Bitbucket Pipelines, you'll need to [set up some environnement variables](https://support.atlassian.com/bitbucket-cloud/docs/deploy-build-artifacts-to-bitbucket-downloads/).
+7. For [Bitrise](https://www.bitrise.io)/[AppCenter](https://appcenter.ms) (CD) to work correctly, you need to create all the Android & iOS store apps and manually publish build `1` (only!). 
    
-    If you're working at colorfy, following the [CI/CD setup guide](https://colorfy.atlassian.net/wiki/spaces/COLORFY/pages/2572484609/Build+Automation) would get you up and running in no time!
+   _If you're working at colorfy, following the [CI/CD setup guide](https://colorfy.atlassian.net/wiki/spaces/COLORFY/pages/2572484609/Build+Automation) would get you up and running in no time!_
 
-7. Add the build status SVG badges to the table above after setting up the apps there and the Bitbucket Pipelines one after pushing the 1st commit (the `status.svg` file will be available in the `Downloads` section of the Bitbucket repository)
+8. Add the build status SVG badges to the table above after setting up the apps there and the Bitbucket Pipelines one after pushing the 1st commit (the `status.svg` file will be available in the `Downloads` section of the Bitbucket repository)
 
 ## 🛣 Branches
 
