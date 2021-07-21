@@ -1,6 +1,6 @@
 image: node:latest
 
-definitions: &default_steps
+definitions:
   steps:
     - step: &clear-cache
         name: 'Resetting cache'
@@ -52,7 +52,12 @@ pipelines:
         - step: *ts
         - step: *unit
   branches:
-    master:
+    poeditor:
+      - step:
+          name: 'Skipping Pipeline'
+          script:
+            - echo "Skipping pipelines for /poeditor branch."
+    '{staging,master}':
       - step: *clear-cache
       - step:
           name: 'Resetting Badge'
@@ -63,7 +68,7 @@ pipelines:
       - step:
           name: 'Uploading Badge'
           script:
-            - pipe: atlassian/bitbucket-upload-file:0.1.2
+            - pipe: atlassian/bitbucket-upload-file:0.3.2
               variables:
                 BITBUCKET_USERNAME: $BITBUCKET_USERNAME
                 BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
@@ -82,7 +87,7 @@ pipelines:
       - step:
           name: 'Uploading Badge'
           script:
-            - pipe: atlassian/bitbucket-upload-file:0.1.2
+            - pipe: atlassian/bitbucket-upload-file:0.3.2
               variables:
                 BITBUCKET_USERNAME: $BITBUCKET_USERNAME
                 BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
