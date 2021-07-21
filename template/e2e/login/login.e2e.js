@@ -1,6 +1,12 @@
 /* eslint-env detox/detox, jest */
+import path from 'path'
 
-describe('👋 Login screen', () => {
+import E2E_CONFIG from '../../src/config/e2e-config'
+
+const describeFn =
+  !E2E_CONFIG.RUN_ONLY || E2E_CONFIG.RUN_ONLY.includes(path.basename(__filename, '.e2e.js')) ? describe : describe.skip
+
+describeFn('👋 Login screen', () => {
   beforeAll(async () => {
     await device.launchApp()
   })

@@ -14,6 +14,13 @@ const E2E_CONFIG = {
    * it exists.
    */
   IS_MOCKING_ENABLED: false,
+  /**
+   * Name of the only test files to run.
+   * Only meant for debugging, run all test cases by default.
+   * @example ['login']
+   * @default undefined
+   */
+  RUN_ONLY: undefined,
 }
 
 export const getE2EString = <Locale extends keyof typeof translations>(
