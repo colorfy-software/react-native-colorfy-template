@@ -152,7 +152,6 @@ module.exports = {
     'react/no-unused-state': 1,
     'react/no-will-update-set-state': 2,
     'react/prop-types': 0,
-    'react/react-in-jsx-scope': 0,
     'react/self-closing-comp': 2,
     'react-native/no-unused-styles': 2,
     'react-native/no-inline-styles': 2,
@@ -165,5 +164,8 @@ module.exports = {
     'no-nested-ternary': 0,
     'no-async-promise-executor': 0,
     'object-shorthand': ['error', 'always'],
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'arrow-parens': ['error', 'as-needed'],
   },
 }
