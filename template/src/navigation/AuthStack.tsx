@@ -1,13 +1,13 @@
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { AuthStackParamType } from '../types/navigation-types'
+import { AuthStackParamsType } from '../types/navigation-types'
 
 import Welcome from '../screens/welcome/Welcome'
 
-const AuthStack = createStackNavigator<AuthStackParamType>()
+const AuthStack = createStackNavigator<AuthStackParamsType>()
 
 export default (): JSX.Element => (
-  <AuthStack.Navigator headerMode="none">
+  <AuthStack.Navigator screenOptions={{ headerShown: false }}>
     <AuthStack.Screen name="Welcome" component={Welcome} />
     {/* NOTE: You can add the auth screens here */}
   </AuthStack.Navigator>

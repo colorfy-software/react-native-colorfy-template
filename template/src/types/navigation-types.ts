@@ -1,50 +1,50 @@
-import { CompositeNavigationProp, RouteProp } from '@react-navigation/native'
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
+import { CompositeNavigationProp, RouteProp } from '@react-navigation/native'
 
 // MAIN STACK
-export type MainStackParamType = {
-  Launch: Record<string, unknown>
-  Auth: Record<string, unknown>
-  App: Record<string, unknown>
+export type MainStackParamsType = {
+  Launch?: never
+  Auth?: never
+  App?: never
 }
 
-export type MainStackNavigationType<T extends keyof MainStackParamType> = StackNavigationProp<MainStackParamType, T>
+export type MainStackNavigationType<T extends keyof MainStackParamsType> = StackNavigationProp<MainStackParamsType, T>
 
-export type MainStackRouteType<T extends keyof MainStackParamType> = RouteProp<MainStackParamType, T>
+export type MainStackRouteType<T extends keyof MainStackParamsType> = RouteProp<MainStackParamsType, T>
 
 // AUTH STACK
-export type AuthStackParamType = {
-  Welcome: Record<string, unknown>
+export type AuthStackParamsType = {
+  Welcome?: never
 }
 
-export type AuthStackNavigationType<T extends keyof AuthStackParamType> = StackNavigationProp<AuthStackParamType, T>
+export type AuthStackNavigationType<T extends keyof AuthStackParamsType> = StackNavigationProp<AuthStackParamsType, T>
 
-export type AuthStackRouteType<T extends keyof AuthStackParamType> = RouteProp<AuthStackParamType, T>
+export type AuthStackRouteType<T extends keyof AuthStackParamsType> = RouteProp<AuthStackParamsType, T>
+
+// APP BOTTOM TAB
+export type AppBottomTabParamsType = {
+  Home?: never
+  Tips?: never
+  Activity?: never
+  ProfileStack?: never
+}
+
+export type AppBottomTabNavigationType<T extends keyof AppBottomTabParamsType> = CompositeNavigationProp<
+  BottomTabNavigationProp<AppBottomTabParamsType, T>,
+  StackNavigationProp<MainStackParamsType>
+>
+
+export type AppBottomTabRouteType<T extends keyof AppBottomTabParamsType> = RouteProp<AppBottomTabParamsType, T>
 
 // PROFILE STACK
-export type ProfileStackParamType = {
-  ProfileScreen: Record<string, unknown>
+export type ProfileStackParamsType = {
+  Profile?: never
 }
 
-export type ProfileStackNavigationType<T extends keyof ProfileStackParamType> = StackNavigationProp<
-  ProfileStackParamType,
+export type ProfileStackNavigationType<T extends keyof ProfileStackParamsType> = StackNavigationProp<
+  ProfileStackParamsType,
   T
 >
 
-export type ProfileStackRouteType<T extends keyof ProfileStackParamType> = RouteProp<ProfileStackParamType, T>
-
-// MAIN TABS
-export type MainTabParamType = {
-  Home: Record<string, unknown>
-  Tips: Record<string, unknown>
-  Activity: Record<string, unknown>
-  Profile: Record<string, unknown>
-}
-
-export type MainTabNavigationType<T extends keyof MainTabParamType> = CompositeNavigationProp<
-  BottomTabNavigationProp<MainTabParamType, T>,
-  StackNavigationProp<MainStackParamType>
->
-
-export type MainTabRouteType<T extends keyof MainTabParamType> = RouteProp<MainTabParamType, T>
+export type ProfileStackRouteType<T extends keyof ProfileStackParamsType> = RouteProp<ProfileStackParamsType, T>

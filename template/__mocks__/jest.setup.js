@@ -89,17 +89,6 @@ jest.mock('@react-native-community/netinfo', () => require('@react-native-commun
 
 jest.mock('react-native-permissions', () => require('react-native-permissions/mock'))
 
-jest.mock('react-native-onesignal', () => ({
-  setRequiresUserPrivacyConsent: jest.fn(),
-  setNotificationOpenedHandler: jest.fn(),
-  addPermissionObserver: jest.fn(),
-  removeExternalUserId: jest.fn(),
-  provideUserConsent: jest.fn(),
-  setLogLevel: jest.fn(),
-  sendTags: jest.fn(),
-  setAppId: jest.fn(),
-}))
-
 jest.mock('date-fns', () => ({
   __esModule: true,
   isEqual: (dateLeft, dateRight) => new Date(dateLeft).getTime() === new Date(dateRight).getTime(),

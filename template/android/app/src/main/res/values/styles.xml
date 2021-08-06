@@ -18,7 +18,7 @@
 
     <style name="Dialog.Theme" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="colorAccent">@color/color_primary</item>
-        <item name="android:textcolor_primary">@color/color_dark</item>
+        <item name="android:textColorPrimary">@color/color_dark</item>
     </style>
 
     <style name="SplashScreenTheme" parent="SplashScreen_SplashTheme">

@@ -14,7 +14,7 @@ import Home from '../screens/home/Home'
 import Tips from '../screens/tips/Tips'
 import Activity from '../screens/activity/Activity'
 
-import { MainStackParamType, MainTabParamType } from '../types/navigation-types'
+import { MainStackParamsType, AppBottomTabParamsType } from '../types/navigation-types'
 
 import core from '../core/core'
 import sleep from '../utils/sleep'
@@ -22,8 +22,8 @@ import NavigationUtil from '../utils/navigation'
 import appStore from '../store/stores/app-store'
 import userStore from '../store/stores/user-store'
 
-const MainStack = createStackNavigator<MainStackParamType>()
-const MainBottomTab = createBottomTabNavigator<MainTabParamType>()
+const MainStack = createStackNavigator<MainStackParamsType>()
+const AppBottomTab = createBottomTabNavigator<AppBottomTabParamsType>()
 
 const disableDefaultAnimation = (): StackCardInterpolatedStyle => ({
   // NOTE: FYI this can be animated for both the current & next screens if needed.
@@ -31,13 +31,16 @@ const disableDefaultAnimation = (): StackCardInterpolatedStyle => ({
   cardStyle: { transform: [{ translateX: 0 }] },
 })
 
-const AppBottomTab = (): JSX.Element => (
-  <MainBottomTab.Navigator initialRouteName="Home" tabBar={(props): JSX.Element => <TabBar {...props} />}>
-    <MainBottomTab.Screen name="Home" component={Home} />
-    <MainBottomTab.Screen name="Tips" component={Tips} />
-    <MainBottomTab.Screen name="Activity" component={Activity} />
-    <MainBottomTab.Screen name="Profile" component={ProfileStack} />
-  </MainBottomTab.Navigator>
+const AppBottomTabComponent = (): JSX.Element => (
+  <AppBottomTab.Navigator
+    initialRouteName="Home"
+    screenOptions={{ headerShown: false }}
+    tabBar={(props): JSX.Element => <TabBar {...props} />}>
+    <AppBottomTab.Screen name="Home" component={Home} />
+    <AppBottomTab.Screen name="Tips" component={Tips} />
+    <AppBottomTab.Screen name="Activity" component={Activity} />
+    <AppBottomTab.Screen name="ProfileStack" component={ProfileStack} />
+  </AppBottomTab.Navigator>
 )
 
 export default (): JSX.Element => {
@@ -76,7 +79,7 @@ export default (): JSX.Element => {
         // NOTE: Saving the current route name for later comparison
         routeNameRef.current = currentRouteName
       }}>
-      <MainStack.Navigator headerMode="none">
+      <MainStack.Navigator screenOptions={{ headerShown: false, presentation: 'transparentModal' }}>
         {navigationState === 'auth' && (
           <MainStack.Screen
             name="Auth"
@@ -87,7 +90,7 @@ export default (): JSX.Element => {
         {navigationState === 'app' && (
           <MainStack.Screen
             name="App"
-            component={AppBottomTab}
+            component={AppBottomTabComponent}
             options={{ cardStyleInterpolator: disableDefaultAnimation }}
           />
         )}

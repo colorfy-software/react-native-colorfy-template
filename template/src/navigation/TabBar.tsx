@@ -19,11 +19,12 @@ const LABELS = {
   home: getLocalizedString('general.home'),
   tips: getLocalizedString('general.tips'),
   activity: getLocalizedString('general.activity'),
-  profile: getLocalizedString('general.profile'),
+  profilestack: getLocalizedString('general.profile'),
 }
 
 const TabBarItem = ({ isFocused, routeName, onLongPress, onPress, options }: TabBarItemType): JSX.Element => {
   const color = isFocused ? colors.SECONDARY : colors.ICON
+  const iconName = routeName === 'profilestack' ? 'settings' : routeName
   return (
     <Pressable
       accessibilityRole="button"
@@ -33,7 +34,7 @@ const TabBarItem = ({ isFocused, routeName, onLongPress, onPress, options }: Tab
       style={styles.tab}
       onPress={onPress}
       onLongPress={onLongPress}>
-      <Icon size={28} color={color} name={routeName} />
+      <Icon size={28} color={color} name={iconName} />
       <AppText type="label" color={color}>
         {LABELS[routeName]}
       </AppText>
@@ -41,60 +42,54 @@ const TabBarItem = ({ isFocused, routeName, onLongPress, onPress, options }: Tab
   )
 }
 
-const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps): JSX.Element | null => {
-  const focusedOptions = descriptors[state.routes[state.index].key].options
+const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps): JSX.Element | null => (
+  <View style={styles.container}>
+    {state.routes.map((route, index) => {
+      const { options } = descriptors[route.key]
+      const label =
+        options.tabBarLabel !== undefined
+          ? options.tabBarLabel
+          : options.title !== undefined
+          ? options.title
+          : route.name
 
-  if (focusedOptions.tabBarVisible === false) return null
+      const isFocused = state.index === index
 
-  return (
-    <View style={styles.container}>
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key]
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name
+      const onPress = (): void => {
+        const event = navigation.emit({
+          type: 'tabPress',
+          target: route.key,
+          canPreventDefault: true,
+        })
 
-        const isFocused = state.index === index
-
-        const onPress = (): void => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          })
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name)
-          }
+        if (!isFocused && !event.defaultPrevented) {
+          navigation.navigate(route.name)
         }
+      }
 
-        const onLongPress = (): void => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          })
-        }
+      const onLongPress = (): void => {
+        navigation.emit({
+          type: 'tabLongPress',
+          target: route.key,
+        })
+      }
 
-        return (
-          <TabBarItem
-            key={index}
-            {...{
-              label,
-              onPress,
-              options,
-              isFocused,
-              onLongPress,
-              routeName: route.name.toLowerCase() as keyof typeof LABELS,
-            }}
-          />
-        )
-      })}
-    </View>
-  )
-}
+      return (
+        <TabBarItem
+          key={index}
+          {...{
+            label,
+            onPress,
+            options,
+            isFocused,
+            onLongPress,
+            routeName: route.name.toLowerCase() as keyof typeof LABELS,
+          }}
+        />
+      )
+    })}
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {

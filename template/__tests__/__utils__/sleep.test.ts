@@ -32,8 +32,6 @@ describe('😴 Utils > sleep:', () => {
 
     const timestampEnd = new Date()
 
-    console.log(`Code slept for around ${timestampEnd.getTime() - timestampStart.getTime()} ms (expected 2000 ms)`)
-
     expect(timestampEnd.getTime() - timestampStart.getTime()).toBeLessThan(pauseDuration + 1000)
 
     expect.assertions(1)

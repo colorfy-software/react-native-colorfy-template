@@ -29,15 +29,6 @@ Once that's done, you'll have a few files and folder to update after initializin
 3. To allow Detox to access your iOS builds: open your `.xcworkspace` file with Xcode > File (in macOS top bar) >
    Workspace Settings > Derived Data (set it to `Workspace-relative Location`) > `DerivedData` > edit the field to be
    `build` instead.
-
-   _If you have never done it, install Detox CLI & Xcode tools on your Mac:_
-
-   ```sh
-   brew tap wix/brew
-   brew install applesimutils
-   xcode-select --install
-   npm i -g detox-cli
-   ```
 4. Create or update your Android Emulator name to `'Pixel2'` to run Detox locally.
 5. To update the splash screen color, modify: 
    * Android: `android/res/values/colors.xml`

@@ -1,36 +1,35 @@
-import { NavigationContainerRef, Route } from '@react-navigation/native'
 import { createRef } from 'react'
+import { NavigationContainerRef, Route } from '@react-navigation/native'
 
-import { AuthStackParamType, MainTabParamType } from '../types/navigation-types'
+import { AppBottomTabParamsType, AuthStackParamsType } from '../types/navigation-types'
 
-type RouteNameType = keyof AuthStackParamType | keyof MainTabParamType
-type ParamsType = AuthStackParamType[keyof AuthStackParamType] | MainTabParamType[keyof MainTabParamType]
+type ParamsType = AuthStackParamsType & AppBottomTabParamsType
 
-const _navigation = createRef<NavigationContainerRef>()
 const isReadyRef = createRef<boolean>()
+const navigation = createRef<NavigationContainerRef<ParamsType>>()
 
-type RouteStateType = Route<string, Record<string, unknown> | undefined> | undefined
+type RouteStateType = Route<keyof ParamsType, ParamsType[keyof ParamsType]> | undefined
 
 const NavigationUtil = {
   isReadyRef,
-  setRef: _navigation,
+  setRef: navigation,
   getCurrentRoute: (): RouteStateType => {
-    if (isReadyRef.current && _navigation.current) {
-      return _navigation.current?.getCurrentRoute() as RouteStateType
+    if (isReadyRef.current && navigation.current) {
+      return navigation.current?.getCurrentRoute() as RouteStateType
     } else {
       console.warn('❌ Navigation not mounted, cannot getCurrentRoute()')
     }
   },
   goBack: (): void => {
-    if (isReadyRef.current && _navigation.current) {
-      _navigation.current?.goBack()
+    if (isReadyRef.current && navigation.current) {
+      navigation.current?.goBack()
     } else {
       console.warn('❌ Navigation not mounted, cannot goBack()')
     }
   },
-  navigate: (name: RouteNameType, params?: ParamsType): void => {
-    if (isReadyRef.current && _navigation.current) {
-      _navigation.current?.navigate(name, params)
+  navigate: (name: keyof ParamsType, params?: ParamsType[keyof ParamsType]): void => {
+    if (isReadyRef.current && navigation.current) {
+      navigation.current?.navigate(name, params)
     } else {
       console.warn('❌ Navigation not mounted, cannot navigate()')
     }
