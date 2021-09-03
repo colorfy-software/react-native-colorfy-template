@@ -59,7 +59,7 @@
     "date-fns": "^2.22.1",
     "google-protobuf": "^3.17.3",
     "i18n-js": "^3.8.0",
-    "immer": "^9.0.5",
+    "immer": "^9.0.6",
     "mitt": "^2.1.0",
     "react": "17.0.2",
     "react-native": "^0.64.2",
