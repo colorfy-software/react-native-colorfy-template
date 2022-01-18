@@ -20,10 +20,10 @@ If you're working at colorfy, going through the
 Once that's done, you'll have a few files and folder to update after initializing your project before you start:
 
 1. Update your app Staging/Prod displayed names:
-   * Android: `android/app/build.gradle` at `#L175` & `#L180`
+   * Android: `android/app/build.gradle` at `#L172-187`
    * iOS: Open the `.xcworkspace` inside the `/ios` folder with Xcode > Select your project (will be on top of the
      `Pods` one) > Select a target (any `STAGING` or `PROD`) in Xcode's top bar > `General` > `Identity` > Update
-     `Display name` & `Bundle Identifier`. Repeat the process until `STAGING Debug`, `STAGING Release`, `PROD Debug` &
+     `Display name` & `Bundle Identifier`. Repeat the process until `DEV Debug`, `DEV Release`, `STAGING Debug`, `STAGING Release`, `PROD Debug` &
      `PROD Release` have been updated.
 2. Add the Apple team key & provisioning profiles info to the `ios/exportOptions.plist` for generating unsigned IPAs manually.
 3. To allow Detox to access your iOS builds: open your `.xcworkspace` file with Xcode > File (in macOS top bar) >

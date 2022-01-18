@@ -32,6 +32,11 @@ target 'appStarter' do
   end
 end
 
+target 'DEV' do
+  shared_pods
+  inherit! :search_paths
+end
+
 target 'STAGING' do
   shared_pods
   inherit! :search_paths

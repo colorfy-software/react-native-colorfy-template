@@ -36,16 +36,16 @@ This template has virtually everything you might need to kick-start a React Nati
 * [React Navigation](https://reactnavigation.org) v6, for screen navigation
 * [React Native SVG](https://github.com/react-native-svg/react-native-svg), for rendering `.svg` files directly
 * [Modalfy](https://colorfy-software.gitbook.io/react-native-modalfy), for handling custom modals
-* [Splash Screen](https://github.com/crazycodeboy/react-native-splash-screen) & [Make](https://github.com/bamlab/react-native-make), for a nice cross-platform way of dealing with splash screens & app icons
+* [Splash Screen](https://github.com/crazycodeboy/react-native-splash-screen), for a nice cross-platform way of dealing with splash screens
 * [Reanimated](https://docs.swmansion.com/react-native-reanimated) + [Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/), for performant native driven (- gesture) animations
 * [Redash](https://wcandillon.gitbook.io/redash/), toolset for Reanimated & Gesture Handler
 * [Localize](https://github.com/zoontek/react-native-localize), for strings localization in JavaScript
 * [date-fns](https://date-fns.org), for date manipulation
 * [Device Info](https://github.com/react-native-device-info/react-native-device-info), for native device info
 * [zustand](https://github.com/pmndrs/zustand), [z-fy](https://colorfy-software.gitbook.io/z-fy) & [AsyncStorage](https://github.com/react-native-async-storage/async-storage), for state management & data persistence
-* [Encrypted Storage](https://github.com/emeraldsanto/react-native-encrypted-storage), for sensitive data persistence in Android's EncryptedSharedPreferences and iOS' Keychain
+* [Encrypted Storage](https://github.com/emeraldsanto/react-native-encrypted-storage), for sensitive data persistence in Android's `EncryptedSharedPreferences` and iOS' `Keychain`
 * [Pre-commit](https://github.com/observing/pre-commit), for running the test suite before each commit
-* Support for Staging & Prod Android flavours/iOS targets out of the box
+* Support for Dev, Staging & Prod Android flavours/iOS targets out of the box
 * A bunch of useful commands listed down below
   
 ## 🗂 Project structure

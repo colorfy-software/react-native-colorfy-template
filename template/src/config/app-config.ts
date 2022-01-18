@@ -11,6 +11,14 @@ export const CONFIG = {
    */
   IS_REMOTE_DEBUGGING: global?.location?.pathname?.includes('/debugger-ui') || global?.__REMOTEDEV__,
   /**
+   * Function that indicates if the app is running the DEV target
+   */
+  IS_DEV: (): boolean => {
+    const bundleId = DeviceInfo.getBundleId()
+    if (bundleId === 'com.appstarter.dev') return true
+    return false
+  },
+  /**
    * Function that indicates if the app is running the STAGING target
    */
   IS_STAGING: (): boolean => {
