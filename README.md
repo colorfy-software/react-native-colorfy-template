@@ -24,7 +24,7 @@ Happy coding!
 
 ## 💫 Features
 
-This template has virtually everything you might need to kick-start a React Native (0.64.2) app already built-in and set up:
+This template has virtually everything you might need to kick-start a React Native (0.66.4) app already built-in and set up:
 
 * [TypeScript](https://www.typescriptlang.org), for type safety
 * [ESLint](https://eslint.org), for code linting 
@@ -33,7 +33,7 @@ This template has virtually everything you might need to kick-start a React Nati
 * [Detox](https://github.com/wix/Detox), for end-to-end testing
 * [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines), for continuous integration
 * [Bitrise](https://www.bitrise.io) or [AppCenter](https://appcenter.ms), for continuous deployment
-* [React Navigation](https://reactnavigation.org) v5, for screen navigation
+* [React Navigation](https://reactnavigation.org) v6, for screen navigation
 * [React Native SVG](https://github.com/react-native-svg/react-native-svg), for rendering `.svg` files directly
 * [Modalfy](https://colorfy-software.gitbook.io/react-native-modalfy), for handling custom modals
 * [Splash Screen](https://github.com/crazycodeboy/react-native-splash-screen) & [Make](https://github.com/bamlab/react-native-make), for a nice cross-platform way of dealing with splash screens & app icons
