@@ -30,7 +30,7 @@ This template has virtually everything you might need to kick-start a React Nati
 * [ESLint](https://eslint.org), for code linting 
 * [Prettier](https://prettier.io), for code formatting
 * [Jest](https://jestjs.io) + [Testing Library](https://testing-library.com), for unit testing
-* [Detox](https://github.com/wix/Detox), for end-to-end testing
+* [Detox](https://github.com/wix/Detox) + [DetoxRecorder](https://github.com/wix/DetoxRecorder), for end-to-end testing
 * [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines), for continuous integration
 * [Bitrise](https://www.bitrise.io) or [AppCenter](https://appcenter.ms), for continuous deployment
 * [React Navigation](https://reactnavigation.org) v6, for screen navigation

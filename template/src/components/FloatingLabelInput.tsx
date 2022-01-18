@@ -37,13 +37,13 @@ type PropsType = {
   }
   multiline?: TextInputProps['multiline']
   placeholder: TextInputProps['placeholder']
+  autoComplete?: TextInputProps['autoComplete']
   blurOnSubmit?: TextInputProps['blurOnSubmit']
   keyboardType?: TextInputProps['keyboardType']
   returnKeyType?: TextInputProps['returnKeyType']
   autoCapitalize?: TextInputProps['autoCapitalize']
   onSubmitEditing?: TextInputProps['onSubmitEditing']
   textContentType?: TextInputProps['textContentType']
-  autoCompleteType?: TextInputProps['autoCompleteType']
   selectTextOnFocus?: TextInputProps['selectTextOnFocus']
 }
 
@@ -227,7 +227,7 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
       selectTextOnFocus,
       returnKeyType,
       multiline,
-      autoCompleteType,
+      autoComplete,
       textContentType,
       autoCapitalize,
       blurOnSubmit,
@@ -247,10 +247,10 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
           ref={forwardedRef}
           contextMenuHidden
           testID={testIDs?.input}
+          autoComplete={autoComplete}
           blurOnSubmit={blurOnSubmit}
           autoCapitalize={autoCapitalize || 'none'}
           autoCorrect={false}
-          autoCompleteType={autoCompleteType}
           textContentType={textContentType}
           underlineColorAndroid="transparent"
           style={[

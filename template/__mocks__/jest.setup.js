@@ -21,60 +21,7 @@ jest.mock('react-native/Libraries/LayoutAnimation/LayoutAnimation', () => ({
   easeInEaseOut: jest.fn(),
 }))
 
-jest.mock('react-native-localize', () => {
-  const getLocales = () => [
-    // you can choose / add the locales you want
-    {
-      countryCode: 'US',
-      languageTag: 'en-US',
-      languageCode: 'en',
-      isRTL: false,
-    },
-    {
-      countryCode: 'de',
-      languageTag: 'de-DE',
-      languageCode: 'de',
-      isRTL: false,
-    },
-  ]
-
-  // use a provided translation, or return undefined to test your fallback
-  const findBestAvailableLanguage = () => ({
-    languageTag: 'en-US',
-    isRTL: false,
-  })
-
-  const getNumberFormatSettings = () => ({
-    decimalSeparator: '.',
-    groupingSeparator: ',',
-  })
-
-  const getCalendar = () => 'gregorian'
-  const getCountry = () => 'DE'
-  const getCurrencies = () => ['EUR']
-  const getTemperatureUnit = () => 'celsius'
-  const getTimeZone = () => 'Europe/Berlin'
-  const uses24HourClock = () => true
-  const usesMetricSystem = () => true
-
-  const addEventListener = jest.fn()
-  const removeEventListener = jest.fn()
-
-  return {
-    findBestAvailableLanguage,
-    getLocales,
-    getNumberFormatSettings,
-    getCalendar,
-    getCountry,
-    getCurrencies,
-    getTemperatureUnit,
-    getTimeZone,
-    uses24HourClock,
-    usesMetricSystem,
-    addEventListener,
-    removeEventListener,
-  }
-})
+jest.mock('react-native-localize', () => require('react-native-localize/mock.js'))
 
 jest.mock('react-native-device-info', () => require('react-native-device-info/jest/react-native-device-info-mock.js'))
 

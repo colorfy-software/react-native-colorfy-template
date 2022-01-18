@@ -8,11 +8,9 @@ type StyleSheet = {
     | string
     | number
 }
-type Breakpoints = Partial<
-  {
-    [key in 'maxHeight' | 'minHeight' | 'maxWidth' | 'minWidth']: number
-  }
->
+type Breakpoints = Partial<{
+  [key in 'maxHeight' | 'minHeight' | 'maxWidth' | 'minWidth']: number
+}>
 type Input = StyleSheet
 type Output = StyleSheet
 
