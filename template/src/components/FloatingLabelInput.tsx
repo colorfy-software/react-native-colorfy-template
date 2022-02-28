@@ -1,5 +1,4 @@
 /* eslint-disable react/destructuring-assignment */
-
 import {
   View,
   TextInput,
@@ -15,7 +14,7 @@ import {
 import { PureComponent, forwardRef } from 'react'
 
 import { Colors, FontFamily } from '../styles/style-guide'
-
+import { Icons } from '../assets'
 
 type PropsType = {
   type: string
@@ -25,8 +24,7 @@ type PropsType = {
   hideEditIcon?: boolean
   showPasswordIndicator?: boolean
   forwardedRef?: React.ForwardedRef<TextInput>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setTextValue?: (stateKey: any, value: string) => void
+  setTextValue?: (stateKey: unknown, value: string) => void
   value: TextInputProps['value']
   onBlur?: TextInputProps['onBlur']
   onFocus?: TextInputProps['onFocus']
@@ -187,7 +185,7 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
 
     return (
       <View style={styles.editIcon} pointerEvents="none">
-        <Icon name="pen" size={24} color={tintColor} />
+        <Icons.Pen color={tintColor} />
       </View>
     )
   }
@@ -203,7 +201,7 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
       return (
         <Pressable style={styles.passwordIconPressable} onPress={this.onPressPasswordVisibility}>
           <View style={styles.passwordIconView}>
-            <Icon name={passwordVisible ? 'eyeOpen' : 'eyeClosed'} color={tintColor} size={24} />
+            {passwordVisible ? <Icons.EyeOpen color={tintColor} /> : <Icons.EyeClosed color={tintColor} />}
           </View>
         </Pressable>
       )

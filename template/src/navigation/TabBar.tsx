@@ -1,7 +1,8 @@
 import { View, Pressable, PressableProps, StyleSheet } from 'react-native'
-import { BottomTabBarProps, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
+import type { BottomTabBarProps, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 
-import Icon from '../components/icon/Icon'
+import { Icons, IconType } from '../assets'
+
 import AppText from '../components/AppText'
 
 import { getLocalizedString } from '../locales'
@@ -19,12 +20,27 @@ const LABELS = {
   home: getLocalizedString('general.home'),
   tips: getLocalizedString('general.tips'),
   activity: getLocalizedString('general.activity'),
-  profilestack: getLocalizedString('general.profile'),
+  settingsstack: getLocalizedString('general.settings'),
+}
+
+const getIcon = (routeName: keyof typeof LABELS): IconType => {
+  switch (routeName) {
+    case 'home':
+      return Icons.Home
+    case 'activity':
+      return Icons.Activity
+    case 'settingsstack':
+      return Icons.Settings
+    case 'tips':
+      return Icons.Tips
+    default:
+      return Icons.Settings
+  }
 }
 
 const TabBarItem = ({ isFocused, routeName, onLongPress, onPress, options }: TabBarItemType): JSX.Element => {
   const color = isFocused ? Colors.secondary : Colors.icon
-  const iconName = routeName === 'profilestack' ? 'settings' : routeName
+  const Icon = getIcon(routeName)
   return (
     <Pressable
       accessibilityRole="button"
@@ -34,7 +50,7 @@ const TabBarItem = ({ isFocused, routeName, onLongPress, onPress, options }: Tab
       style={styles.tab}
       onPress={onPress}
       onLongPress={onLongPress}>
-      <Icon size={28} color={color} name={iconName} />
+      <Icon size={28} color={color} />
       <AppText type="label" color={color}>
         {LABELS[routeName]}
       </AppText>

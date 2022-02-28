@@ -9,12 +9,11 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native'
-import { PropsWithChildren, ComponentProps } from 'react'
+import type { PropsWithChildren } from 'react'
 
-import Icon from './icon/Icon'
 import AppText from './AppText'
 
-import { colors, device } from '../styles/style-guide'
+import { Icons } from '../assets'
 import { Colors, Device } from '../styles/style-guide'
 
 interface PropsType {
@@ -25,11 +24,11 @@ interface PropsType {
   style?: StyleProp<ViewStyle>
   testID?: ViewProps['testID']
   titleStyle?: StyleProp<TextStyle>
-  icon?: ComponentProps<typeof Icon>['name']
+  icon?: typeof Icons[keyof typeof Icons]
 }
 
 const Row = ({
-  icon = 'arrow',
+  icon: Icon = Icons.Arrow,
   titleStyle,
   children,
   loading,
@@ -43,7 +42,7 @@ const Row = ({
   const selectable = !shouldRenderToggle && !onPress
 
   const renderToggle = () => <Switch value={value} onValueChange={() => onPress?.()} />
-  const renderIcon = () => <Icon name={icon} size={18} color={colors.ICON} style={styles.icon} />
+  const renderIcon = () => <Icon size={18} color={Colors.icon} style={styles.icon} />
 
   return (
     <Pressable

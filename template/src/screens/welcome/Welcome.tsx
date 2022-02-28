@@ -5,7 +5,7 @@ import Button from '../../components/Button'
 import AppText from '../../components/AppText'
 
 import core from '../../core/core'
-import { device } from '../../styles/style-guide'
+import { Assets } from '../../assets'
 import { Device } from '../../styles/style-guide'
 
 const Welcome = (): JSX.Element => {
@@ -17,7 +17,7 @@ const Welcome = (): JSX.Element => {
   return (
     <View testID="Login" style={styles.container}>
       <View style={styles.header}>
-        <Image testID="Login.Logo" style={styles.logo} source={require('../../assets/logo.png')} />
+        <Image testID="Login.Logo" style={styles.logo} source={Assets.imgLogo} />
         <AppText type="title">{DeviceInfo.getApplicationName()}</AppText>
       </View>
       <Button testID="Login.Button" title="Log in" onPress={onLoginPress} />

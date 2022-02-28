@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { ModalOptions, useModal } from 'react-native-modalfy'
-import { Image, Pressable, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
+import { Pressable, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 
 import { ModalsParamsType } from '../types/modals-types'
 
@@ -10,6 +10,7 @@ import Button from '../components/Button'
 
 import { getLocalizedString } from '../locales'
 import { Colors, Device } from '../styles/style-guide'
+import { Images } from '../assets'
 
 interface PropsType {
   title?: string
@@ -81,7 +82,7 @@ const ModalContainer = ({
       {!noHeader && (
         <View style={styles.header}>
           <View style={[styles.closeButton, styles.invisible]}>
-            <Image source={require('../assets/closeButton.png')} style={styles.closeButtonImage} />
+            <Images.CloseButton style={styles.closeButtonImage} />
           </View>
           <AppText
             color={titleColor || Colors.text}
@@ -97,7 +98,7 @@ const ModalContainer = ({
             testID={testIDs?.closeButton}
             style={[styles.closeButton, { opacity: closeButtonOpacity }]}
             onPress={closeButtonOnPress}>
-            <Image source={require('../assets/closeButton.png')} style={styles.closeButtonImage} />
+            <Images.CloseButton style={styles.closeButtonImage} />
           </Pressable>
         </View>
       )}
