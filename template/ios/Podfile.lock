@@ -87,7 +87,7 @@ PODS:
     - MMKVCore (~> 1.2.12)
   - MMKVCore (1.2.12)
   - OpenSSL-Universal (1.1.180)
-  - Permission-Notifications (3.2.0):
+  - Permission-Notifications (3.3.0):
     - RNPermissions
   - RCT-Folly (2021.06.28.00-v2):
     - boost
@@ -390,9 +390,9 @@ PODS:
     - SDWebImageWebPCoder (~> 0.8.4)
   - RNGestureHandler (2.2.0):
     - React-Core
-  - RNLocalize (2.1.9):
+  - RNLocalize (2.2.0):
     - React-Core
-  - RNPermissions (3.2.0):
+  - RNPermissions (3.3.0):
     - React-Core
   - RNReanimated (2.4.1):
     - DoubleConversion
@@ -422,7 +422,7 @@ PODS:
     - React-RCTText
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.11.1):
+  - RNScreens (3.12.0):
     - React-Core
     - React-RCTImage
   - RNSVG (12.1.1):
@@ -651,7 +651,7 @@ SPEC CHECKSUMS:
   MMKV: f281020c9d9be5eb7a03ae746dc4deb570e46c23
   MMKVCore: df0565f6b58463604731a68ba6cd89bc0b2d1d55
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
-  Permission-Notifications: bb420c3d28328df24de1b476b41ed8249ccf2537
+  Permission-Notifications: ae00347c7a9efdfaa1a0138e59e37c8f0f3ede0b
   RCT-Folly: 803a9cfd78114b2ec0f140cfa6fa2a6bafb2d685
   RCTRequired: 3c77b683474faf23920fbefc71c4e13af21470c0
   RCTTypeSafety: 720b1841260dac692444c2822b27403178da8b28
@@ -686,10 +686,10 @@ SPEC CHECKSUMS:
   RNDeviceInfo: 4944cf8787b9c5bffaf301fda68cc1a2ec003341
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
-  RNLocalize: 291e5e21b53cd30b5205c10ed95d31b0dc9b8d63
-  RNPermissions: f7ebe52db07c00901127966ca080b4ec6a6ceb0a
+  RNLocalize: 6571ea792a7dcb6d217c98c14d9147e9417cef62
+  RNPermissions: bcd846e8f5a7f39e921cc7ca7172e2de0e698b6f
   RNReanimated: 32c91e28f5780937b8efc07ddde1bab8d373fe0b
-  RNScreens: 4d83613b50b74ed277026375dc0810893b0c347f
+  RNScreens: 2559f98b0835103cbef3b26ba77fa61d4bb37ae7
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815

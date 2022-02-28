@@ -7961,10 +7961,10 @@ react-native-mmkv@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.1.0.tgz#07fba18e6220a39bccfcff9b478d67801a17650b"
   integrity sha512-dgX6RguKmipDmpmr11Zoz5CbuZVzInME2yAjOHw8jPnsGJNy33ZUEqHVxS6IZI5hpg2kmA5Gq91OSLQ8y7bnqw==
 
-react-native-modalfy@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-modalfy/-/react-native-modalfy-3.0.1.tgz#aa5159df1edf4f0466bb3d7070a3d1cfa88cb7a3"
-  integrity sha512-vXV/4R/bjA+CdhZvyATPR2e6eOSq7bCjC2GXmpulhtxG0oOa2MeP+zeXygQLCYIlld5c218dp9MRCpVTzZRGpQ==
+react-native-modalfy@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-modalfy/-/react-native-modalfy-3.1.0.tgz#093c02856519e2d73e292b70d47f6a4687600704"
+  integrity sha512-lM30vPrYD7CPsLBqN1AAi0d5mjFTikdQhh30FjXgazLr7/AUoJ44zuPDnEAwPLjjsqMOrjDhEu2U64g08V+E6Q==
   dependencies:
     hoist-non-react-statics "^3.3.2"
     react-is "^17.0.2"

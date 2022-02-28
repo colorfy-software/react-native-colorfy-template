@@ -38,7 +38,7 @@
     "react-native-gesture-handler": "^2.2.0",
     "react-native-localize": "^2.2.0",
     "react-native-mmkv": "^2.1.0",
-    "react-native-modalfy": "^3.0.1",
+    "react-native-modalfy": "^3.1.0",
     "react-native-navigation-bar-color": "^2.0.1",
     "react-native-parsed-text": "^0.0.22",
     "react-native-permissions": "^3.3.0",
