@@ -6,7 +6,7 @@ import AppText from '../../components/AppText'
 
 import core from '../../core/core'
 import { useStores } from '../../stores/stores'
-import { Device } from '../../styles/style-guide'
+import { DEVICE } from '../../styles/style-guide'
 import { getLocalizedString } from '../../locales'
 
 const Settings = (): JSX.Element => {
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    marginTop: Device.verticalScale(30),
+    marginTop: DEVICE.verticalScale(30),
   },
 })
 

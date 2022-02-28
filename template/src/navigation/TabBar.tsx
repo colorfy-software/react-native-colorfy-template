@@ -6,7 +6,7 @@ import { Icons, IconType } from '../assets'
 import AppText from '../components/AppText'
 
 import { getLocalizedString } from '../locales'
-import { Colors, Device } from '../styles/style-guide'
+import { COLORS, DEVICE } from '../styles/style-guide'
 
 interface TabBarItemType {
   isFocused: boolean
@@ -39,7 +39,7 @@ const getIcon = (routeName: keyof typeof LABELS): IconType => {
 }
 
 const TabBarItem = ({ isFocused, routeName, onLongPress, onPress, options }: TabBarItemType): JSX.Element => {
-  const color = isFocused ? Colors.secondary : Colors.icon
+  const color = isFocused ? COLORS.secondary : COLORS.icon
   const Icon = getIcon(routeName)
   return (
     <Pressable
@@ -110,8 +110,8 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps): JSX.Elem
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    width: Device.vw(100),
-    height: Device.hasNotch ? 49 + Device.indicatorPadding : 55,
+    width: DEVICE.vw(100),
+    height: DEVICE.hasNotch ? 49 + DEVICE.indicatorPadding : 55,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
@@ -122,11 +122,11 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
   },
   tab: {
-    width: Device.vw(100 / Object.keys(LABELS).length),
+    width: DEVICE.vw(100 / Object.keys(LABELS).length),
     height: 75,
     alignItems: 'center',
-    justifyContent: Device.hasNotch ? 'flex-start' : 'center',
-    paddingTop: Device.hasNotch ? 5 : 0,
+    justifyContent: DEVICE.hasNotch ? 'flex-start' : 'center',
+    paddingTop: DEVICE.hasNotch ? 5 : 0,
   },
 })
 

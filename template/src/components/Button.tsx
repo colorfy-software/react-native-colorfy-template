@@ -3,7 +3,7 @@ import { ActivityIndicator, Pressable, StyleSheet, StyleProp, TextStyle, ViewSty
 
 import AppText from './AppText'
 
-import { Colors, Device } from '../styles/style-guide'
+import { COLORS, DEVICE } from '../styles/style-guide'
 
 interface PropsType {
   children?: React.ReactNode
@@ -36,9 +36,9 @@ const Button = ({
   const isNotPrimary = secondary || tertiary
 
   const borderRadius = isNotPrimary ? 20 : 8
-  const textColor = isNotPrimary ? color || Colors.secondary : 'white'
-  const borderColor = secondary ? color || Colors.secondary : 'transparent'
-  const backgroundColor = isNotPrimary ? 'transparent' : color || Colors.secondary
+  const textColor = isNotPrimary ? color || COLORS.secondary : 'white'
+  const borderColor = secondary ? color || COLORS.secondary : 'transparent'
+  const backgroundColor = isNotPrimary ? 'transparent' : color || COLORS.secondary
 
   return (
     <Pressable
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: Device.verticalScale(5),
-    paddingHorizontal: Device.horizontalScale(25),
+    paddingVertical: DEVICE.verticalScale(5),
+    paddingHorizontal: DEVICE.horizontalScale(25),
     borderWidth: 2,
   },
   title: {
-    fontSize: Device.horizontalScale(16),
+    fontSize: DEVICE.horizontalScale(16),
     lineHeight: 24,
     textAlign: 'center',
   },

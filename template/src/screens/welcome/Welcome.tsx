@@ -6,7 +6,7 @@ import AppText from '../../components/AppText'
 
 import core from '../../core/core'
 import { Assets } from '../../assets'
-import { Device } from '../../styles/style-guide'
+import { DEVICE } from '../../styles/style-guide'
 
 const Welcome = (): JSX.Element => {
   const onLoginPress = (): void => {
@@ -28,8 +28,8 @@ const Welcome = (): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    width: Device.vw(100),
-    height: Device.vh(100),
+    width: DEVICE.vw(100),
+    height: DEVICE.vh(100),
     justifyContent: 'space-around',
   },
   header: {
@@ -37,10 +37,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logo: {
-    borderRadius: Device.horizontalScale(50),
-    width: Device.horizontalScale(100),
-    height: Device.horizontalScale(100),
-    marginBottom: Device.verticalScale(30),
+    borderRadius: DEVICE.horizontalScale(50),
+    width: DEVICE.horizontalScale(100),
+    height: DEVICE.horizontalScale(100),
+    marginBottom: DEVICE.verticalScale(30),
   },
 })
 

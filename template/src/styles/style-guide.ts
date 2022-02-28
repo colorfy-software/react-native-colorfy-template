@@ -11,4 +11,4 @@ export const boxShadow = {
 } as const
 
 // NOTE: This is required so that VS Code will auto import these variables from this file only.
-export { FontFamilyEnum as FontFamily, colorsStyles as Colors, deviceStyles as Device, typographyStyles as Typography }
+export { FontFamilyEnum as FONT_FAMILY, colorsStyles as COLORS, deviceStyles as DEVICE, typographyStyles as TYPOGRAPHY }

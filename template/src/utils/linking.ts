@@ -1,6 +1,6 @@
 import { Linking, Platform, Share, ShareAction } from 'react-native'
 
-import { Colors } from '../styles/style-guide'
+import { COLORS } from '../styles/style-guide'
 import { getLocalizedString } from '../locales'
 
 type CoordinatesType = {
@@ -31,7 +31,7 @@ export const share = (sharedContent: SharedContentType): Promise<ShareAction> =>
     {
       subject,
       dialogTitle: getLocalizedString('general.share'),
-      tintColor: Colors.primary,
+      tintColor: COLORS.primary,
     },
   )
 }

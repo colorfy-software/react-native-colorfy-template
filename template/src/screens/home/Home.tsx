@@ -7,7 +7,7 @@ import AppText from '../../components/AppText'
 import Button from '../../components/Button'
 
 import { Assets } from '../../assets'
-import { Device } from '../../styles/style-guide'
+import { DEVICE } from '../../styles/style-guide'
 import { getLocalizedString } from '../../locales'
 
 const Home = (): JSX.Element => {
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    marginTop: Device.verticalScale(30),
+    marginTop: DEVICE.verticalScale(30),
   },
 })
 

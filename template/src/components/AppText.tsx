@@ -1,10 +1,10 @@
 import { memo } from 'react'
 import { Text as TextModule, StyleProp, TextStyle, TextProps, GestureResponderEvent } from 'react-native'
 
-import { Colors, FontFamily, Typography } from '../styles/style-guide'
+import { COLORS, FONT_FAMILY, TYPOGRAPHY } from '../styles/style-guide'
 
 interface PropsType {
-  type?: keyof typeof Typography
+  type?: keyof typeof TYPOGRAPHY
   color?: string
   children?: React.ReactNode
   onPress?: ((event: GestureResponderEvent) => void) | undefined
@@ -33,21 +33,21 @@ const AppText = ({
   testID,
   ...textProps
 }: PropsType): JSX.Element => {
-  const predefinedStyles = (type && Typography[type]) || {}
+  const predefinedStyles = (type && TYPOGRAPHY[type]) || {}
   const passedStyles = style || {}
   const boldStyles: {
     fontFamily?: TextStyle['fontFamily']
-  } = bold ? { fontFamily: FontFamily.notoSansScBold } : {}
+  } = bold ? { fontFamily: FONT_FAMILY.notoSansScBold } : {}
   const lightStyles: {
     fontFamily?: TextStyle['fontFamily']
-  } = light ? { fontFamily: FontFamily.notoSansScLight } : {}
+  } = light ? { fontFamily: FONT_FAMILY.notoSansScLight } : {}
   const compiledStyles: StyleProp<TextStyle> = [
     predefinedStyles,
     { fontSize: fontSize ?? predefinedStyles.fontSize },
     passedStyles,
     boldStyles,
     lightStyles,
-    { color: color || (style as TextStyle)?.color || Colors.text },
+    { color: color || (style as TextStyle)?.color || COLORS.text },
   ]
 
   return (

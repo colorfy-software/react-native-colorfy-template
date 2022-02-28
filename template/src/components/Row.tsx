@@ -14,7 +14,7 @@ import type { PropsWithChildren } from 'react'
 import AppText from './AppText'
 
 import { Icons } from '../assets'
-import { Colors, Device } from '../styles/style-guide'
+import { COLORS, DEVICE } from '../styles/style-guide'
 
 interface PropsType {
   title?: string
@@ -42,7 +42,7 @@ const Row = ({
   const selectable = !shouldRenderToggle && !onPress
 
   const renderToggle = () => <Switch value={value} onValueChange={() => onPress?.()} />
-  const renderIcon = () => <Icon size={18} color={Colors.icon} style={styles.icon} />
+  const renderIcon = () => <Icon size={18} color={COLORS.icon} style={styles.icon} />
 
   return (
     <Pressable
@@ -56,7 +56,7 @@ const Row = ({
       <View style={styles.iconContainer}>
         {loading && (
           <View style={styles.loaderContainer}>
-            <ActivityIndicator color={Colors.secondary} size="small" />
+            <ActivityIndicator color={COLORS.secondary} size="small" />
           </View>
         )}
         {shouldRenderToggle ? renderToggle() : onPress ? renderIcon() : null}
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: Device.verticalScale(12),
+    paddingVertical: DEVICE.verticalScale(12),
   },
   text: {
     maxWidth: '80%',
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   loaderContainer: {
-    marginRight: Device.horizontalScale(10),
+    marginRight: DEVICE.horizontalScale(10),
   },
   icon: {
     transform: [{ rotate: '180deg' }],

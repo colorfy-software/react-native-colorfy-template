@@ -13,7 +13,7 @@ import {
 } from 'react-native'
 import { PureComponent, forwardRef } from 'react'
 
-import { Colors, FontFamily } from '../styles/style-guide'
+import { COLORS, FONT_FAMILY } from '../styles/style-guide'
 import { Icons } from '../assets'
 
 type PropsType = {
@@ -144,8 +144,8 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
     const { error, testIDs, lightMode, placeholder } = this.props
 
     const label = error ? `${placeholder} (${error})` : placeholder
-    const activeColor = error ? Colors.error : lightMode ? '#FFF' : Colors.primary
-    const inactiveColor = error ? Colors.error : lightMode ? '#FFFFFF90' : Colors.text
+    const activeColor = error ? COLORS.error : lightMode ? '#FFF' : COLORS.primary
+    const inactiveColor = error ? COLORS.error : lightMode ? '#FFFFFF90' : COLORS.text
 
     const fontSize = this.animatedTranslateYValue.interpolate({
       inputRange: [0, 1],
@@ -167,7 +167,7 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
         <AnimatedText
           testID={testIDs?.label}
           style={{
-            fontFamily: FontFamily.notoSansScRegular,
+            fontFamily: FONT_FAMILY.notoSansScRegular,
             fontSize,
             color: textColor,
           }}>
@@ -180,8 +180,8 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
   renderEditIcon = (): JSX.Element => {
     const { error, lightMode } = this.props
     const { focused } = this.state
-    const activeColor = error ? Colors.error : lightMode ? '#FFF' : Colors.primary
-    const tintColor = focused || error ? activeColor : lightMode ? '#FFF' : Colors.icon
+    const activeColor = error ? COLORS.error : lightMode ? '#FFF' : COLORS.primary
+    const tintColor = focused || error ? activeColor : lightMode ? '#FFF' : COLORS.icon
 
     return (
       <View style={styles.editIcon} pointerEvents="none">
@@ -195,8 +195,8 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
     const { focused, isPasswordField, passwordVisible } = this.state
 
     if (isPasswordField && showPasswordIndicator && value?.length) {
-      const activeColor = error ? Colors.error : lightMode ? '#FFF' : Colors.primary
-      const tintColor = focused || error ? activeColor : lightMode ? '#FFF' : Colors.icon
+      const activeColor = error ? COLORS.error : lightMode ? '#FFF' : COLORS.primary
+      const tintColor = focused || error ? activeColor : lightMode ? '#FFF' : COLORS.icon
 
       return (
         <Pressable style={styles.passwordIconPressable} onPress={this.onPressPasswordVisibility}>
@@ -235,8 +235,8 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
     const editable = !disabled
     const hideEditIndicator =
       hideEditIcon || !editable || (showPasswordIndicator && focused) || (showPasswordIndicator && value?.length)
-    const activeColor = error ? Colors.error : lightMode ? '#FFF' : Colors.primary
-    const borderBottomColor = focused || error ? activeColor : lightMode ? '#FFFFFF80' : Colors.icon
+    const activeColor = error ? COLORS.error : lightMode ? '#FFF' : COLORS.primary
+    const borderBottomColor = focused || error ? activeColor : lightMode ? '#FFFFFF80' : COLORS.icon
 
     return (
       <View style={[styles.container, disabled && styles.containerDisabled]}>
@@ -282,7 +282,7 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
 
 const styles = StyleSheet.create({
   textInputModule: {
-    fontFamily: FontFamily.notoSansScRegular,
+    fontFamily: FONT_FAMILY.notoSansScRegular,
     borderBottomWidth: 1,
     borderRadius: 0,
     width: '100%',

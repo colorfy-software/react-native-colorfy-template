@@ -4,7 +4,7 @@ import { StyleSheet, ActivityIndicator, ViewProps } from 'react-native'
 
 import AnimatedWrapper, { SPRING_CONFIG } from './AnimatedWrapper'
 
-import { Colors } from '../styles/style-guide'
+import { COLORS } from '../styles/style-guide'
 
 interface PropsType {
   shown: boolean
@@ -15,7 +15,7 @@ interface PropsType {
 
 const ScreenLoader = ({ loaderColor, backgroundColor: bgColor, testID, shown }: PropsType): JSX.Element | null => {
   const color = loaderColor || 'white'
-  const backgroundColor = bgColor || Colors.primary
+  const backgroundColor = bgColor || COLORS.primary
   const transition = useRef(new Value(Number(shown))).current
   // NOTE: This is needed for Detox not go into an infinite loop because of the ongoing loader animation.
   const [shouldRender, setShouldRender] = useState(shown)
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.secondary,
+    backgroundColor: COLORS.secondary,
     zIndex: 2,
   },
 })

@@ -6,7 +6,7 @@ import core from './core/core'
 import * as Modals from './modals'
 import Navigator from './navigation/Navigation'
 
-import { Device } from './styles/style-guide'
+import { DEVICE } from './styles/style-guide'
 
 // NOTE: Definition of the modal stack
 const modalConfig: ModalStackConfig = { ...Modals }
@@ -39,7 +39,7 @@ const defaultOptions: ModalOptions = {
       {
         translateY: animatedValue.interpolate({
           inputRange: [0, 1, 2],
-          outputRange: [Device.vh(100), 0, Device.vh(100)],
+          outputRange: [DEVICE.vh(100), 0, DEVICE.vh(100)],
         }),
       },
     ],
@@ -49,7 +49,7 @@ const defaultOptions: ModalOptions = {
 const modalStack = createModalStack(modalConfig, defaultOptions)
 
 const App = (): JSX.Element => {
-  const [windowHeight, setWindowHeight] = useState(Device.screenHeight - Device.navBarHeight)
+  const [windowHeight, setWindowHeight] = useState(DEVICE.screenHeight - DEVICE.navBarHeight)
   const keyboardWillShowSubscription = useRef<EmitterSubscription | null>(null)
   const keyboardWillHideSubscription = useRef<EmitterSubscription | null>(null)
   const keyboardDidShowSubscription = useRef<EmitterSubscription | null>(null)
@@ -57,31 +57,31 @@ const App = (): JSX.Element => {
 
   // NOTE: Sending the available window height to all listeners on core.events.listen('windowHeight') channel.
   const syncWindowHeight = useCallback(height => {
-    setWindowHeight(height - Device.navBarHeight)
-    core.events.send('windowHeight', height - Device.navBarHeight)
+    setWindowHeight(height - DEVICE.navBarHeight)
+    core.events.send('windowHeight', height - DEVICE.navBarHeight)
   }, [])
 
   const keyboardWillShow = useCallback(
     (e: { endCoordinates: { height: number } }) => {
       LayoutAnimation.easeInEaseOut()
-      syncWindowHeight(Device.screenHeight - e.endCoordinates.height)
+      syncWindowHeight(DEVICE.screenHeight - e.endCoordinates.height)
     },
     [syncWindowHeight],
   )
 
   const keyboardWillHide = useCallback(() => {
     LayoutAnimation.easeInEaseOut()
-    syncWindowHeight(Device.screenHeight)
+    syncWindowHeight(DEVICE.screenHeight)
   }, [syncWindowHeight])
 
   const keyboardDidShow = useCallback(
     (e: { endCoordinates: { height: number } }) => {
-      Platform.OS === 'android' && syncWindowHeight(Device.screenHeight - e.endCoordinates.height)
+      Platform.OS === 'android' && syncWindowHeight(DEVICE.screenHeight - e.endCoordinates.height)
     },
     [syncWindowHeight],
   )
   const keyboardDidHide = useCallback(() => {
-    Platform.OS === 'android' && syncWindowHeight(Device.screenHeight)
+    Platform.OS === 'android' && syncWindowHeight(DEVICE.screenHeight)
   }, [syncWindowHeight])
 
   useEffect(() => {
@@ -100,7 +100,7 @@ const App = (): JSX.Element => {
   }, [keyboardDidHide, keyboardDidShow, keyboardWillHide, keyboardWillShow])
 
   return (
-    <View style={[{ width: Device.width(1), height: windowHeight }]}>
+    <View style={[{ width: DEVICE.width(1), height: windowHeight }]}>
       <ModalProvider stack={modalStack}>
         <Navigator />
       </ModalProvider>
