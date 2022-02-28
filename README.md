@@ -143,16 +143,6 @@ This template has virtually everything you might need to kick-start a React Nati
   ```
 </details>
 
-## 🤝 Contributing
-
-This template is a very opinionated approach to React Native apps that the team uses at colorfy.
-
-**Therefore, we won't necessarily consider requests that do not align with our goals/vision/use cases for this template.**
-
-However, feel free to voice your opinions if need be: our position might change!
-
-You can also consider doing so [_from the inside_](https://colorfy.me/jobs/) 👀…
-
 ## 📚 Commands
 
 An exhaustive list of all the commands available in `package.json` and their use case.
@@ -270,3 +260,12 @@ And from here you change the arguments `ios`/`android`, `dev` (for `staging`/`pr
   Runs after each use of `yarn add`/`yarn install` in the project to jetify the Android code, update the Pods on iOS (if you're using macOS).
 </details>
 
+## 🤝 Contributing
+
+This template is a very opinionated approach to React Native apps that the team uses at colorfy.
+
+**Therefore, we won't necessarily consider requests that do not align with our goals/vision/use cases for this template.**
+
+However, feel free to voice your opinions if need be: our position might change!
+
+You can also consider doing so [_from the inside_](https://colorfy.me/jobs/) 👀…
