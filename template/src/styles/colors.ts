@@ -22,37 +22,32 @@ export const colorsStyles = {
    *  Main BLACK color
    *  @constant '#121212'
    */
-  PRIMARY: '#121212',
+  primary: '#121212',
   /**
-   * Main RED color
-   * @constant '#e20e17'
+   * Main PURPLE color
+   * @constant '#FC3980'
    */
-  SECONDARY: '#e20e17',
+  secondary: '#FC3980',
   /**
    * RED error color.
    * @constant '#e20e17'
    */
-  ERROR: '#e20e17',
+  error: '#e20e17',
   /**
    * Default GREY text color.
    * @constant '#000000'
    */
-  TEXT: '#000000',
+  text: '#000000',
   /**
    * Default WHITE background color
    * @constant '#ffffff'
    */
-  BACKGROUND: '#ffffff',
+  background: '#ffffff',
   /**
    * Default GREY icon color
    * @constant '#d8d8d8'
    */
-  ICON: '#d8d8d8',
-  /**
-   * Default LIGHT GREY text color.
-   * @constant '#bdbbbb'
-   */
-  LIGHT_GREY: '#bdbbbb',
+  icon: '#d8d8d8',
 
   /**
    * Transforms hex with alpha to rgba

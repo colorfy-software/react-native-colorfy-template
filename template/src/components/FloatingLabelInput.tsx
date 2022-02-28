@@ -14,9 +14,8 @@ import {
 } from 'react-native'
 import { PureComponent, forwardRef } from 'react'
 
-import Icon from './icon/Icon'
+import { Colors, FontFamily } from '../styles/style-guide'
 
-import { colors, FontFamily } from '../styles/style-guide'
 
 type PropsType = {
   type: string
@@ -147,8 +146,8 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
     const { error, testIDs, lightMode, placeholder } = this.props
 
     const label = error ? `${placeholder} (${error})` : placeholder
-    const activeColor = error ? colors.ERROR : lightMode ? '#FFF' : colors.PRIMARY
-    const inactiveColor = error ? colors.ERROR : lightMode ? '#FFFFFF90' : colors.TEXT
+    const activeColor = error ? Colors.error : lightMode ? '#FFF' : Colors.primary
+    const inactiveColor = error ? Colors.error : lightMode ? '#FFFFFF90' : Colors.text
 
     const fontSize = this.animatedTranslateYValue.interpolate({
       inputRange: [0, 1],
@@ -183,8 +182,8 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
   renderEditIcon = (): JSX.Element => {
     const { error, lightMode } = this.props
     const { focused } = this.state
-    const activeColor = error ? colors.ERROR : lightMode ? '#FFF' : colors.PRIMARY
-    const tintColor = focused || error ? activeColor : lightMode ? '#FFF' : colors.ICON
+    const activeColor = error ? Colors.error : lightMode ? '#FFF' : Colors.primary
+    const tintColor = focused || error ? activeColor : lightMode ? '#FFF' : Colors.icon
 
     return (
       <View style={styles.editIcon} pointerEvents="none">
@@ -198,8 +197,8 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
     const { focused, isPasswordField, passwordVisible } = this.state
 
     if (isPasswordField && showPasswordIndicator && value?.length) {
-      const activeColor = error ? colors.ERROR : lightMode ? '#FFF' : colors.PRIMARY
-      const tintColor = focused || error ? activeColor : lightMode ? '#FFF' : colors.ICON
+      const activeColor = error ? Colors.error : lightMode ? '#FFF' : Colors.primary
+      const tintColor = focused || error ? activeColor : lightMode ? '#FFF' : Colors.icon
 
       return (
         <Pressable style={styles.passwordIconPressable} onPress={this.onPressPasswordVisibility}>
@@ -238,8 +237,8 @@ class FloatingLabelInput extends PureComponent<PropsType, StateType> {
     const editable = !disabled
     const hideEditIndicator =
       hideEditIcon || !editable || (showPasswordIndicator && focused) || (showPasswordIndicator && value?.length)
-    const activeColor = error ? colors.ERROR : lightMode ? '#FFF' : colors.PRIMARY
-    const borderBottomColor = focused || error ? activeColor : lightMode ? '#FFFFFF80' : colors.ICON
+    const activeColor = error ? Colors.error : lightMode ? '#FFF' : Colors.primary
+    const borderBottomColor = focused || error ? activeColor : lightMode ? '#FFFFFF80' : Colors.icon
 
     return (
       <View style={[styles.container, disabled && styles.containerDisabled]}>

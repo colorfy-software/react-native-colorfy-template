@@ -1,10 +1,10 @@
 import { memo } from 'react'
 import { Text as TextModule, StyleProp, TextStyle, TextProps, GestureResponderEvent } from 'react-native'
 
-import { FontFamily, colors, typography } from '../styles/style-guide'
+import { Colors, FontFamily, Typography } from '../styles/style-guide'
 
 interface PropsType {
-  type?: keyof typeof typography
+  type?: keyof typeof Typography
   color?: string
   children?: React.ReactNode
   onPress?: ((event: GestureResponderEvent) => void) | undefined
@@ -33,7 +33,7 @@ const AppText = ({
   testID,
   ...textProps
 }: PropsType): JSX.Element => {
-  const predefinedStyles = (type && typography[type]) || {}
+  const predefinedStyles = (type && Typography[type]) || {}
   const passedStyles = style || {}
   const boldStyles: {
     fontFamily?: TextStyle['fontFamily']
@@ -47,7 +47,7 @@ const AppText = ({
     passedStyles,
     boldStyles,
     lightStyles,
-    { color: color || (style as TextStyle)?.color || colors.TEXT },
+    { color: color || (style as TextStyle)?.color || Colors.text },
   ]
 
   return (

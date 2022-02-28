@@ -9,7 +9,7 @@ import AppText from '../components/AppText'
 import Button from '../components/Button'
 
 import { getLocalizedString } from '../locales'
-import { colors, device } from '../styles/style-guide'
+import { Colors, Device } from '../styles/style-guide'
 
 interface PropsType {
   title?: string
@@ -84,7 +84,7 @@ const ModalContainer = ({
             <Image source={require('../assets/closeButton.png')} style={styles.closeButtonImage} />
           </View>
           <AppText
-            color={titleColor || colors.TEXT}
+            color={titleColor || Colors.text}
             testID={testIDs?.title}
             style={styles.title}
             ellipsizeMode="tail"
@@ -136,13 +136,13 @@ const ModalContainer = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: device.vw(100),
+    width: Device.vw(100),
     alignSelf: 'stretch',
     backgroundColor: 'white',
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
-    maxHeight: device.windowHeight - device.statusBarHeight,
-    ...(device.hasNotch && {
+    maxHeight: Device.windowHeight - Device.statusBarHeight,
+    ...(Device.hasNotch && {
       paddingBottom: 20,
       alignSelf: 'center',
       borderTopLeftRadius: 35,

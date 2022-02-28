@@ -8,7 +8,7 @@ import { ModalsParamsType } from '../types/modals-types'
 import AppText from '../components/AppText'
 
 import sleep from './sleep'
-import { colors } from '../styles/style-guide'
+import { Colors } from '../styles/style-guide'
 import { getLocalizedString } from '../locales'
 
 const { openModal, closeModal } = modalfy<ModalsParamsType>()
@@ -22,7 +22,7 @@ const { openModal, closeModal } = modalfy<ModalsParamsType>()
  */
 export const parseStringForBold = (string: string, options?: { isError?: boolean }): ReactNodeArray =>
   reactStringReplace(string, /\*(.+?)\*/g, (match, i) => (
-    <AppText key={i} bold color={options?.isError ? 'white' : colors.TEXT} type="body">
+    <AppText key={i} bold color={options?.isError ? 'white' : Colors.text} type="body">
       {match}
     </AppText>
   ))

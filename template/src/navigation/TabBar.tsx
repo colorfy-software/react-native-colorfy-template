@@ -5,7 +5,7 @@ import Icon from '../components/icon/Icon'
 import AppText from '../components/AppText'
 
 import { getLocalizedString } from '../locales'
-import { colors, device } from '../styles/style-guide'
+import { Colors, Device } from '../styles/style-guide'
 
 interface TabBarItemType {
   isFocused: boolean
@@ -23,7 +23,7 @@ const LABELS = {
 }
 
 const TabBarItem = ({ isFocused, routeName, onLongPress, onPress, options }: TabBarItemType): JSX.Element => {
-  const color = isFocused ? colors.SECONDARY : colors.ICON
+  const color = isFocused ? Colors.secondary : Colors.icon
   const iconName = routeName === 'profilestack' ? 'settings' : routeName
   return (
     <Pressable
@@ -94,8 +94,8 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps): JSX.Elem
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    width: device.vw(100),
-    height: device.hasNotch ? 49 + device.indicatorPadding : 55,
+    width: Device.vw(100),
+    height: Device.hasNotch ? 49 + Device.indicatorPadding : 55,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
@@ -106,11 +106,11 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
   },
   tab: {
-    width: device.vw(100 / Object.keys(LABELS).length),
+    width: Device.vw(100 / Object.keys(LABELS).length),
     height: 75,
     alignItems: 'center',
-    justifyContent: device.hasNotch ? 'flex-start' : 'center',
-    paddingTop: device.hasNotch ? 5 : 0,
+    justifyContent: Device.hasNotch ? 'flex-start' : 'center',
+    paddingTop: Device.hasNotch ? 5 : 0,
   },
 })
 

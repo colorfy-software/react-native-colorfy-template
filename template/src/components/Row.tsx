@@ -15,6 +15,7 @@ import Icon from './icon/Icon'
 import AppText from './AppText'
 
 import { colors, device } from '../styles/style-guide'
+import { Colors, Device } from '../styles/style-guide'
 
 interface PropsType {
   title?: string
@@ -56,7 +57,7 @@ const Row = ({
       <View style={styles.iconContainer}>
         {loading && (
           <View style={styles.loaderContainer}>
-            <ActivityIndicator color={colors.SECONDARY} size="small" />
+            <ActivityIndicator color={Colors.secondary} size="small" />
           </View>
         )}
         {shouldRenderToggle ? renderToggle() : onPress ? renderIcon() : null}
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: device.verticalScale(12),
+    paddingVertical: Device.verticalScale(12),
   },
   text: {
     maxWidth: '80%',
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   loaderContainer: {
-    marginRight: device.horizontalScale(10),
+    marginRight: Device.horizontalScale(10),
   },
   icon: {
     transform: [{ rotate: '180deg' }],
