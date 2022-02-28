@@ -43,3 +43,11 @@ export const copyToClipboard = async (string: string): Promise<void> => {
   await sleep(1000)
   closeModal('AlertModal')
 }
+
+/**
+ * Returns a string with the first letter the word capitalized.
+ * @param string - `string`— String to capitalize.
+ * @example capitalize('hello') -> 'Hello'
+ * @returns `string`— The capitalized string.
+ */
+export const capitalize = (string: string): string => string.charAt(0).toUpperCase() + string.slice(1)

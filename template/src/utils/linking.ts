@@ -16,6 +16,10 @@ type SharedContentType = {
   subject?: string
 }
 
+/**
+ * Shares content via the platform native shared action sheet.
+ * @param sharedContent - `{ SharedContentType }`– Provide the content.
+ */
 export const share = (sharedContent: SharedContentType): Promise<ShareAction> => {
   const { title, content, url = '', subject = '' } = sharedContent
   return Share.share(
@@ -32,6 +36,10 @@ export const share = (sharedContent: SharedContentType): Promise<ShareAction> =>
   )
 }
 
+/**
+ * Calls the provided phone number (if supported by the platform).
+ * @param phoneNumber - `{ number | string }`– The phone number to call.
+ */
 export const call = (phoneNumber: number | string): Promise<void> =>
   Linking.canOpenURL(`tel:${phoneNumber}`)
     .then(supported => {
@@ -41,6 +49,13 @@ export const call = (phoneNumber: number | string): Promise<void> =>
       console.log('Linking.canOpenURL', { error })
     })
 
+/**
+ * Opens the user's email client composer with provided info (if supported by the platform).
+ * @param address - `{ string }`– The recipient email address.
+ * @param subject - `{ string }`– Optional. The email subject.
+ * @param body - `{ string }`– Optional. The email body.
+ * @param cc - `{ string }`– Optional. The email(s) to put in carbon copy.
+ */
 export const email = (address: string, subject = '', body = '', cc = ''): Promise<void> =>
   Linking.canOpenURL(`mailto:${address}?subject=${subject}&body=${body}${cc && `&cc=${cc}`}`)
     .then(supported => {
@@ -52,6 +67,10 @@ export const email = (address: string, subject = '', body = '', cc = ''): Promis
       console.log('Linking.email', { error })
     })
 
+/**
+ * Opens the provided URL (if valid).
+ * @param url - `{ string }`– The URL to open.
+ */
 export const openURL = (url: string): Promise<void> =>
   Linking.canOpenURL(url)
     .then(supported => {
@@ -61,6 +80,10 @@ export const openURL = (url: string): Promise<void> =>
       console.log('Linking.openURL', { error })
     })
 
+/**
+ * Opens Apple Maps (on iOS)/Google Maps (on Android) and start navigation to the provided coordinates.
+ * @param coordinates - `{ CoordinatesType }`– The coordinates to open.
+ */
 export const startNavigation = (coordinates: CoordinatesType): void => {
   let url: string
 
