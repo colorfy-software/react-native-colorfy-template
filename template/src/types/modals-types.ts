@@ -1,8 +1,8 @@
-import { ComponentProps } from 'react'
-import { ModalOptions } from 'react-native-modalfy'
-import { ImageSourcePropType, ImageStyle, StyleProp } from 'react-native'
+import type { ComponentProps } from 'react'
+import type { ModalOptions } from 'react-native-modalfy'
+import type { ImageSourcePropType, ImageStyle, StyleProp } from 'react-native'
 
-import ModalContainer from '../modals/ModalContainer'
+import type ModalContainer from '../modals/ModalContainer'
 
 type ModalContainerPropsType = ComponentProps<typeof ModalContainer>
 

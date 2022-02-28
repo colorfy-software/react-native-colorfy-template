@@ -8,19 +8,19 @@ import { StackCardInterpolatedStyle, createStackNavigator } from '@react-navigat
 
 import TabBar from './TabBar'
 import AuthStack from './AuthStack'
-import ProfileStack from './ProfileStack'
+import SettingsStack from './SettingsStack'
 
 import Home from '../screens/home/Home'
 import Tips from '../screens/tips/Tips'
 import Activity from '../screens/activity/Activity'
 
-import { MainStackParamsType, AppBottomTabParamsType } from '../types/navigation-types'
+import type { MainStackParamsType, AppBottomTabParamsType } from '../types/navigation-types'
 
 import core from '../core/core'
 import sleep from '../utils/sleep'
+import appStore from '../stores/app-store'
+import userStore from '../stores/user-store'
 import NavigationUtil from '../utils/navigation'
-import appStore from '../store/stores/app-store'
-import userStore from '../store/stores/user-store'
 
 const MainStack = createStackNavigator<MainStackParamsType>()
 const AppBottomTab = createBottomTabNavigator<AppBottomTabParamsType>()
@@ -39,12 +39,12 @@ const AppBottomTabComponent = (): JSX.Element => (
     <AppBottomTab.Screen name="Home" component={Home} />
     <AppBottomTab.Screen name="Tips" component={Tips} />
     <AppBottomTab.Screen name="Activity" component={Activity} />
-    <AppBottomTab.Screen name="ProfileStack" component={ProfileStack} />
+    <AppBottomTab.Screen name="SettingsStack" component={SettingsStack} />
   </AppBottomTab.Navigator>
 )
 
 export default (): JSX.Element => {
-  const isRehydrated = useRehydrate({ app: appStore, user: userStore })
+  const isRehydrated = useRehydrate([appStore, userStore])
   const navigationState = appStore(({ data }) => data.navigationState)
   const hasValidToken = userStore(({ data }) => data.UID)
   const routeNameRef = useRef<string | undefined>()
@@ -57,7 +57,7 @@ export default (): JSX.Element => {
        * NOTE: Hides the auth screen that appears briefly
        * before rehydration when the user was already logged in.
        */
-      sleep(250).then(() => SplashScreen?.hide())
+      sleep(500).then(() => SplashScreen?.hide())
     }
   }, [hasValidToken, isRehydrated])
 

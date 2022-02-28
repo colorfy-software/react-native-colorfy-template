@@ -1,6 +1,6 @@
-import { StackNavigationProp } from '@react-navigation/stack'
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
-import { CompositeNavigationProp, RouteProp } from '@react-navigation/native'
+import type { StackNavigationProp } from '@react-navigation/stack'
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
+import type { CompositeNavigationProp, RouteProp } from '@react-navigation/native'
 
 // MAIN STACK
 export type MainStackParamsType = {
@@ -27,7 +27,7 @@ export type AppBottomTabParamsType = {
   Home?: never
   Tips?: never
   Activity?: never
-  ProfileStack?: never
+  SettingsStack?: never
 }
 
 export type AppBottomTabNavigationType<T extends keyof AppBottomTabParamsType> = CompositeNavigationProp<
@@ -37,14 +37,14 @@ export type AppBottomTabNavigationType<T extends keyof AppBottomTabParamsType> =
 
 export type AppBottomTabRouteType<T extends keyof AppBottomTabParamsType> = RouteProp<AppBottomTabParamsType, T>
 
-// PROFILE STACK
-export type ProfileStackParamsType = {
-  Profile?: never
+// SETTINGS STACK
+export type SettingsStackParamsType = {
+  Settings?: never
 }
 
-export type ProfileStackNavigationType<T extends keyof ProfileStackParamsType> = StackNavigationProp<
-  ProfileStackParamsType,
+export type SettingsStackNavigationType<T extends keyof SettingsStackParamsType> = StackNavigationProp<
+  SettingsStackParamsType,
   T
 >
 
-export type ProfileStackRouteType<T extends keyof ProfileStackParamsType> = RouteProp<ProfileStackParamsType, T>
+export type SettingsStackRouteType<T extends keyof SettingsStackParamsType> = RouteProp<SettingsStackParamsType, T>

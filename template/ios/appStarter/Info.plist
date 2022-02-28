@@ -35,8 +35,14 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>App Starter needs to access your location to detect your current WiFi network.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App Starter needs to access your location to detect your current WiFi network.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>App Starter needs to access your location to detect your current WiFi network.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>App Starter needs to access your location to detect your current WiFi network.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansSC-Bold.otf</string>

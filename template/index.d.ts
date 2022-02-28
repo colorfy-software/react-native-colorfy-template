@@ -1,3 +1,7 @@
+type Entries<T> = {
+  [K in keyof T]: [K, T[K]]
+}[keyof T][]
+
 declare namespace NodeJS {
   export interface Global {
     HermesInternal: null | Record<string, unknown>

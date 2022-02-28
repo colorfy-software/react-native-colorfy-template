@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { AuthStackParamsType } from '../types/navigation-types'
+import type { AuthStackParamsType } from '../types/navigation-types'
 
 import Welcome from '../screens/welcome/Welcome'
 

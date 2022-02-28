@@ -1,9 +1,9 @@
-import { PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { ModalOptions, useModal } from 'react-native-modalfy'
 import { Pressable, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 
-import { ModalsParamsType } from '../types/modals-types'
+import type { ModalsParamsType } from '../types/modals-types'
 
 import AppText from '../components/AppText'
 import Button from '../components/Button'
@@ -65,7 +65,7 @@ const ModalContainer = ({
     return type === 'primary'
       ? {
           type: 'primary',
-          title: actions?.[0]?.title || getLocalizedString('notifications.defaultNotification_buttonText'),
+          title: actions?.[0]?.title || 'OK',
           onPress: actions?.[0]?.onPress || closeButtonOnPress,
         }
       : undefined
@@ -118,9 +118,9 @@ const ModalContainer = ({
       {primaryAction && (
         <Button
           testID={testIDs?.primaryAction}
-          title={primaryAction.title || getLocalizedString('notifications.defaultNotification_buttonText')}
+          title={primaryAction.title}
           style={[styles.primaryAction, !secondaryAction && styles.singleAction]}
-          onPress={primaryAction.onPress || closeButtonOnPress}
+          onPress={primaryAction.onPress}
         />
       )}
       {secondaryAction && (

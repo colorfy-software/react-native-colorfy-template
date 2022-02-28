@@ -7,10 +7,11 @@ buildscript {
         compileSdkVersion = 30
         targetSdkVersion = 30
         kotlinVersion = "1.4.21"
-        ndkVersion = "21.4.7075529"
+        ndkVersion = "22.0.7026061"
     }
     repositories {
         google()
+        mavenCentral()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:4.2.2")
@@ -33,8 +34,6 @@ subprojects {
 
 allprojects {
     repositories {
-        mavenCentral()
-        mavenLocal()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url("$rootDir/../node_modules/react-native/android")
@@ -42,6 +41,13 @@ allprojects {
         maven {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
+        }
+        mavenCentral {
+            // We don't want to fetch react-native from Maven Central as there are
+            // older versions over there.
+            content {
+                excludeGroup "com.facebook.react"
+            }
         }
 
         google()

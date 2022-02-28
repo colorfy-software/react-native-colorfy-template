@@ -24,7 +24,7 @@ public class MainActivity extends ReactActivity {
   protected void onCreate(Bundle savedInstanceState) {
     ActionBar actionBar = getSupportActionBar();
     actionBar.hide();
-    SplashScreen.show(this, R.style.SplashScreenTheme);
+    SplashScreen.show(this);
     super.onCreate(savedInstanceState);
   }
 

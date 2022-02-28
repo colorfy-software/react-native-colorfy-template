@@ -29,7 +29,7 @@ definitions:
         caches:
           - node
         script:
-          - yarn run ts
+          - yarn run type
           - cd __tests__ && touch ts.ok
         artifacts:
           - __tests__/**

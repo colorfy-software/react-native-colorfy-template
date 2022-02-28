@@ -5,18 +5,17 @@ import Button from '../../components/Button'
 import AppText from '../../components/AppText'
 
 import core from '../../core/core'
-import { device } from '../../styles/style-guide'
+import { useStores } from '../../stores/stores'
+import { Device } from '../../styles/style-guide'
 import { getLocalizedString } from '../../locales'
-import userStore from '../../store/stores/user-store'
 
-const Profile = (): JSX.Element => {
-  const helloMessage = userStore(({ data }) => `👋 ${data.firstName} ${data.lastName}!`, shallow)
-  const onLogoutPress = () => core.user.logout()
+const Settings = (): JSX.Element => {
+  const helloMessage = useStores('user', data => `👋 ${data.firstName} ${data.lastName}!`, shallow)
 
   return (
     <View style={styles.container}>
       <AppText type="subTitle">{helloMessage}</AppText>
-      <Button title={getLocalizedString('general.logout')} style={styles.button} onPress={onLogoutPress} />
+      <Button title={getLocalizedString('general.logout')} style={styles.button} onPress={() => core.user.logout()} />
     </View>
   )
 }
@@ -24,12 +23,12 @@ const Profile = (): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   button: {
-    marginTop: device.verticalScale(30),
+    marginTop: Device.verticalScale(30),
   },
 })
 
-export default Profile
+export default Settings

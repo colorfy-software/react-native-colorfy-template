@@ -1,9 +1,9 @@
-import { ReactNodeArray } from 'react'
+import type { ReactNode } from 'react'
 import { modalfy } from 'react-native-modalfy'
 import reactStringReplace from 'react-string-replace'
 import Clipboard from '@react-native-clipboard/clipboard'
 
-import { ModalsParamsType } from '../types/modals-types'
+import type { ModalsParamsType } from '../types/modals-types'
 
 import AppText from '../components/AppText'
 
@@ -18,9 +18,9 @@ const { openModal, closeModal } = modalfy<ModalsParamsType>()
  * @param string - `string`— String to parse.
  * @param options - `{ isError?: boolean }`— Optional. Param to use to tweak the output if you're using this function from the chatbot for instance.
  * @example parseStringForBold('Please, *try again*.') -> 'Please, <AppText bold color={colors.TEXT} type="body">Try again</AppText>.'
- * @returns `React.ReactNodeArray`— A string containing <AppText /> components inside of it if any bold text was found.
+ * @returns `Iterable<ReactNode>`— A string containing <AppText /> components inside of it if any bold text was found.
  */
-export const parseStringForBold = (string: string, options?: { isError?: boolean }): ReactNodeArray =>
+export const parseStringForBold = (string: string, options?: { isError?: boolean }): Iterable<ReactNode> =>
   reactStringReplace(string, /\*(.+?)\*/g, (match, i) => (
     <AppText key={i} bold color={options?.isError ? 'white' : Colors.text} type="body">
       {match}

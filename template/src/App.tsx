@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
-import { Animated, Keyboard, LayoutAnimation, Platform, View } from 'react-native'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { ModalOptions, ModalProvider, ModalStackConfig, createModalStack } from 'react-native-modalfy'
+import { Animated, EmitterSubscription, Keyboard, LayoutAnimation, Platform, View } from 'react-native'
 
 import core from './core/core'
 import * as Modals from './modals'
@@ -11,7 +11,7 @@ import { Device } from './styles/style-guide'
 // NOTE: Definition of the modal stack
 const modalConfig: ModalStackConfig = { ...Modals }
 
-const animation = (animatedValue: Animated.Value, toValue: number) => {
+const animation = (animatedValue: Animated.Value, toValue: number, callback?: () => void) => {
   Animated.spring(animatedValue, {
     toValue,
     damping: 10,
@@ -21,7 +21,9 @@ const animation = (animatedValue: Animated.Value, toValue: number) => {
     restSpeedThreshold: 0.001,
     restDisplacementThreshold: 0.001,
     useNativeDriver: true,
-  }).start()
+  }).start(({ finished }) => {
+    if (finished) callback?.()
+  })
 }
 
 const defaultOptions: ModalOptions = {
@@ -47,7 +49,11 @@ const defaultOptions: ModalOptions = {
 const modalStack = createModalStack(modalConfig, defaultOptions)
 
 const App = (): JSX.Element => {
-  const [windowHeight, setWindowHeight] = useState(device.screenHeight - device.navBarHeight)
+  const [windowHeight, setWindowHeight] = useState(Device.screenHeight - Device.navBarHeight)
+  const keyboardWillShowSubscription = useRef<EmitterSubscription | null>(null)
+  const keyboardWillHideSubscription = useRef<EmitterSubscription | null>(null)
+  const keyboardDidShowSubscription = useRef<EmitterSubscription | null>(null)
+  const keyboardDidHideSubscription = useRef<EmitterSubscription | null>(null)
 
   // NOTE: Sending the available window height to all listeners on core.events.listen('windowHeight') channel.
   const syncWindowHeight = useCallback(height => {
@@ -79,17 +85,17 @@ const App = (): JSX.Element => {
   }, [syncWindowHeight])
 
   useEffect(() => {
-    Keyboard.addListener('keyboardWillShow', keyboardWillShow)
-    Keyboard.addListener('keyboardWillHide', keyboardWillHide)
+    keyboardWillShowSubscription.current = Keyboard.addListener('keyboardWillShow', keyboardWillShow)
+    keyboardWillHideSubscription.current = Keyboard.addListener('keyboardWillHide', keyboardWillHide)
 
-    Keyboard.addListener('keyboardDidShow', keyboardDidShow)
-    Keyboard.addListener('keyboardDidHide', keyboardDidHide)
+    keyboardDidShowSubscription.current = Keyboard.addListener('keyboardDidShow', keyboardDidShow)
+    keyboardDidHideSubscription.current = Keyboard.addListener('keyboardDidHide', keyboardDidHide)
 
     return () => {
-      Keyboard.removeListener('keyboardWillShow', keyboardWillShow)
-      Keyboard.removeListener('keyboardWillHide', keyboardWillHide)
-      Keyboard.removeListener('keyboardDidShow', keyboardDidShow)
-      Keyboard.removeListener('keyboardDidHide', keyboardDidHide)
+      keyboardWillShowSubscription.current?.remove()
+      keyboardWillHideSubscription.current?.remove()
+      keyboardDidShowSubscription.current?.remove()
+      keyboardDidHideSubscription.current?.remove()
     }
   }, [keyboardDidHide, keyboardDidShow, keyboardWillHide, keyboardWillShow])
 

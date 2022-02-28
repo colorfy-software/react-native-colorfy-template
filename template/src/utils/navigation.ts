@@ -1,7 +1,7 @@
 import { createRef } from 'react'
-import { NavigationContainerRef, Route } from '@react-navigation/native'
+import type { NavigationContainerRef, Route } from '@react-navigation/native'
 
-import { AppBottomTabParamsType, AuthStackParamsType } from '../types/navigation-types'
+import type { AppBottomTabParamsType, AuthStackParamsType } from '../types/navigation-types'
 
 type ParamsType = AuthStackParamsType & AppBottomTabParamsType
 

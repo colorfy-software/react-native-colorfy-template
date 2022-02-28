@@ -14,6 +14,7 @@
         <item name="android:windowDisablePreview">true</item>
         <item name="android:datePickerDialogTheme">@style/Dialog.Theme</item>
         <item name="android:timePickerDialogTheme">@style/Dialog.Theme</item>
+        <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
     </style>
 
     <style name="Dialog.Theme" parent="Theme.AppCompat.DayNight.Dialog">

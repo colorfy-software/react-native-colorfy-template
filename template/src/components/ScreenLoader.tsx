@@ -7,9 +7,9 @@ import AnimatedWrapper, { SPRING_CONFIG } from './AnimatedWrapper'
 import { Colors } from '../styles/style-guide'
 
 interface PropsType {
+  shown: boolean
   loaderColor?: string
   backgroundColor?: string
-  shown: boolean
   testID?: ViewProps['testID']
 }
 
@@ -40,14 +40,8 @@ const ScreenLoader = ({ loaderColor, backgroundColor: bgColor, testID, shown }: 
   if (!shouldRender) return null
 
   return (
-    <AnimatedWrapper
-      testID={testID}
-      pointerEvents={shown ? 'auto' : 'none'}
-      animatedValue={transition}
-      type="animatedChange"
-      animation="fadeIn"
-      style={StyleSheet.flatten([styles.container, { backgroundColor }])}>
-      <AnimatedWrapper animatedValue={transition} type="animatedChange" staggerIndex={2}>
+    <AnimatedWrapper testID={testID} style={StyleSheet.flatten([styles.container, { backgroundColor }])}>
+      <AnimatedWrapper staggerIndex={2}>
         <ActivityIndicator size="large" color={color} />
       </AnimatedWrapper>
     </AnimatedWrapper>

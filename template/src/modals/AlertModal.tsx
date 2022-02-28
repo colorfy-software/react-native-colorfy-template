@@ -1,7 +1,7 @@
 import { Image, StyleSheet, View } from 'react-native'
-import { ModalComponentProp } from 'react-native-modalfy'
+import type { ModalComponentProp } from 'react-native-modalfy'
 
-import { ModalsParamsType } from '../types/modals-types'
+import type { ModalsParamsType } from '../types/modals-types'
 
 import ModalContainer from './ModalContainer'
 import AppText from '../components/AppText'
@@ -32,11 +32,13 @@ const AlertModal = ({ modal: { params = {} as ModalsParamsType['AlertModal'] } }
       titleColor={titleColor}
       closeBehavior={closeBehavior}>
       {/* NOTE: ILLUSTRATION */}
-      <View style={styles.illustrationWrapper}>
-        <View style={styles.illustrationContainer}>
-          {image && <Image testID={testIDs?.image} source={image} style={[styles.illustrationImage, imageStyle]} />}
+      {image && (
+        <View style={styles.illustrationWrapper}>
+          <View style={styles.illustrationContainer}>
+            <Image testID={testIDs?.image} source={image} style={[styles.illustrationImage, imageStyle]} />
+          </View>
         </View>
-      </View>
+      )}
 
       {/* NOTE: MESSAGE */}
       <View style={styles.messageContainer}>
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
   },
   messageText: {
     textAlign: 'center',
-    lineHeight: 18,
+    lineHeight: 24,
   },
 })
 
