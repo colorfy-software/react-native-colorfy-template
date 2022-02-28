@@ -1,5 +1,5 @@
 import core from '../../src/core/core'
-import appStore, { initialState } from '../../src/store/stores/app-store'
+import appStore, { initialState } from '../../src/stores/app-store'
 
 describe('📱 Core > app:', () => {
   it.each([

@@ -1,8 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('jest-fetch-mock').enableMocks()
-jest.mock('@react-native-async-storage/async-storage', () =>
-  require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
-)
 jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'))
 jest.mock('react-native-reanimated', () => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -24,13 +21,6 @@ jest.mock('react-native/Libraries/LayoutAnimation/LayoutAnimation', () => ({
 jest.mock('react-native-localize', () => require('react-native-localize/mock.js'))
 
 jest.mock('react-native-device-info', () => require('react-native-device-info/jest/react-native-device-info-mock.js'))
-
-jest.mock('react-native-encrypted-storage', () => ({
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-  clear: jest.fn(),
-}))
 
 jest.mock('@react-native-community/netinfo', () => require('@react-native-community/netinfo/jest/netinfo-mock.js'))
 
@@ -54,3 +44,31 @@ jest.mock('date-fns', () => ({
 jest.mock('@react-native-clipboard/clipboard', () => ({
   setString: jest.fn(),
 }))
+
+jest.mock('react-native-mmkv', () => {
+  class MMKVMock {
+    constructor(configuration) {
+      this.config = configuration
+    }
+
+    __INTERNAL_MOCK_STORAGE__ = {}
+
+    set = () => async (key, value) => (MMKVMock.__INTERNAL_MOCK_STORAGE__[this.id][key] = value)
+
+    getString = () => async key => MMKVMock.__INTERNAL_MOCK_STORAGE__[this.id][key] ?? null
+
+    contains = () => key => Boolean(MMKVMock.__INTERNAL_MOCK_STORAGE__[this.id][key])
+
+    delete = () => key => {
+      if (MMKVMock.__INTERNAL_MOCK_STORAGE__[this.id][key]) {
+        delete MMKVMock.__INTERNAL_MOCK_STORAGE__[this.id][key]
+      }
+    }
+
+    clearAll = () => (MMKVMock.__INTERNAL_MOCK_STORAGE__[this.id] = {})
+
+    getAllKeys = () => Object.keys(MMKVMock.__INTERNAL_MOCK_STORAGE__[this.id])
+  }
+
+  return { MMKV: MMKVMock }
+})

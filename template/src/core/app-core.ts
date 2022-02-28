@@ -1,6 +1,6 @@
-import appStore from '../store/stores/app-store'
+import appStore from '../stores/app-store'
 
-import { AppType } from '../types/store-types'
+import type { AppType } from '../types/store-types'
 
 const updateApp = appStore.getState().update
 
@@ -12,9 +12,9 @@ class App {
    * @param data - Object to update the app store with
    */
   update = (data: Partial<AppType>): void => {
-    const currentData = appStore.getState().data
     updateApp(app => {
-      app.data = { ...currentData, ...data }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      app = Object.assign(app, data)
     })
   }
 }

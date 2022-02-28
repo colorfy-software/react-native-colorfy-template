@@ -1,21 +1,19 @@
 import 'react-native-gesture-handler'
-import { initZfy } from '@colorfy-software/zfy'
-import EncryptedStorage from 'react-native-encrypted-storage'
-import { AppRegistry, Platform, UIManager } from 'react-native'
+import NetInfo from '@react-native-community/netinfo'
+import { AppRegistry, LogBox, Platform, UIManager } from 'react-native'
 
 import App from './src/App'
 
-import CONFIG from './src/config/app-config'
 import { name as appName } from './app.json'
 
-initZfy({
-  persistKey: appName,
-  storage: EncryptedStorage,
-  enableLogging: CONFIG.IS_REMOTE_DEBUGGING,
-})
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+])
 
 if (Platform.OS === 'android') {
   UIManager.setLayoutAnimationEnabledExperimental?.(true)
 }
+
+NetInfo.configure({ shouldFetchWiFiSSID: true })
 
 AppRegistry.registerComponent(appName, () => App)

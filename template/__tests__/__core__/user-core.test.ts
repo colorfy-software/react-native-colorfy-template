@@ -1,7 +1,10 @@
+import type { StoresDataType } from '../../src/types/store-types'
+
 import core from '../../src/core/core'
-import { storesToReset } from '../../src/store/stores'
-import appStore, { initialState as initialAppState } from '../../src/store/stores/app-store'
-import userStore, { initialState as initialUserState } from '../../src/store/stores/user-store'
+import appStore, { initialState as initialAppState } from '../../src/stores/app-store'
+import userStore, { initialState as initialUserState } from '../../src/stores/user-store'
+
+const storesToReset: (keyof StoresDataType)[] = ['app', 'user']
 
 describe('🙍 Core > user:', () => {
   it.each([
@@ -28,10 +31,9 @@ describe('🙍 Core > user:', () => {
     expect(userID).toStrictEqual('42')
 
     // NOTE: Now we make sure we test all the expected stores were reset
-    const resetStores = await core.user.logout()
-    expect(resetStores).toStrictEqual(storesToReset)
+    await core.user.logout()
 
-    resetStores?.forEach(store => {
+    storesToReset.forEach(store => {
       switch (store) {
         case 'app': {
           const resetAppState = appStore.getState().data
@@ -48,6 +50,6 @@ describe('🙍 Core > user:', () => {
       }
     })
 
-    expect.assertions(4)
+    expect.assertions(3)
   })
 })

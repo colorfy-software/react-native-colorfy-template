@@ -1,7 +1,7 @@
-import { resetStores } from '../store/stores'
-import userStore from '../store/stores/user-store'
+import { stores } from '../stores/stores'
+import userStore from '../stores/user-store'
 
-import { UserType, StoresDataType } from '../types/store-types'
+import type { UserType } from '../types/store-types'
 
 const updateUser = userStore.getState().update
 
@@ -14,7 +14,8 @@ class User {
    */
   update = (data: Partial<UserType>): void => {
     updateUser(user => {
-      user.data = { ...user.data, ...data }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      user = Object.assign(user, data)
     })
   }
 
@@ -26,7 +27,7 @@ class User {
   /**
    * Reset stores when logging out
    */
-  logout = (): (keyof StoresDataType)[] => resetStores()
+  logout = () => stores.reset()
 }
 
 export default new User()
