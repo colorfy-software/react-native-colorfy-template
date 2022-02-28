@@ -166,7 +166,7 @@ An exhaustive list of all the commands available in `package.json` and their use
 
   If you're missing anything here, you can check out the [react-native-cli commands list](https://github.com/react-native-community/cli/blob/master/docs/commands.md#run-ios).
 
-  ####  `yarn android` | `yarn ios`
+  ###  `yarn android` | `yarn ios`
 
 Will run `./build.sh run` to build the **Dev flavour/target in Debug mode** on your phone (if connected to your computer) or in the [Android
 Emulator](https://developer.android.com/studio/run/emulator) (if you have one setup & launched on your computer)/Xcode iOS Simulator.
@@ -185,7 +185,7 @@ And from here you change the arguments `ios`/`android`, `dev` (for `staging`/`pr
 <details>
   <summary>Browse the commands</summary>
 
-  #### `./build.sh build`
+  ### `./build.sh build`
 
   Builds and generates a signed (or unsigned) application and opens your file manager to its location once done.
 
@@ -204,25 +204,25 @@ And from here you change the arguments `ios`/`android`, `dev` (for `staging`/`pr
 <details>
   <summary>Browse the commands</summary>
 
-  #### `yarn lint`
+  ### `yarn lint`
 
   Runs ESLint on the whole codebase based on the rules set up in `.eslintrc.js` and tries to fix lint errors whenever possible.
 
-  #### `yarn type`
+  ### `yarn type`
 
   Runs the TypeScript compiler on all `*.ts`/`*.tsx` files based on the config set up in `tsconfig.json`.
 
-  #### `yarn unit`
+  ### `yarn unit`
 
   Runs the test suite specified in `__tests__` via Jest.
 
-  #### `yarn test` | `yarn test-commit`
+  ### `yarn test` | `yarn test-commit`
 
   Runs the 3 aforementioned commands.
 
   **Note**: `yarn test` is run by the CI/CD tool before any build. `yarn test-commit` is run before any commit is made from your local machine. Unless for specific and approved reasons: make sure to always pass this command before pushing your code.
   
-  #### `./build.sh detox`
+  ### `./build.sh detox`
 
   Runs the E2E test suite with Detox.
 
@@ -243,7 +243,7 @@ And from here you change the arguments `ios`/`android`, `dev` (for `staging`/`pr
 <details>
   <summary>Browse the commands</summary>
 
-  #### `./build.sh assets`
+  ### `./build.sh assets`
 
   Automatically imports the latest POEditor translations, cleans SVG, minifies JPEG & PNG files and generates the `src/assets/index.tsx` file from where assets can be imported.
   
@@ -251,21 +251,21 @@ And from here you change the arguments `ios`/`android`, `dev` (for `staging`/`pr
   - **icons have to named with the format** `icn_name.svg` **and can only (!) be SVG files**
   - **images have to named with the format** `img_name.png` **and can be anything (PNG, JPEG, GIF).**
   - 
-  #### `./build.sh clean android` | `./build.sh clean ios`
+  ### `./build.sh clean android` | `./build.sh clean ios`
 
   Cleans the build directory and uninstalls the app from the device (Android only).
 
-  #### `./build.sh keystore`
+  ### `./build.sh keystore`
 
   Generates a keystore file to sign Android App Bundles/APKs.
 
   **Note**: Without a keystore, the `release` variant won't be available.
 
-  #### `yarn start`
+  ### `yarn start`
 
   Starts Metro, the JavaScript bundler for React Native. Mandatory steps to do anything productive today!
 
-  #### `yarn postinstall`
+  ### `yarn postinstall`
 
   Runs after each use of `yarn add`/`yarn install` in the project to jetify the Android code, update the Pods on iOS (if you're using macOS).
 </details>
