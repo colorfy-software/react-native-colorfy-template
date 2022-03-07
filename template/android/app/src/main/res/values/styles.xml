@@ -1,15 +1,15 @@
 <resources>
 
     <style name="AppTheme.Launcher" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="android:statusBarColor">@color/color_primary</item>
+        <item name="android:statusBarColor">@color/brand</item>
         <item name="android:windowBackground">@drawable/launch_screen</item>
         <item name="android:datePickerDialogTheme">@style/Dialog.Theme</item>
         <item name="android:timePickerDialogTheme">@style/Dialog.Theme</item>
     </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="android:statusBarColor">@color/color_primary</item>
-        <item name="android:navigationBarColor">@color/color_primary</item>
+        <item name="android:statusBarColor">@color/brand</item>
+        <item name="android:navigationBarColor">@color/brand</item>
         <item name="android:windowBackground">@drawable/app_screen</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="android:datePickerDialogTheme">@style/Dialog.Theme</item>
@@ -18,11 +18,11 @@
     </style>
 
     <style name="Dialog.Theme" parent="Theme.AppCompat.DayNight.Dialog">
-        <item name="colorAccent">@color/color_primary</item>
+        <item name="colorAccent">@color/brand</item>
     </style>
 
     <style name="SplashScreenTheme" parent="SplashScreen_SplashTheme">
-        <item name="android:statusBarColor">@color/color_splashscreen</item>
+        <item name="android:statusBarColor">@color/brand</item>
         <item name="android:windowBackground">@drawable/app_screen</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="android:datePickerDialogTheme">@style/Dialog.Theme</item>

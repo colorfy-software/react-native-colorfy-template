@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_splashscreen">#121212</color>
-    <color name="color_primary">#121212</color>
-    <color name="color_secondary">#FFFFFF</color>
+    <color name="splashscreen">#121212</color>
+    <color name="brand">#121212</color>
+    <color name="white">#FFFFFF</color>
 </resources>
