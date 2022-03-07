@@ -13,9 +13,7 @@
     "test-commit": "yarn lint && yarn type && yarn unit",
     "postinstall": "./scripts/postinstall.sh"
   },
-  "pre-commit": [
-    "test-commit"
-  ],
+  "pre-commit": "test-commit",
   "dependencies": {
     "@colorfy-software/zfy": "^1.0.0",
     "@react-native-clipboard/clipboard": "^1.9.0",

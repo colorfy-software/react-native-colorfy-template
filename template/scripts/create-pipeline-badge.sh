@@ -1,3 +1,5 @@
+#!/bin/bash
+
 LINT_OK=__tests__/lint.ok
 TS_OK=__tests__/ts.ok
 UNIT_OK=__tests__/unit.ok

@@ -52,12 +52,7 @@ pipelines:
         - step: *ts
         - step: *unit
   branches:
-    poeditor:
-      - step:
-          name: 'Skipping Pipeline'
-          script:
-            - echo "Skipping pipelines for /poeditor branch."
-    '{staging,master}':
+    '{staging,main}':
       - step: *clear-cache
       - step:
           name: 'Resetting Badge'
