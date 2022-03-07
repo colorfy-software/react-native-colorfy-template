@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* appStarterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* appStarterTests.m */; };
-		03A402F0041DB8E1B1573C75 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		03A402F0041DB8E1B1573C75 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		0C3351B7ED91556E0D4C9B23 /* libPods-STAGING.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C933BA228DCBAB1421CDCAA /* libPods-STAGING.a */; };
 		0F10F3D92E6B5BEC8A9EAB8F /* libPods-DEV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 172AEA4ABA4DC04996BD7061 /* libPods-DEV.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -28,6 +28,8 @@
 		56097606261F61850078B44A /* NotoSansSC-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0486F29A6C0F4F1F974A11D2 /* NotoSansSC-Light.otf */; };
 		56097607261F61850078B44A /* NotoSansSC-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D97F100660FF404CAB5397B4 /* NotoSansSC-Medium.otf */; };
 		56097608261F61850078B44A /* NotoSansSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B82A0C36F45BE97A8AFD3 /* NotoSansSC-Regular.otf */; };
+		56175C7C27D5F18500289ECF /* Staging-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 561E660C25BAC7CB00C14D5B /* Staging-Info.plist */; };
+		56175C7F27D5F20A00289ECF /* Dev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56175C7E27D5F20A00289ECF /* Dev-Info.plist */; };
 		561E65EC25BAC6EB00C14D5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		561E65ED25BAC6EB00C14D5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		561E65F125BAC6EB00C14D5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -98,6 +100,7 @@
 		2F7C4A40F189ABF2069BFD06 /* Pods-appStarter-appStarterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appStarter-appStarterTests.debug.xcconfig"; path = "Target Support Files/Pods-appStarter-appStarterTests/Pods-appStarter-appStarterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4F76C2372663DFAF32437DE0 /* Pods-STAGING.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STAGING.debug.xcconfig"; path = "Target Support Files/Pods-STAGING/Pods-STAGING.debug.xcconfig"; sourceTree = "<group>"; };
 		5326D2F1217845069F22F339 /* NotoSansSC-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Bold.otf"; path = "../src/assets/fonts/NotoSansSC-Bold.otf"; sourceTree = "<group>"; };
+		56175C7E27D5F20A00289ECF /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Dev-Info.plist"; path = "appStarter/Dev-Info.plist"; sourceTree = "<group>"; };
 		561E660025BAC6EB00C14D5B /* STAGING.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STAGING.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		561E660C25BAC7CB00C14D5B /* Staging-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Staging-Info.plist"; path = "appStarter/Staging-Info.plist"; sourceTree = "<group>"; };
 		561E663A25BAC97000C14D5B /* PROD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PROD.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +108,6 @@
 		56E09BA826A835BD00CF4ECE /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		56E09BAB26A835BE00CF4ECE /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = appStarter/Bridge.swift; sourceTree = "<group>"; };
 		56F527FC2797037A00B93321 /* DEV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		56F527FD2797037A00B93321 /* STAGING copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "STAGING copy-Info.plist"; path = "/Users/charles/Desktop/Colorfy/react-native-colorfy-template/template/ios/STAGING copy-Info.plist"; sourceTree = "<absolute>"; };
 		5B8B82A0C36F45BE97A8AFD3 /* NotoSansSC-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansSC-Regular.otf"; path = "../src/assets/fonts/NotoSansSC-Regular.otf"; sourceTree = "<group>"; };
 		80D5049B300A297582AB9E0C /* libPods-appStarter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appStarter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = appStarter/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -156,7 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03A402F0041DB8E1B1573C75 /* BuildFile in Frameworks */,
+				03A402F0041DB8E1B1573C75 /* (null) in Frameworks */,
 				0C3351B7ED91556E0D4C9B23 /* libPods-STAGING.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,8 +202,9 @@
 		13B07FAE1A68108700A75B9A /* appStarter */ = {
 			isa = PBXGroup;
 			children = (
-				561E664825BAC9CD00C14D5B /* Prod-Info.plist */,
+				56175C7E27D5F20A00289ECF /* Dev-Info.plist */,
 				561E660C25BAC7CB00C14D5B /* Staging-Info.plist */,
+				561E664825BAC9CD00C14D5B /* Prod-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -263,7 +266,6 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				2342D3AB50F41F924A9F5AD6 /* Pods */,
 				961252F7C5734B609F9003A8 /* Resources */,
-				56F527FD2797037A00B93321 /* STAGING copy-Info.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -546,6 +548,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56175C7C27D5F18500289ECF /* Staging-Info.plist in Resources */,
 				56097605261F61850078B44A /* NotoSansSC-Bold.otf in Resources */,
 				56097606261F61850078B44A /* NotoSansSC-Light.otf in Resources */,
 				56097607261F61850078B44A /* NotoSansSC-Medium.otf in Resources */,
@@ -577,6 +580,7 @@
 				56F527F12797037A00B93321 /* NotoSansSC-Light.otf in Resources */,
 				56F527F22797037A00B93321 /* NotoSansSC-Medium.otf in Resources */,
 				56F527F32797037A00B93321 /* NotoSansSC-Regular.otf in Resources */,
+				56175C7F27D5F20A00289ECF /* Dev-Info.plist in Resources */,
 				56F527F42797037A00B93321 /* LaunchScreen.storyboard in Resources */,
 				56F527F52797037A00B93321 /* Images.xcassets in Resources */,
 			);
