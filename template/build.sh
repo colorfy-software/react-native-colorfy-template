@@ -84,8 +84,8 @@ build)
     case $arg in
     -u | --unsigned)
       isSignedBuild=false
-      
-      for unsigned_arg do
+
+      for unsigned_arg; do
         shift
         [ "$unsigned_arg" = "-u" ] || [ "$unsigned_arg" = "--unsigned" ] && continue
         set -- "$@" "$unsigned_arg"
@@ -120,15 +120,18 @@ clean)
   echo -e "${GREEN}\n✔️ ${platform} BUILD FOLDER CLEANED${END}"
   ;;
 detox)
+  # eg: ./build.sh detox android
   # eg: ./build.sh detox android staging
   # eg: ./build.sh detox ios prod release
   # eg: ./build.sh detox --ci
-  mode=${3:-'debug'}
+  sch=${3:-'dev'}
+  scheme="$(tr '[:lower:]' '[:upper:]' <<<"${sch}")"
+  mode=${4:-'debug'}
 
   if [[ ${2} = "-c" || ${2} = "--ci" ]]; then
     ./scripts/run-detox-ci.sh
   else
-    detox build --configuration "$2"."$3"."$mode" && detox test --configuration "$2"."$3"."$mode"
+    detox build --configuration "$2"."$scheme"."$mode" && detox test --configuration "$2"."$scheme"."$mode"
   fi
   ;;
 keystore)
@@ -136,6 +139,7 @@ keystore)
   ./scripts/generate-signed-android-keystore.sh
   ;;
 run)
+  #eg: $ ./build.sh run android
   #eg: $ ./build.sh run android staging
   #eg: $ ./build.sh run ios prod release --clean
 
@@ -150,7 +154,7 @@ run)
         echo -e '\n'
       fi
 
-      for clean_arg do
+      for clean_arg; do
         shift
         [[ "$clean_arg" = "-c" || "$clean_arg" = "--clean" ]] && continue
         set -- "$@" "$clean_arg"
@@ -160,12 +164,14 @@ run)
     esac
   done
 
+  sch=${3:-'dev'}
+  scheme="$(tr '[:lower:]' '[:upper:]' <<<"${sch}")"
+
   mde=${4:-'debug'}
   mode="$(tr '[:lower:]' '[:upper:]' <<<"${mde:0:1}")${mde:1}"
-  scheme="$(tr '[:lower:]' '[:upper:]' <<<"${3}")"
 
   if [[ ${2} = "android" ]]; then
-    npx react-native run-android --variant "${3}${mode}" --appId com.appstarter."${3}" --verbose
+    npx react-native run-android --variant "${sch}${mode}" --appId me.colorfy.somattwo."${sch}" --verbose
   elif [[ ${2} = "ios" ]]; then
     npx react-native run-ios --scheme "${scheme} ${mode}" --verbose
   fi
