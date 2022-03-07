@@ -21,15 +21,15 @@ Once that's done, you'll have a few files and folder to update after initializin
 
 1. Update your app Dev/Staging/Prod displayed names:
    * Android: `android/app/build.gradle` at `#L172-187`
-   * iOS: Open the `.xcworkspace` inside the `/ios` folder with Xcode > Select your project (will be on top of the
-     `Pods` one) > Select a target (any `STAGING` or `PROD`) in Xcode's top bar > `General` > `Identity` > Update
+   * iOS: Open the `.xcworkspace` with Xcode (inside the `/ios` folder). Select your project in the left tab in Xcode (will be on top of the
+     `Pods` one) > Select a target (`DEV`, `STAGING` or `PROD`) in Xcode's top bar > `General` > `Identity` > Update
      `Display name` & `Bundle Identifier`. Repeat the process until `DEV Debug`, `DEV Release`, `STAGING Debug`, `STAGING Release`, `PROD Debug` &
      `PROD Release` have been updated.
 2. Add the Apple team key & provisioning profiles info to the `ios/exportOptions.plist` for generating unsigned IPAs manually.
 3. To allow Detox to access your iOS builds: open your `.xcworkspace` file with Xcode > File (in macOS top bar) >
    Workspace Settings > Derived Data (set it to `Workspace-relative Location`) > `DerivedData` > edit the field to be
    `build` instead.
-4. Add the project's POEditor info in `./build.sh` `#L7-8`    .
+4. Add the project's POEditor info in `./build.sh` `#L7-8`.
 5. Create or update your Android Emulator name to `'Pixel2'` to run Detox locally.
 6. To update the splash screen color, modify: 
    * Android: `android/res/values/colors.xml`
@@ -40,6 +40,8 @@ Once that's done, you'll have a few files and folder to update after initializin
    _If you're working at colorfy, following the [CI/CD setup guide](https://colorfy.atlassian.net/wiki/spaces/COLORFY/pages/2572484609/Build+Automation) would get you up and running in no time!_
 
 9. Add the build status SVG badges to the table above after setting up the apps there and the Bitbucket Pipelines one after pushing the 1st commit (the `status.svg` file will be available in the `Downloads` section of the Bitbucket repository)
+10. To get the pre-commit hook working, make it executable via `chmod a+x .git/hooks/pre-commit`
+11. Add your custom fonts to the project as explained [here](https://mehrankhandev.medium.com/ultimate-guide-to-use-custom-fonts-in-react-native-77fcdf859cf4)
 
 ## 🛣 Branches
 
