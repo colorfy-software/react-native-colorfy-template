@@ -19,7 +19,7 @@ If you're working at colorfy, going through the
 
 Once that's done, you'll have a few files and folder to update after initializing your project before you start:
 
-1. Update your app Staging/Prod displayed names:
+1. Update your app Dev/Staging/Prod displayed names:
    * Android: `android/app/build.gradle` at `#L172-187`
    * iOS: Open the `.xcworkspace` inside the `/ios` folder with Xcode > Select your project (will be on top of the
      `Pods` one) > Select a target (any `STAGING` or `PROD`) in Xcode's top bar > `General` > `Identity` > Update
@@ -43,9 +43,8 @@ Once that's done, you'll have a few files and folder to update after initializin
 
 ## 🛣 Branches
 
-Remember that `/master` & `/staging` are used for the build automation: any code that ends up there will automatically trigger a new build of the apps!
-
-Make sure you always use branches to develop features in their own sandbox before opening pull requests.
+- Make sure you always use features branches to build chunk of work in their own sandbox before opening pull requests to `/dev`.
+- Remember that `/main` & `/staging` are used for the build automation: any code that ends up there will automatically trigger a new build of the apps!
 
 If you're working at colorfy this whole process is explained in the
 [Branches](https://colorfy.atlassian.net/wiki/spaces/COLORFY/pages/1217265684/Coding+Styleguide#Branches) and [Pull
