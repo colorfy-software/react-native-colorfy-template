@@ -1,7 +1,7 @@
 {
   "name": "react-native-colorfy-template",
   "description": "Comprehensive template for the React Native apps built at colorfy GmbH",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/colorfy-software/react-native-colorfy-template.git"
