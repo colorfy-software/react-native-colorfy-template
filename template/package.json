@@ -68,7 +68,7 @@
     "@typescript-eslint/parser": "^5.12.1",
     "babel-jest": "^27.5.1",
     "babel-plugin-transform-remove-console": "^6.9.4",
-    "detox": "^19.4.5",
+    "detox": "^19.4.5 < 19.5.2 || > 19.5.2",
     "detox-recorder": "^1.0.151",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.4.0",
