@@ -3050,9 +3050,9 @@ async-limiter@~1.0.0:
   integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
 
 async@^2.4.0:
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/async/-/async-2.6.3.tgz#d72625e2344a3656e3a3ad4fa749fa83299d82ff"
-  integrity sha512-zflvls11DCy+dQWzTW2dzuilv8Z5X/pjfmZOWba6TNIVDm+2UDaJmXSOXlasHKfNBs8oo3M0aT50fDEWfKZjXg==
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.6.4.tgz#706b7ff6084664cd7eae713f6f965433b5504221"
+  integrity sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==
   dependencies:
     lodash "^4.17.14"
 
@@ -4025,10 +4025,10 @@ detox-recorder@^1.0.151:
   resolved "https://registry.yarnpkg.com/detox-recorder/-/detox-recorder-1.0.151.tgz#5d59775dc01ea58595c749aade0420c5ba73dd43"
   integrity sha512-a4ZPo7AR5XJJiLy8Xqml8YXxrIz6R7RKfiGmG9u5MBxG2I+w+yGJTj7ZhYDfoi5StpUD+dKHTCdvycZTOQ84Cw==
 
-detox@^19.4.5:
-  version "19.4.5"
-  resolved "https://registry.yarnpkg.com/detox/-/detox-19.4.5.tgz#81b1cadaec5c0f7dc53798d65242ff19f4da8412"
-  integrity sha512-kMHxNn3I9uTxOzIX4CTymI9qHRLn90xzuM/QhqHNeUH3AEDFtUmlJpcL86GmPO/VLWafcJScia9jqUiKveNAqg==
+"detox@^19.4.5 < 19.5.2 || > 19.5.2":
+  version "19.6.7"
+  resolved "https://registry.yarnpkg.com/detox/-/detox-19.6.7.tgz#4b826603c923ced20b6983d2d2c416e453cf405f"
+  integrity sha512-/ff7I1JQegjVYN569RfITrJkkmAFm/zkj33UFAOL/JD/5GE29lSLetgSzhxli6aSiLkbASBxYng7kqAYoCD4DA==
   dependencies:
     ajv "^8.6.3"
     bunyan "^1.8.12"
